@@ -1,5 +1,11 @@
+const defaults = {
+  mode: 'dark',
+}
+
 const init = (options) => {
-  console.log('hello world!')
+  const settings = Object.assign({}, defaults, options)
+
+  console.log(settings)
 }
 
 export default { init: init }
