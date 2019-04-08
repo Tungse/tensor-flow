@@ -1,0 +1,24 @@
+.DS_Store
+/node_modules/
+/vendor/
+/docs/dist/
+/bin
+.vscode/
+.sbsync
+npm-debug.logo
+yarn-error.log
+composer.phar
+/projects
+
+# Editor directories and files
+/.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# sandbox related
+develop/conf/fpm.conf
+develop/conf/vhost.conf
+dist/
+rsync-conf.json
