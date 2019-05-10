@@ -43,6 +43,10 @@ $nav-link-button-hover-bg: rgba(255, 255, 255, .9);
 }
 
 .smb-gallery-media {
+  height: 450px;
+  display: flex;
+  align-items: center;
+
   img {
     max-width: 100%;
     height: auto;
