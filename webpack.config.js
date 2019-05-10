@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['./src/index.js'],
   mode: 'development',
   devtool: 'inline-source-map',
   module: {
@@ -19,6 +19,20 @@ module.exports = {
             ],
           },
         },
+      },
+      {
+        test: /.scss$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
       },
     ],
   },

@@ -1,0 +1,63 @@
+$nav-link-horizontal-padding: 25px;
+$nav-link-button-bg: rgba(255, 255, 255, .5);
+$nav-link-button-hover-bg: rgba(255, 255, 255, .9);
+
+.smb-gallery-header {
+  height: 450px;
+  background: #ddd;
+  position: relative;
+}
+
+.smb-gallery-nav {
+  top: 0;
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    text-decoration: none;
+
+    .smb-gallery-button {
+      background: $nav-link-button-hover-bg;
+    }
+  }
+}
+
+.smb-gallery-button {
+  height: 120px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $nav-link-button-bg;
+}
+
+.smb-gallery-nav-right {
+  right: 0;
+  padding-left: $nav-link-horizontal-padding;
+}
+
+.smb-gallery-nav-left {
+  padding-right: $nav-link-horizontal-padding;
+}
+
+.smb-gallery-media {
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    max-height: 450px;
+    margin: 0 auto;
+  }
+}
+
+.smb-gallery-info {
+  padding: 12.5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.smb-gallery-btn-nav {
+  text-align: center;
+}

@@ -4,17 +4,104 @@
     <meta charset="UTF-8">
     <title>SMB Gallery Development</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
     <div class="container">
       <h1>SMB Gallery Demo</h1>
       <div class="smb-gallery">
-        <!-- TODO -->
+        <div id="stage">
+        </div>
+        <div class="row">
+          <div class="col-md-8" id="content">
+          </div>
+          <div class="col-md-4">
+            <div class="" style="height: 250px; background: #ddd;"></div>
+          </div>
+        </div>
       </div>
     </div>
+    <script type="application/ld+json" id="data">
+    {
+      "@context": "http://schema.org",
+      "@type": "ItemList",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "ImageObject",
+            "caption": "",
+            "contentUrl": "//static.kino.de/wp-content/uploads/2018/05/geplante-star-wars-filme-7.jpg",
+            "copyrightHolder": "Disney",
+            "copyrightYear": "2018",
+            "datePublished": "2018-10-05T14:28:22",
+            "description": "<p>Seit das Unternehmen Lucasfilm im Jahr 2012 für insgesamt 4 Milliarden US-Dollar an Disney verkauft wurde, ist viel Bewegung in die weit, weit entfernte Galaxis gekommen. Neben einer brandneuen Trilogie mit Rey &amp; Kylo Ren sind mit &bdquo;<a href=\"https://www.kino.de/film/rogue-one-a-star-wars-story-2016/\">Rogue One</a>&ldquo; und &bdquo;<a href=\"https://www.kino.de/film/solo-a-star-wars-story-2018/\">Solo</a>&ldquo; zwei eigenständige Spin-off-Filme erschienen. Doch das ist gerade erst der Beginn des neuen &#8222;Star Wars&#8220;-Zeitalters. In Zukunft warten noch gut 11 neue Filme und eine spektakuläre Realserie auf die Fans. Wir haben die Infos zu allen geplanten &#8222;Star Wars&#8220;-Filmen und -Serien der nächsten Jahre für euch zusammengefasst.</p>",
+            "headline": "Alle geplanten „Star Wars“-Filme und -Serien ab 2019",
+            "url": "https://www.kino.de/film/venom-2018/bilderstrecken/9-fakten-zu-venom-die-ihr-vor-kinostart-wissen-muesst/"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "ImageObject",
+            "caption": "",
+            "contentUrl": "//static.kino.de/wp-content/uploads/2018/05/geplante-star-wars-filme-2.jpg",
+            "copyrightHolder": "Disney",
+            "copyrightYear": "2018",
+            "datePublished": "2018-10-05T14:28:22",
+            "description": "<p>Im dritten und letzten Teil der aktuellen &#8222;Star Wars&#8220;-Trilogie wird der Kampf der Rebellen gegen die Erste Ordnung sein Ende finden. Noch ist wenig zur Handlung von &#8222;<a href=\"https://www.kino.de/film/star-wars-episode-ix-2019/\">Episode 9</a>&#8220; bekannt. Sicher ist bisher nur, dass es einen Zeitsprung geben wird und die Geschichte nicht direkt an das Ende von &#8222;<a href=\"https://www.kino.de/film/star-wars-die-letzten-jedi-2017/\">Die letzten Jedi</a>&#8220; anschließt. Die emotional gestärkte Rey wird in Teil 9 wahrscheinlich zur Meisterin einer neuen Generation von Jedi heranreifen und schließlich Kylo Ren in einem letzten Kampf gegenübertreten.</p>\n<p>Nach dem Tod von Carrie Fisher stand lange Zeit nicht fest, wie es mit Leia Organa weitergehen wird. Nun ist bekannt, dass <a href=\"https://www.kino.de/film/star-wars-episode-ix-2019-2/news/star-wars-9-kinostart-bekannt-leia-kehrt-zurueck/\">ungenutztes Filmmaterial</a> dazu verwendet werden soll, um Leia im Film auftreten zu lassen. Regie und Drehbuch übernimmt <a href=\"https://www.kino.de/star/j.j.-abrams/\">J. J. Abrams</a>, der bereits &#8222;Das Erwachen der Macht&#8220; inszeniert hatte.",
+            "headline": "&bdquo;Star Wars: Episode IX&ldquo; &ndash; 20. Dezember 2019",
+            "url": "https://www.kino.de/film/solo-a-star-wars-story-2018/bilderstrecken/alle-geplanten-star-wars-filme-und-serien-ab-2019/#page=2"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "SocialMediaPosting",
+            "datePublished": "2018-10-05T14:28:22",
+            "description": "<p>Nach der Trilogie ist vor der Trilogie. Obwohl Rian Johnsons &#8222;Die letzten Jedi&#8220; die Meinungen der Zuschauer stark gespalten hatte, gab Lucasfilm bei ihm <a href=\"https://www.kino.de/film/star-wars-die-letzten-jedi-2017/news/star-wars-rian-johnson-erhaelt-seine-eigene-neue-trilogie/\">einen neuen Dreiteiler</a> in Auftrag. Johnson ist als Drehbuchautor eingeplant und wird Regie führen. Die Geschichte soll sich fernab der Skywalker-Saga bewegen und neue Figuren und Schauplätze bieten. Viele Fans hoffen darauf, dass endlich die Ära der Alten Republik filmisch behandelt wird. 2019 soll die Produktion beginnen.</p>",
+            "headline": "Neue „Star Wars“-Trilogie von Rian Johnson – Evtl. ab 2021",
+            "url": "https://www.kino.de/film/solo-a-star-wars-story-2018/bilderstrecken/alle-geplanten-star-wars-filme-und-serien-ab-2019/#page=3",
+            "sharedContent": {
+              "@type": "WebPage",
+              "url": "https://www.instagram.com/p/BcigIN3DAqE"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "VideoObject",
+            "caption": "",
+            "embedUrl": "https://videos.kino.de/embed/1143168447",
+            "copyrightHolder": "",
+            "copyrightYear": "",
+            "datePublished": "2018-10-05T14:28:22",
+            "description": "<p>Nach dem Ende von &bdquo;Star Wars Rebels&ldquo; gibt es schon bald Nachschub aus dem &#8222;Star Wars&#8220;-Serien-Universum. Die Animationsserie im Anime-Stil spielt kurz vor &#8222;Das Erwachen der Macht&#8220; und erzählt von den rasanten Abenteuern des jungen Piloten Kazuda Xiono. Der wird vom Widerstand (englisch: Resistance) angeworben, um in einer streng geheimen Mission die Erste Ordnung auszuspionieren. Es gibt ein Wiedersehen mit BB-8, Poe Dameron, Captain Phasma und natürlich Leia Organa. Die Serie startet in Deutschland am 13. Oktober 2018 beim Pay TV-Sender Disney XD.</p>",
+            "headline": "„Star Wars Resistance“ - Oktober 2018",
+            "thumbnail": "",
+            "url": "https://www.kino.de/film/solo-a-star-wars-story-2018/bilderstrecken/alle-geplanten-star-wars-filme-und-serien-ab-2019/#page=8",
+            "videoFrameSize": "???"
+          }
+        }
+      ]
+    }
+    </script>
 
     <script type="text/javascript">
-      smbGallery.init()
+      smbGallery.init({
+        dataSelector: '#data',
+        stageSelector: '#stage',
+        contentSelector: '#content',
+        onItemChange: function(state) {
+          console.log(state)
+        }
+      })
     </script>
   </body>
 </html>
