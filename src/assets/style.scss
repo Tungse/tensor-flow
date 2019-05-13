@@ -47,7 +47,8 @@ $nav-link-button-hover-bg: rgba(255, 255, 255, .9);
   display: flex;
   align-items: center;
 
-  img {
+  img,
+  iframe {
     max-width: 100%;
     height: auto;
     display: block;

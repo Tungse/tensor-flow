@@ -1,5 +1,7 @@
 import './assets/style.scss'
 import './assets/demo.scss'
+import getData from './common/gallery-data.js'
+import { renderMedia } from './common/render.js'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -18,7 +20,7 @@ let state = {}
 const init = (options) => {
   settings = Object.assign({}, defaults, options)
 
-  state.data = getData()
+  state.data = getData(settings.dataSelector)
   state.length = state.data.itemListElement.length
 
   const hashPage = parseInt(location.hash.replace(/^\D+/g, ''))
@@ -31,12 +33,6 @@ const init = (options) => {
   }
 
   renderPage()
-}
-
-const getData = () => {
-  const htmlString = document.querySelector(settings.dataSelector).innerHTML
-
-  return JSON.parse(htmlString)
 }
 
 const renderPage = () => {
@@ -60,7 +56,7 @@ const renderStage = () => {
       </a>
       ` : ''}
       <div class="smb-gallery-media">
-        ${page.item['@type'] === 'ImageObject' ? `<img class="" src="${page.item.contentUrl}" alt="">` : ''}
+        ${renderMedia(page.item)}
       </div>
       ${state.currentPage < state.length ? `
       <a role="smb-gallery-next" class="smb-gallery-nav smb-gallery-nav-right" href="${nextPage.item.url}">
