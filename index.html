@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>SMB Gallery Development</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -42,6 +45,8 @@
             "copyrightHolder": "Disney",
             "copyrightYear": "2018",
             "datePublished": "2018-10-05T14:28:22",
+            "height": 3500,
+            "width": 1750,
             "description": "<p>Seit das Unternehmen Lucasfilm im Jahr 2012 für insgesamt 4 Milliarden US-Dollar an Disney verkauft wurde, ist viel Bewegung in die weit, weit entfernte Galaxis gekommen. Neben einer brandneuen Trilogie mit Rey &amp; Kylo Ren sind mit &bdquo;<a href=\"https://www.kino.de/film/rogue-one-a-star-wars-story-2016/\">Rogue One</a>&ldquo; und &bdquo;<a href=\"https://www.kino.de/film/solo-a-star-wars-story-2018/\">Solo</a>&ldquo; zwei eigenständige Spin-off-Filme erschienen. Doch das ist gerade erst der Beginn des neuen &#8222;Star Wars&#8220;-Zeitalters. In Zukunft warten noch gut 11 neue Filme und eine spektakuläre Realserie auf die Fans. Wir haben die Infos zu allen geplanten &#8222;Star Wars&#8220;-Filmen und -Serien der nächsten Jahre für euch zusammengefasst.</p>",
             "headline": "Alle geplanten „Star Wars“-Filme und -Serien ab 2019",
             "url": "https://www.kino.de/film/venom-2018/bilderstrecken/9-fakten-zu-venom-die-ihr-vor-kinostart-wissen-muesst/"
@@ -57,6 +62,8 @@
             "copyrightHolder": "Disney",
             "copyrightYear": "2018",
             "datePublished": "2018-10-05T14:28:22",
+            "height": 434,
+            "width": 720,
             "description": "<p>Im dritten und letzten Teil der aktuellen &#8222;Star Wars&#8220;-Trilogie wird der Kampf der Rebellen gegen die Erste Ordnung sein Ende finden. Noch ist wenig zur Handlung von &#8222;<a href=\"https://www.kino.de/film/star-wars-episode-ix-2019/\">Episode 9</a>&#8220; bekannt. Sicher ist bisher nur, dass es einen Zeitsprung geben wird und die Geschichte nicht direkt an das Ende von &#8222;<a href=\"https://www.kino.de/film/star-wars-die-letzten-jedi-2017/\">Die letzten Jedi</a>&#8220; anschließt. Die emotional gestärkte Rey wird in Teil 9 wahrscheinlich zur Meisterin einer neuen Generation von Jedi heranreifen und schließlich Kylo Ren in einem letzten Kampf gegenübertreten.</p>\n<p>Nach dem Tod von Carrie Fisher stand lange Zeit nicht fest, wie es mit Leia Organa weitergehen wird. Nun ist bekannt, dass <a href=\"https://www.kino.de/film/star-wars-episode-ix-2019-2/news/star-wars-9-kinostart-bekannt-leia-kehrt-zurueck/\">ungenutztes Filmmaterial</a> dazu verwendet werden soll, um Leia im Film auftreten zu lassen. Regie und Drehbuch übernimmt <a href=\"https://www.kino.de/star/j.j.-abrams/\">J. J. Abrams</a>, der bereits &#8222;Das Erwachen der Macht&#8220; inszeniert hatte.",
             "headline": "&bdquo;Star Wars: Episode IX&ldquo; &ndash; 20. Dezember 2019",
             "url": "https://www.kino.de/film/solo-a-star-wars-story-2018/bilderstrecken/alle-geplanten-star-wars-filme-und-serien-ab-2019/#page=2"
@@ -101,7 +108,7 @@
     <script>
       const smbContext = {
         device: {
-          category: 'desktop'
+          category: 'smartphone'
         }
       }
     </script>
@@ -113,8 +120,13 @@
         contentSelector: '#content',
         onItemChange: function(state) {
           console.log(state)
+        },
+        afterPageRender: function(state) {
+          var lazyLoadInstance = new LazyLoad({
+            elements_selector: ".lazy"
+          });
         }
-      })
+      }, smbContext)
     </script>
   </body>
 </html>

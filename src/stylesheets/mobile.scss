@@ -1,0 +1,26 @@
+.smb-gallery-media {
+  margin-bottom: 12.5px;
+
+  img,
+  iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    max-height: 450px;
+    margin: 0 auto;
+  }
+}
+
+.smb-gallery-content {
+  *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.smb-gallery-ed-container {
+  text-align: center;
+  margin: 25px -15px;
+  min-height: 250px;
+  padding: 12.5px;
+  background: #f2f2f2;
+}

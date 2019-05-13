@@ -1,11 +1,8 @@
-$nav-link-horizontal-padding: 25px;
-$nav-link-button-bg: rgba(255, 255, 255, .5);
-$nav-link-button-hover-bg: rgba(255, 255, 255, .9);
+@import "vars";
 
 .smb-gallery-header {
-  height: 450px;
-  background: #ddd;
   position: relative;
+  background: #ddd;
 }
 
 .smb-gallery-nav {
