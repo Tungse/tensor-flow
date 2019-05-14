@@ -53,6 +53,7 @@ const render = () => {
           ${page.item.description}
         </div>
         <div class="smb-gallery-ed-container">
+          <div data-sdg-ad="rectangle"></div>
         </div>
       </div>
     `.trim()).join('')}
