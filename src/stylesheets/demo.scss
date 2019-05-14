@@ -5,3 +5,14 @@
 .smb-gallery-info {
   margin-bottom: 25px;
 }
+
+// Image lazyload
+// ---------------------------
+.lazyload {
+  opacity: 0;
+  transition: opacity .3s;
+
+  &.loaded {
+    opacity: 1;
+  }
+}

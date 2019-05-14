@@ -45,8 +45,8 @@
             "copyrightHolder": "Disney",
             "copyrightYear": "2018",
             "datePublished": "2018-10-05T14:28:22",
-            "height": 3500,
-            "width": 1750,
+            "width": 3500,
+            "height": 1750,
             "description": "<p>Seit das Unternehmen Lucasfilm im Jahr 2012 für insgesamt 4 Milliarden US-Dollar an Disney verkauft wurde, ist viel Bewegung in die weit, weit entfernte Galaxis gekommen. Neben einer brandneuen Trilogie mit Rey &amp; Kylo Ren sind mit &bdquo;<a href=\"https://www.kino.de/film/rogue-one-a-star-wars-story-2016/\">Rogue One</a>&ldquo; und &bdquo;<a href=\"https://www.kino.de/film/solo-a-star-wars-story-2018/\">Solo</a>&ldquo; zwei eigenständige Spin-off-Filme erschienen. Doch das ist gerade erst der Beginn des neuen &#8222;Star Wars&#8220;-Zeitalters. In Zukunft warten noch gut 11 neue Filme und eine spektakuläre Realserie auf die Fans. Wir haben die Infos zu allen geplanten &#8222;Star Wars&#8220;-Filmen und -Serien der nächsten Jahre für euch zusammengefasst.</p>",
             "headline": "Alle geplanten „Star Wars“-Filme und -Serien ab 2019",
             "url": "https://www.kino.de/film/venom-2018/bilderstrecken/9-fakten-zu-venom-die-ihr-vor-kinostart-wissen-muesst/"
@@ -106,27 +106,32 @@
     </script>
 
     <script>
-      const smbContext = {
-        device: {
-          category: 'smartphone'
-        }
-      }
     </script>
 
-    <script type="text/javascript">
-      smbGallery.init({
-        dataSelector: '#data',
-        stageSelector: '#stage',
-        contentSelector: '#content',
-        onItemChange: function(state) {
-          console.log(state)
-        },
-        afterPageRender: function(state) {
-          var lazyLoadInstance = new LazyLoad({
-            elements_selector: ".lazy"
-          });
-        }
-      }, smbContext)
+    <script>
+      const env = '<%= htmlWebpackPlugin.options.env.device %>'
+      const smbContext = {}
+
+      if (env === 'mobile') {
+
+        smbGalleryMobile.init({
+          dataSelector: '#data',
+          contentSelector: '#content',
+        }, smbContext)
+
+      } else {
+
+        smbGalleryDesktop.init({
+          dataSelector: '#data',
+          stageSelector: '#stage',
+          contentSelector: '#content',
+        }, smbContext)
+
+      }
+
+      var lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy"
+      });
     </script>
   </body>
 </html>

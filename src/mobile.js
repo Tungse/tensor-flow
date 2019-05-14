@@ -1,6 +1,6 @@
 import './stylesheets/mobile.scss'
+import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
-import { renderMedia } from './common/render.js'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -83,4 +83,23 @@ const render = () => {
   `
 }
 
-export default init
+const renderMedia = (item) => {
+  switch (item['@type']) {
+    case 'ImageObject':
+      return `
+        ${item.width > 0 && item.height > 0 ? `
+          <div class="embed-responsive" style="padding-bottom: ${item.height / item.width * 100}%">
+            <img class="embed-responsive-item lazy" data-src="${item.contentUrl}" alt="">
+          </div>
+        ` : `
+          <img class="lazy" data-src="${item.contentUrl}" alt="">
+        `}
+      `
+    case 'VideoObject':
+      return `<iframe class="lazy" data-src="${item.embedUrl}"></iframe>`
+    default:
+      return ``
+  }
+}
+
+export default { init: init }

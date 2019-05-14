@@ -1,6 +1,6 @@
 import './stylesheets/desktop.scss'
+import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
-import { renderMedia } from './common/render.js'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -38,6 +38,10 @@ const renderPage = () => {
   document.querySelector(settings.stageSelector).innerHTML = renderStage()
   document.querySelector(settings.contentSelector).innerHTML = renderContent()
   bindEvents()
+
+  if (typeof settings.afterPageRender === 'function') {
+    settings.afterPageRender(state)
+  }
 }
 
 const renderStage = () => {
@@ -71,6 +75,21 @@ const renderStage = () => {
       <small>${state.currentPage} / ${state.length}</small>
     </div>
   `
+}
+
+const renderMedia = (item) => {
+  switch (item['@type']) {
+    case 'ImageObject':
+      return `
+        <img class="" src="${item.contentUrl}" alt="">
+      `
+    case 'VideoObject':
+      return `
+        <iframe class="" src="${item.embedUrl}"></iframe>
+      `
+    default:
+      return ``
+  }
 }
 
 const renderContent = () => {
@@ -166,4 +185,4 @@ const go = () => {
   }
 }
 
-export default init
+export default { init: init }
