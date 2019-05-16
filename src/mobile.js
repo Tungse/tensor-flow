@@ -4,6 +4,7 @@ import getData from './common/gallery-data.js'
 import getReferrer from './common/referrer.js'
 import getInitalPage from './common/initial-page.js'
 import Filer from '../node_modules/filer-js-sdk/dist/filer.js'
+import Observer from 'smb-element-observer'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -31,11 +32,18 @@ const init = (options, smbContext) => {
 }
 
 /**
- * Update html and bind events afterwards.
+ * Insert html and bind events afterwards.
+ * Scrolls initial into view.
  * Execute "afterPageRender"-callback if provided.
  */
 const renderPage = () => {
   document.querySelector(settings.contentSelector).innerHTML = render()
+  state.galleryItems = document.querySelectorAll('.smb-gallery-item')
+
+  if (state.currentPage > 1) {
+    state.galleryItems[state.currentPage].scrollIntoView()
+  }
+
   bindEvents()
 
   if (typeof settings.afterPageRender === 'function') {
@@ -44,10 +52,29 @@ const renderPage = () => {
 }
 
 /**
- * Bind events for navigation, popstate and tracking
+ * Bind events for intersection, popstate and tracking
  */
 const bindEvents = () => {
+  state.galleryItems.forEach((elm, index) => {
+    Observer.repeat(elm, () => {
+      if (state.currentPage !== index + 1) {
+        state.currentPage = index + 1
+        window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+      }
 
+      circulateAds()
+    })
+  })
+}
+
+/**
+ * [circulateAds description]
+ */
+const circulateAds = () => {
+  state.galleryItems.forEach((elm, index) => {
+    elm.querySelector('[data-role="sdg-ad"]').setAttribute('data-sdg-ad', `galleryad${index === 0 ? '' : index + 1}`)
+    window.adLoader('_loadAds', ['galleryad', 'galleryad2', 'galleryad4', 'galleryad5'])
+  })
 }
 
 /**
@@ -70,7 +97,7 @@ const render = () => {
           ${page.item.description}
         </div>
         <div class="smb-gallery-ed-container">
-          <div data-sdg-ad="rectangle"></div>
+          <div data-role="sdg-ad"></div>
         </div>
       </div>
     `.trim()).join('')}
