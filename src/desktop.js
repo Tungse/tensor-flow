@@ -1,6 +1,8 @@
 import './stylesheets/desktop.scss'
 import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
+import getReferrer from './common/referrer.js'
+import Filer from '../node_modules/filer-js-sdk/dist/filer.js'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -14,6 +16,7 @@ let state = {}
 /**
  * [init description]
  * @param  {[type]} options [description]
+ * @param  {[type]} smbContext [description]
  * @return {[type]}         [description]
  */
 const init = (options, smbContext) => {
@@ -21,6 +24,7 @@ const init = (options, smbContext) => {
 
   state.data = getData(settings.dataSelector)
   state.length = state.data.itemListElement.length
+  state.referrer = getReferrer()
 
   const hashPage = parseInt(location.hash.replace(/^\D+/g, ''))
 
@@ -42,6 +46,8 @@ const renderPage = () => {
   if (typeof settings.afterPageRender === 'function') {
     settings.afterPageRender(state)
   }
+
+  console.log(state)
 }
 
 const renderStage = () => {
@@ -81,7 +87,7 @@ const renderMedia = (item) => {
   switch (item['@type']) {
     case 'ImageObject':
       return `
-        <img class="" src="${item.contentUrl}" alt="">
+        <img class="" src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 0, 450, 'u']])}" alt="">
       `
     case 'VideoObject':
       return `
@@ -100,36 +106,15 @@ const renderContent = () => {
       ${page.item.description}
 
       <div class="smb-gallery-btn-nav">
-        <a role="smb-gallery-prev" class="btn btn-link" href="#"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
-        <a role="smb-gallery-next" class="btn btn-primary" href="#">weiter <i class="fas fa-angle-right"></i></a>
-      </div>
-
-      <div>
-        ${state.currentPage === state.length ? `
-          <h3>Weitere Bilderstrecken</h3>
-          <div class="row" style="margin-bottom: 25px">
-            <div class="col-md-4">
-              <div class="" style="height: 125px; background: #ddd;"></div>
-            </div>
-            <div class="col-md-4">
-              <div class="" style="height: 125px; background: #ddd;"></div>
-            </div>
-            <div class="col-md-4">
-              <div class="" style="height: 125px; background: #ddd;"></div>
-            </div>
-          </div>
-          <div class="row" style="margin-bottom: 25px">
-            <div class="col-md-4">
-              <div class="" style="height: 125px; background: #ddd;"></div>
-            </div>
-            <div class="col-md-4">
-              <div class="" style="height: 125px; background: #ddd;"></div>
-            </div>
-            <div class="col-md-4">
-              <div class="" style="height: 125px; background: #ddd;"></div>
-            </div>
-          </div>
+        <div>
+        ${state.referrer ? `
+        <a role="smb-gallery-back" class="btn btn-link" href="${state.referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
         ` : ''}
+        </div>
+        <div>
+          <a role="smb-gallery-prev" class="btn btn-primary" href="#"><i class="fas fa-angle-left"></i> zurück</a>
+          <a role="smb-gallery-next" class="btn btn-primary" href="#">weiter <i class="fas fa-angle-right"></i></a>
+        </div>
       </div>
     </div>
   `
@@ -177,11 +162,38 @@ const goNext = () => {
 }
 
 const go = () => {
-  history.pushState({}, '', '#page-' + state.currentPage)
   renderPage()
+  history.pushState({}, '', '#page-' + state.currentPage)
+
+  if (typeof window.smbt !== 'undefined') {
+    window.smbt.emit('pageview')
+  }
+
+  if (typeof iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
+    window.iom.c(window.iam_data, 2)
+  }
+
+  // TODO
+  // is this needed?
+  // https://github.com/smb-ag/shuttle/blob/develop/project/core/plugin/basic/general/feature/static/js/general.functions.js#L90
+
+  if (typeof window.adLoader !== 'undefined') {
+    try {
+      resetBodyStyles()
+      window.adLoader('_reloadAds')
+    } catch (e) {}
+  }
 
   if (typeof settings.onItemChange === 'function') {
     settings.onItemChange(state)
+  }
+}
+
+const resetBodyStyles = () => {
+  document.body.style = ''
+
+  if (window.bb) {
+    window.bb.unload()
   }
 }
 
