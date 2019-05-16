@@ -1,6 +1,9 @@
 import './stylesheets/mobile.scss'
 import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
+import getReferrer from './common/referrer.js'
+import getInitalPage from './common/initial-page.js'
+import Filer from '../node_modules/filer-js-sdk/dist/filer.js'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -11,36 +14,46 @@ let settings = {}
 let state = {}
 
 /**
- * [init description]
- * @param  {[type]} options [description]
- * @return {[type]}         [description]
+ * set initial state and render page depending
+ * on url; if no page is set first page will render.
+ * @param  {object} options [description]
+ * @param  {object} smbContext [description]
  */
 const init = (options, smbContext) => {
   settings = Object.assign({}, defaults, options)
 
   state.data = getData(settings.dataSelector)
   state.length = state.data.itemListElement.length
-
-  const hashPage = parseInt(location.hash.replace(/^\D+/g, ''))
-
-  if (typeof hashPage === 'number' && hashPage <= state.length && hashPage > 0) {
-    state.currentPage = hashPage
-  } else {
-    state.currentPage = 1
-    history.replaceState({}, '', '#page-1')
-  }
+  state.referrer = getReferrer()
+  state.currentPage = getInitalPage(state.length)
 
   renderPage()
 }
 
+/**
+ * Update html and bind events afterwards.
+ * Execute "afterPageRender"-callback if provided.
+ */
 const renderPage = () => {
   document.querySelector(settings.contentSelector).innerHTML = render()
+  bindEvents()
 
   if (typeof settings.afterPageRender === 'function') {
     settings.afterPageRender(state)
   }
 }
 
+/**
+ * Bind events for navigation, popstate and tracking
+ */
+const bindEvents = () => {
+
+}
+
+/**
+ * Build template string for gallery
+ * @return {string} template string
+ */
 const render = () => {
   return `
     ${state.data.itemListElement.map((page, i) => `
@@ -49,7 +62,11 @@ const render = () => {
           ${renderMedia(page.item)}
         </div>
         <div class="smb-gallery-content">
+        ${i === 0 ? `
+          <h1>${page.item.headline}</h1>
+        ` : `
           <h2>${page.item.headline}</h2>
+        `}
           ${page.item.description}
         </div>
         <div class="smb-gallery-ed-container">
@@ -57,43 +74,23 @@ const render = () => {
         </div>
       </div>
     `.trim()).join('')}
-
-    <h3>Weitere Bilderstrecken</h3>
-    <div class="row" style="margin-bottom: 25px">
-      <div class="col-md-4">
-        <div class="" style="height: 125px; background: #ddd;"></div>
-      </div>
-      <div class="col-md-4">
-        <div class="" style="height: 125px; background: #ddd;"></div>
-      </div>
-      <div class="col-md-4">
-        <div class="" style="height: 125px; background: #ddd;"></div>
-      </div>
-    </div>
-    <div class="row" style="margin-bottom: 25px">
-      <div class="col-md-4">
-        <div class="" style="height: 125px; background: #ddd;"></div>
-      </div>
-      <div class="col-md-4">
-        <div class="" style="height: 125px; background: #ddd;"></div>
-      </div>
-      <div class="col-md-4">
-        <div class="" style="height: 125px; background: #ddd;"></div>
-      </div>
-    </div>
   `
 }
 
+/**
+ * Build templates-strings for different media items
+ * @return {string} template string
+ */
 const renderMedia = (item) => {
   switch (item['@type']) {
     case 'ImageObject':
       return `
         ${item.width > 0 && item.height > 0 ? `
           <div class="embed-responsive" style="padding-bottom: ${item.height / item.width * 100}%">
-            <img class="embed-responsive-item lazy" data-src="${item.contentUrl}" alt="">
+            <img class="embed-responsive-item lazy" data-src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 480, 0, 'u']])}" alt="">
           </div>
         ` : `
-          <img class="lazy" data-src="${item.contentUrl}" alt="">
+          <img class="lazy" data-src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 480, 0, 'u']])}" alt="">
         `}
       `
     case 'VideoObject':
