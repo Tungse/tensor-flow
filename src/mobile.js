@@ -21,14 +21,21 @@ let state = {}
  * @param  {object} smbContext [description]
  */
 const init = (options, smbContext) => {
+  setInitialState(options)
+  renderGallery()
+}
+
+/**
+ * Assign settings and set init state based on gallery data
+ * @param {Object} options [description]
+ */
+const setInitialState = (options) => {
   settings = Object.assign({}, defaults, options)
 
   state.data = getData(settings.dataSelector)
   state.length = state.data.itemListElement.length
   state.referrer = getReferrer()
   state.currentPage = getInitalPage(state.length)
-
-  renderPage()
 }
 
 /**
@@ -36,18 +43,31 @@ const init = (options, smbContext) => {
  * Scrolls initial into view.
  * Execute "afterPageRender"-callback if provided.
  */
-const renderPage = () => {
-  document.querySelector(settings.contentSelector).innerHTML = render()
-  state.galleryItems = document.querySelectorAll('.smb-gallery-item')
-
-  if (state.currentPage > 1) {
-    state.galleryItems[state.currentPage].scrollIntoView()
-  }
-
+const renderGallery = () => {
+  applyGalleryItems()
+  scrollInitialItemIntoView()
   bindEvents()
 
   if (typeof settings.afterPageRender === 'function') {
     settings.afterPageRender(state)
+  }
+}
+
+/**
+ * Apply gallers Items to HTML and to stateObject
+ */
+const applyGalleryItems = () => {
+  document.querySelector(settings.contentSelector).innerHTML = render()
+  state.galleryItems = document.querySelectorAll('.smb-gallery-item')
+}
+
+/**
+ * If user starts with /#page-6 we initial scroll that page
+ * into the viewport
+ */
+const scrollInitialItemIntoView = () => {
+  if (state.currentPage > 1) {
+    state.galleryItems[state.currentPage].scrollIntoView()
   }
 }
 

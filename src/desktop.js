@@ -21,14 +21,21 @@ let state = {}
  * @param  {object} smbContext [description]
  */
 const init = (options, smbContext) => {
+  setInitialState(options)
+  renderPage()
+}
+
+/**
+ * Assign settings and set init state based on gallery data
+ * @param {Object} options [description]
+ */
+const setInitialState = (options) => {
   settings = Object.assign({}, defaults, options)
 
   state.data = getData(settings.dataSelector)
   state.length = state.data.itemListElement.length
   state.referrer = getReferrer()
   state.currentPage = getInitalPage(state.length)
-
-  renderPage()
 }
 
 /**
