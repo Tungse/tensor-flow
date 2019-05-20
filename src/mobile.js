@@ -2,7 +2,7 @@ import './stylesheets/mobile.scss'
 import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
 import getReferrer from './common/referrer.js'
-import getInitalPage from './common/initial-page.js'
+import getInitalPage from './common/url.js'
 import Filer from '../node_modules/filer-js-sdk/dist/filer.js'
 import Observer from 'smb-element-observer'
 

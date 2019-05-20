@@ -2,7 +2,7 @@ import './stylesheets/desktop.scss'
 import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
 import getReferrer from './common/referrer.js'
-import getInitalPage from './common/initial-page.js'
+import getInitalPage from './common/url.js'
 import Filer from '../node_modules/filer-js-sdk/dist/filer.js'
 
 const defaults = {
@@ -101,6 +101,7 @@ const goPrev = () => {
   if (state.currentPage > 1) {
     state.currentPage = state.currentPage - 1
     window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+
     go()
   }
 }
@@ -112,6 +113,7 @@ const goNext = () => {
   if (state.currentPage < state.length) {
     state.currentPage = state.currentPage + 1
     window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+
     go()
   }
 }
