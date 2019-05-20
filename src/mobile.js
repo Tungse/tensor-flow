@@ -12,7 +12,30 @@ const defaults = {
 }
 
 let settings = {}
-let state = {}
+let state = {
+  adslots: [
+    {
+      name: 'galleryad',
+      assigned: false,
+      loaded: false,
+    },
+    {
+      name: 'galleryad2',
+      assigned: false,
+      loaded: false,
+    },
+    {
+      name: 'galleryad3',
+      assigned: false,
+      loaded: false,
+    },
+    {
+      name: 'galleryad4',
+      assigned: false,
+      loaded: false,
+    },
+  ],
+}
 
 /**
  * set initial state and render page depending
@@ -76,7 +99,7 @@ const scrollInitialItemIntoView = () => {
  */
 const bindEvents = () => {
   state.galleryItems.forEach((elm, index) => {
-    Observer.repeat(elm, () => {
+    Observer.repeat(elm.querySelector('.smb-gallery-content'), () => {
       if (state.currentPage !== index + 1) {
         state.currentPage = index + 1
         window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
@@ -88,13 +111,104 @@ const bindEvents = () => {
 }
 
 /**
- * [circulateAds description]
+ * Find all galleryItems that should have ads and load them.
+ * Find all galleryItems that should not have ads and remove them.
  */
 const circulateAds = () => {
+  const itemsThatShouldHaveAds = determineItemsThatShouldHaveAds()
+
+  unAssignAds(itemsThatShouldHaveAds)
+  assignAds(itemsThatShouldHaveAds)
+}
+
+/**
+ * Returns Array with galleryItems that should have ads.
+ * We select current page, page before, next page and page after next page
+ * @return {Array} [description]
+ */
+const determineItemsThatShouldHaveAds = () => {
+  let itemsThatShouldHaveAds = []
+
+  // page before
+  if (state.galleryItems[state.currentPage - 2]) {
+    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 2])
+  }
+
+  // current page
+  if (state.galleryItems[state.currentPage - 1]) {
+    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 1])
+  }
+
+  // next page
+  if (state.galleryItems[state.currentPage]) {
+    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage])
+  }
+
+  // page after next page
+  if (state.galleryItems[state.currentPage + 1]) {
+    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 1])
+  }
+
+  return itemsThatShouldHaveAds
+}
+
+/**
+ * For each galleryItem check if it is an "itemThatShouldHaveAds"
+ * if not we can removeAds from it
+ * @param  {Array} itemsThatShouldHaveAds [description]
+ */
+const unAssignAds = (itemsThatShouldHaveAds) => {
   state.galleryItems.forEach((elm, index) => {
-    elm.querySelector('[data-role="sdg-ad"]').setAttribute('data-sdg-ad', `galleryad${index === 0 ? '' : index + 1}`)
-    window.adLoader('_loadAds', ['galleryad', 'galleryad2', 'galleryad4', 'galleryad5'])
+    if (itemsThatShouldHaveAds.indexOf(elm) === -1) {
+      const adContainer = elm.querySelector('[data-role="sdg-ad"]')
+
+      if (adContainer.getAttribute('data-sdg-ad')) {
+        const slotname = adContainer.getAttribute('data-sdg-ad')
+
+        elm.querySelector('[data-role="sdg-ad"]').removeAttribute('data-sdg-ad')
+        setAdslotFree(slotname)
+        window.adLoader('_removeAds', [slotname], true)
+      }
+    }
   })
+}
+
+const assignAds = (itemsThatShouldHaveAds) => {
+  itemsThatShouldHaveAds.forEach((elm, i) => {
+    const adContainer = elm.querySelector('[data-role="sdg-ad"]')
+
+    if (!adContainer.hasAttribute('data-sdg-ad')) {
+      const availableAdslot = getFirstNotAssignedAdslot()
+      adContainer.setAttribute('data-sdg-ad', state.adslots[availableAdslot].name)
+      state.adslots[availableAdslot].assigned = true
+      window.adLoader('_loadAds', [state.adslots[availableAdslot].name])
+    }
+  })
+}
+
+const getUnAsssignedAds = () => {
+
+}
+
+const getNewlyAsssignedAds = () => {
+
+}
+
+const setAdslotFree = (name) => {
+  for (var i = 0; i < state.adslots.length; i++) {
+    if (state.adslots[i].name === name) {
+      state.adslots[i].assigned = false
+      break
+    }
+  }
+}
+
+const getFirstNotAssignedAdslot = () => {
+  for (var i = 0; i < state.adslots.length; i++) {
+    if (!state.adslots[i].assigned) {
+      return i
+    }
+  }
 }
 
 /**
