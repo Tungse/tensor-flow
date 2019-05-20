@@ -12,7 +12,7 @@ const defaults = {
 }
 
 let settings = {}
-let state = {}
+export let state = {}
 
 /**
  * set initial state and render page depending
@@ -220,7 +220,7 @@ const renderMedia = (item) => {
  * Renders Content depending on current state
  * @return {string} template string
  */
-const renderContent = () => {
+export const renderContent = () => {
   const page = state.data.itemListElement[state.currentPage - 1]
 
   return `

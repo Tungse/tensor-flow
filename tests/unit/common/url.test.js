@@ -1,4 +1,4 @@
-import getInitalPage, { getPageFromUrl } from '../../src/common/url.js'
+import getInitalPage, { getPageFromUrl } from '../../../src/common/url.js'
 
 test('initial-page returns page if available', () => {
   window.history.pushState({ page: 10 }, '', '#page-10')

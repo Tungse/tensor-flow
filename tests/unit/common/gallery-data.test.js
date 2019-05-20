@@ -1,4 +1,4 @@
-import getData from '../../src/common/gallery-data.js'
+import getData from '../../../src/common/gallery-data.js'
 
 test('getData reads data from document json-ld', () => {
   document.body.innerHTML = `

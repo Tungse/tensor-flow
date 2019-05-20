@@ -44,9 +44,12 @@
     "coverageReporters": ["text"],
     "collectCoverage": true,
     "collectCoverageFrom": [
-    "./src/**/*.js",
-    "!**/node_modules/**",
-    "!**/vendor/**"
-    ]
+      "./src/**/*.js",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/tests/mocks/style.mock.js"
+    }
   }
 }
