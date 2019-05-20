@@ -12,30 +12,7 @@ const defaults = {
 }
 
 let settings = {}
-let state = {
-  adslots: [
-    {
-      name: 'galleryad',
-      assigned: false,
-      loaded: false,
-    },
-    {
-      name: 'galleryad2',
-      assigned: false,
-      loaded: false,
-    },
-    {
-      name: 'galleryad3',
-      assigned: false,
-      loaded: false,
-    },
-    {
-      name: 'galleryad4',
-      assigned: false,
-      loaded: false,
-    },
-  ],
-}
+let state = {}
 
 /**
  * set initial state and render page depending
@@ -155,60 +132,37 @@ const determineItemsThatShouldHaveAds = () => {
 /**
  * For each galleryItem check if it is an "itemThatShouldHaveAds"
  * if not we can removeAds from it
- * @param  {Array} itemsThatShouldHaveAds [description]
+ * @param  {Array} itemsThatShouldHaveAds
  */
 const unAssignAds = (itemsThatShouldHaveAds) => {
   state.galleryItems.forEach((elm, index) => {
     if (itemsThatShouldHaveAds.indexOf(elm) === -1) {
-      const adContainer = elm.querySelector('[data-role="sdg-ad"]')
+      const adContainer = elm.querySelector('[data-slotname]')
 
       if (adContainer.getAttribute('data-sdg-ad')) {
-        const slotname = adContainer.getAttribute('data-sdg-ad')
-
-        elm.querySelector('[data-role="sdg-ad"]').removeAttribute('data-sdg-ad')
-        setAdslotFree(slotname)
-        window.adLoader('_removeAds', [slotname], true)
+        window.adLoader('_removeAds', [adContainer], true)
+        adContainer.removeAttribute('data-sdg-ad')
       }
     }
   })
 }
 
+/**
+ * For each itemsThatShouldHaveAds check if it has already an Ad
+ * if not we can load it
+ * @param  {Array} itemsThatShouldHaveAds
+ */
 const assignAds = (itemsThatShouldHaveAds) => {
   itemsThatShouldHaveAds.forEach((elm, i) => {
-    const adContainer = elm.querySelector('[data-role="sdg-ad"]')
+    const adContainer = elm.querySelector('[data-slotname]')
 
     if (!adContainer.hasAttribute('data-sdg-ad')) {
-      const availableAdslot = getFirstNotAssignedAdslot()
-      adContainer.setAttribute('data-sdg-ad', state.adslots[availableAdslot].name)
-      state.adslots[availableAdslot].assigned = true
-      window.adLoader('_loadAds', [state.adslots[availableAdslot].name])
+      const slotname = adContainer.getAttribute('data-slotname')
+
+      adContainer.setAttribute('data-sdg-ad', slotname)
+      window.adLoader('_loadAds', [adContainer])
     }
   })
-}
-
-const getUnAsssignedAds = () => {
-
-}
-
-const getNewlyAsssignedAds = () => {
-
-}
-
-const setAdslotFree = (name) => {
-  for (var i = 0; i < state.adslots.length; i++) {
-    if (state.adslots[i].name === name) {
-      state.adslots[i].assigned = false
-      break
-    }
-  }
-}
-
-const getFirstNotAssignedAdslot = () => {
-  for (var i = 0; i < state.adslots.length; i++) {
-    if (!state.adslots[i].assigned) {
-      return i
-    }
-  }
 }
 
 /**
@@ -231,7 +185,7 @@ const render = () => {
           ${page.item.description}
         </div>
         <div class="smb-gallery-ed-container">
-          <div data-role="sdg-ad"></div>
+          <div data-slotname="${getSlotName(i)}"></div>
         </div>
       </div>
     `.trim()).join('')}
@@ -239,8 +193,26 @@ const render = () => {
 }
 
 /**
+ * Find slotname by index
+ * @param  {Int} i
+ * @return {String}
+ */
+const getSlotName = (i) => {
+  switch (i % 4) {
+    case 0:
+      return 'galleryad'
+    case 1:
+      return 'galleryad2'
+    case 2:
+      return 'galleryad3'
+    case 3:
+      return 'galleryad4'
+  }
+}
+
+/**
  * Build templates-strings for different media items
- * @return {string} template string
+ * @return {string}
  */
 const renderMedia = (item) => {
   switch (item['@type']) {
