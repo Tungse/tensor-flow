@@ -206,7 +206,9 @@ const renderStage = () => {
     </div>
 
     <div class="smb-gallery-info">
+    ${page.item.copyrightHolder ? `
       <small>Bildquelle: ${page.item.copyrightHolder}</small>
+    ` : '<small></small>'}
       <small>${state.currentPage} / ${state.length}</small>
     </div>
   `

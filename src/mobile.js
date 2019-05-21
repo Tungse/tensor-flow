@@ -190,6 +190,11 @@ const render = () => {
         <div class="smb-gallery-media ${page.item['@type']}">
           ${renderMedia(page.item)}
         </div>
+        ${page.item.copyrightHolder ? `
+        <div class="smb-gallery-info">
+          <small>Bildquelle: ${page.item.copyrightHolder}</small>
+        </div>
+        ` : ''}
         <div class="smb-gallery-content">
         ${i === 0 ? `
           <h1>${page.item.headline}</h1>
