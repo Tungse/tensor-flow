@@ -4,6 +4,7 @@ import getData from './common/gallery-data.js'
 import getReferrer from './common/referrer.js'
 import getInitalPage from './common/url.js'
 import Filer from '../node_modules/filer-js-sdk/dist/filer.js'
+import Embedo from 'embedo'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -12,7 +13,8 @@ const defaults = {
 }
 
 let settings = {}
-export let state = {}
+let state = {}
+let embedo = {}
 
 /**
  * set initial state and render page depending
@@ -23,6 +25,17 @@ export let state = {}
 const init = (options, smbContext) => {
   setInitialState(options)
   renderPage()
+
+  embedo = new Embedo({
+    facebook: {
+      appId: 'my_app_id', // Enable facebook SDK
+      version: 'v2.10',
+    },
+    twitter: true,
+    instagram: true,
+    pinterest: true,
+    hidecaption: true,
+  })
 }
 
 /**
@@ -128,6 +141,8 @@ const go = () => {
 
   window.scrollTo(0, 0)
 
+  embedo.domify()
+
   if (typeof window.smbt !== 'undefined') {
     window.smbt.emit('pageview')
   }
@@ -178,7 +193,7 @@ const renderStage = () => {
           </div>
         </a>
       ` : ''}
-      <div class="smb-gallery-media">
+      <div class="smb-gallery-media ${page.item['@type']}">
         ${renderMedia(page.item)}
       </div>
       ${state.currentPage < state.length ? `
@@ -211,6 +226,8 @@ const renderMedia = (item) => {
       return `
         <iframe class="" src="${item.embedUrl}"></iframe>
       `
+    case 'SocialMediaPosting':
+      return `<div data-embedo-url="${item.sharedContent.url}"></div>`
     default:
       return ``
   }

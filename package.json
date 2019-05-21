@@ -36,12 +36,15 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "embedo": "^1.12.0",
     "filer-js-sdk": "^1.0.5",
     "smb-element-observer": "^1.1.0"
   },
   "jest": {
     "testURL": "https://www.example.com/",
-    "coverageReporters": ["text"],
+    "coverageReporters": [
+      "text"
+    ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "./src/**/*.js",

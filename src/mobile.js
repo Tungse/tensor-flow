@@ -5,6 +5,7 @@ import getReferrer from './common/referrer.js'
 import getInitalPage from './common/url.js'
 import Filer from '../node_modules/filer-js-sdk/dist/filer.js'
 import Observer from 'smb-element-observer'
+import Embedo from 'embedo'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -23,6 +24,19 @@ let state = {}
 const init = (options, smbContext) => {
   setInitialState(options)
   renderGallery()
+
+  const embedo = new Embedo({
+    facebook: {
+      appId: 'my_app_id', // Enable facebook SDK
+      version: 'v2.10',
+    },
+    twitter: true,
+    instagram: true,
+    pinterest: true,
+    centerize: false,
+    strict: true,
+    hidecaption: true,
+  })
 }
 
 /**
@@ -173,7 +187,7 @@ const render = () => {
   return `
     ${state.data.itemListElement.map((page, i) => `
       <div class="smb-gallery-item">
-        <div class="smb-gallery-media">
+        <div class="smb-gallery-media ${page.item['@type']}">
           ${renderMedia(page.item)}
         </div>
         <div class="smb-gallery-content">
@@ -228,6 +242,8 @@ const renderMedia = (item) => {
       `
     case 'VideoObject':
       return `<iframe class="lazy" data-src="${item.embedUrl}"></iframe>`
+    case 'SocialMediaPosting':
+      return `<div data-embedo-url="${item.sharedContent.url}"></div>`
     default:
       return ``
   }

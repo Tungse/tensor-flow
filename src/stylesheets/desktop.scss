@@ -42,15 +42,30 @@
 .smb-gallery-media {
   height: 450px;
   display: flex;
+  justify-content: center;
   align-items: center;
+  overflow: hidden;
+}
 
-  img,
+.ImageObject {
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.VideoObject {
   iframe {
     max-width: 100%;
     height: auto;
     display: block;
-    max-height: 450px;
-    margin: 0 auto;
+  }
+}
+
+.SocialMediaPosting {
+  iframe {
+    margin-bottom: 0 !important;
   }
 }
 
