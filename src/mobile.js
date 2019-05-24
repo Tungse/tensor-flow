@@ -105,7 +105,7 @@ const bindEvents = () => {
       const post = elm.querySelector('[data-role="embedo"]')
       const postUrl = post.getAttribute('data-url')
 
-      Observer.repeat(elm, () => {
+      Observer.once(elm, () => {
         embedo.load(post, postUrl, { centerize: true })
       }, 200)
     }
