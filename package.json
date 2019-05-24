@@ -1,8 +1,8 @@
 {
-  "name": "smb-gallery",
+  "name": "@smb/gallery",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/mobile.js",
   "scripts": {
     "dev-mobile": "webpack-dev-server --open --env.device=mobile",
     "dev-desktop": "webpack-dev-server --open --env.device=desktop",
