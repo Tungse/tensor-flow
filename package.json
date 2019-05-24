@@ -7,7 +7,8 @@
     "dev-mobile": "webpack-dev-server --open --env.device=mobile",
     "dev-desktop": "webpack-dev-server --open --env.device=desktop",
     "build": "webpack --config webpack.config.prod.js",
-    "test": "jest --coverage"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "author": "",
   "license": "ISC",
@@ -42,10 +43,6 @@
   },
   "jest": {
     "testURL": "https://www.example.com/",
-    "coverageReporters": [
-      "text"
-    ],
-    "collectCoverage": true,
     "collectCoverageFrom": [
       "./src/**/*.js",
       "!**/node_modules/**",

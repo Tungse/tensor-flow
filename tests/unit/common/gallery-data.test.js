@@ -9,6 +9,7 @@ test('getData reads data from document json-ld', () => {
       "numberOfItems": 4,
       "itemListElement": []
     }
+  </script>
   `
 
   expect(getData('#data')).toEqual({

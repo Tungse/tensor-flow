@@ -52,8 +52,6 @@ const renderMedia = (item) => {
       return `<iframe class="lazy" data-src="${item.embedUrl}"></iframe>`
     case 'SocialMediaPosting':
       return `<div data-role="embedo" data-url="${item.sharedContent.url}"></div>`
-    default:
-      return ``
   }
 }
 
