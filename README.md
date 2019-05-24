@@ -1,1 +1,1 @@
-# smb-gallery
+# smb-gallery 2.0
