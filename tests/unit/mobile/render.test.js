@@ -1,7 +1,7 @@
 import renderGalleryItems from '../../../src/mobile/render.js'
 import { snapshot } from '../../helper/snapshot'
 
-test('initial-page returns page if available', () => {
+test('Gallery markup is rendered as expected', () => {
   const state = {
     data: {
       itemListElement: [
