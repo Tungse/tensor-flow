@@ -3,8 +3,8 @@ import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
 import getReferrer from './common/referrer.js'
 import getInitalPage from './common/url.js'
+import { initEmbedo, embedoInst } from './common/embedo.js'
 import Filer from '../node_modules/filer-js-sdk/dist/filer.js'
-import Embedo from 'embedo'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -14,7 +14,6 @@ const defaults = {
 
 let settings = {}
 let state = {}
-let embedo = {}
 
 /**
  * set initial state and render page depending
@@ -25,17 +24,7 @@ let embedo = {}
 const init = (options, smbContext) => {
   setInitialState(options)
   renderPage()
-
-  embedo = new Embedo({
-    facebook: {
-      appId: 'my_app_id', // Enable facebook SDK
-      version: 'v2.10',
-    },
-    twitter: true,
-    instagram: true,
-    pinterest: true,
-    hidecaption: true,
-  })
+  initEmbedo()
 }
 
 /**
@@ -63,8 +52,6 @@ const renderPage = () => {
   if (typeof settings.afterPageRender === 'function') {
     settings.afterPageRender(state)
   }
-
-  console.log(state)
 }
 
 /**
@@ -141,7 +128,7 @@ const go = () => {
 
   window.scrollTo(0, 0)
 
-  embedo.domify()
+  embedoInst.domify()
 
   if (typeof window.smbt !== 'undefined') {
     window.smbt.emit('pageview')

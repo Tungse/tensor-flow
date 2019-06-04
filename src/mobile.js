@@ -3,10 +3,10 @@ import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
 import getReferrer from './common/referrer.js'
 import getInitalPage from './common/url.js'
+import { initEmbedo, embedoInst } from './common/embedo.js'
 import renderGalleryItems from './mobile/render.js'
 import circulateAds from './mobile/ads.js'
 import Observer from 'smb-element-observer'
-import Embedo from 'embedo'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -15,7 +15,6 @@ const defaults = {
 
 let settings = {}
 let state = {}
-let embedo = {}
 
 /**
  * set initial state and render page depending
@@ -26,19 +25,7 @@ let embedo = {}
 const init = (options, smbContext) => {
   setInitialState(options)
   renderGallery()
-
-  embedo = new Embedo({
-    facebook: {
-      appId: 'my_app_id', // Enable facebook SDK
-      version: 'v2.10',
-    },
-    twitter: true,
-    instagram: true,
-    pinterest: true,
-    centerize: false,
-    strict: true,
-    hidecaption: true,
-  })
+  initEmbedo()
 }
 
 /**
@@ -78,7 +65,7 @@ const applyGalleryItems = () => {
 }
 
 /**
- * If user starts with /#page-6 we initial scroll that page
+ * If user starts with > #page-1 scroll that page
  * into the viewport
  */
 const scrollInitialItemIntoView = () => {
@@ -106,7 +93,7 @@ const bindEvents = () => {
       const postUrl = post.getAttribute('data-url')
 
       Observer.once(elm, () => {
-        embedo.load(post, postUrl, { centerize: true })
+        embedoInst.load(post, postUrl, { centerize: true })
       }, 200)
     }
   })
