@@ -19,8 +19,8 @@ let embedo = {}
 /**
  * set initial state and render page depending
  * on url; if no page is set first page will render.
- * @param  {object} options [description]
- * @param  {object} smbContext [description]
+ * @param  {object} options
+ * @param  {object} smbContext
  */
 const init = (options, smbContext) => {
   setInitialState(options)
@@ -40,7 +40,7 @@ const init = (options, smbContext) => {
 
 /**
  * Assign settings and set init state based on gallery data
- * @param {Object} options [description]
+ * @param {Object} options
  */
 const setInitialState = (options) => {
   settings = Object.assign({}, defaults, options)
