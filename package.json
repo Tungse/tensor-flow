@@ -1,13 +1,19 @@
 {
-  "name": "smb-gallery",
-  "version": "1.0.0",
+  "name": "@smb/gallery",
   "description": "",
-  "main": "src/index.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/smb-ag/smb-gallery",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smb-ag/smb-gallery.git"
+  },
+  "main": "src/mobile.js",
   "scripts": {
     "dev-mobile": "webpack-dev-server --open --env.device=mobile",
     "dev-desktop": "webpack-dev-server --open --env.device=desktop",
     "build": "webpack --config webpack.config.prod.js",
-    "test": "jest --coverage"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "author": "",
   "license": "ISC",
@@ -42,10 +48,6 @@
   },
   "jest": {
     "testURL": "https://www.example.com/",
-    "coverageReporters": [
-      "text"
-    ],
-    "collectCoverage": true,
     "collectCoverageFrom": [
       "./src/**/*.js",
       "!**/node_modules/**",

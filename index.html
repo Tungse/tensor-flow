@@ -319,7 +319,7 @@
         smbGalleryMobile.init({
           dataSelector: '#data',
           contentSelector: '#content',
-        }, smbContext)
+        })
 
       } else {
 
@@ -327,12 +327,12 @@
           dataSelector: '#data',
           stageSelector: '#stage',
           contentSelector: '#content',
-        }, smbContext)
+        })
 
       }
 
       var lazyLoadInstance = new LazyLoad({
-        elements_selector: ".lazy"
+        elements_selector: ".lazyload"
       });
     </script>
   </body>

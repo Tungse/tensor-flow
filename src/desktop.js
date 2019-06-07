@@ -3,8 +3,8 @@ import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
 import getReferrer from './common/referrer.js'
 import getInitalPage from './common/url.js'
+import { initEmbedo, embedoInst } from './common/embedo.js'
 import Filer from '../node_modules/filer-js-sdk/dist/filer.js'
-import Embedo from 'embedo'
 
 const defaults = {
   dataSelector: '#galleryData',
@@ -14,33 +14,22 @@ const defaults = {
 
 let settings = {}
 let state = {}
-let embedo = {}
 
 /**
  * set initial state and render page depending
  * on url; if no page is set first page will render.
- * @param  {object} options [description]
- * @param  {object} smbContext [description]
+ * @param  {object} options
+ * @param  {object} smbContext
  */
 const init = (options, smbContext) => {
   setInitialState(options)
   renderPage()
-
-  embedo = new Embedo({
-    facebook: {
-      appId: 'my_app_id', // Enable facebook SDK
-      version: 'v2.10',
-    },
-    twitter: true,
-    instagram: true,
-    pinterest: true,
-    hidecaption: true,
-  })
+  initEmbedo()
 }
 
 /**
  * Assign settings and set init state based on gallery data
- * @param {Object} options [description]
+ * @param {Object} options
  */
 const setInitialState = (options) => {
   settings = Object.assign({}, defaults, options)
@@ -63,8 +52,6 @@ const renderPage = () => {
   if (typeof settings.afterPageRender === 'function') {
     settings.afterPageRender(state)
   }
-
-  console.log(state)
 }
 
 /**
@@ -85,7 +72,7 @@ const bindEvents = () => {
     })
   })
 
-  document.onkeydown = function (e) {
+  document.onkeydown = (e) => {
     switch (e.keyCode) {
       case 37:
         goPrev()
@@ -96,9 +83,9 @@ const bindEvents = () => {
     }
   }
 
-  window.onpopstate = function (event) {
-    if (event.state && event.state.page) {
-      state.currentPage = event.state.page
+  window.onpopstate = (e) => {
+    if (e.state && e.state.page) {
+      state.currentPage = e.state.page
     } else {
       state.currentPage = 1
     }
@@ -113,7 +100,7 @@ const bindEvents = () => {
 const goPrev = () => {
   if (state.currentPage > 1) {
     state.currentPage = state.currentPage - 1
-    window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+    window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
 
     go()
   }
@@ -125,7 +112,7 @@ const goPrev = () => {
 const goNext = () => {
   if (state.currentPage < state.length) {
     state.currentPage = state.currentPage + 1
-    window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+    window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
 
     go()
   }
@@ -141,7 +128,7 @@ const go = () => {
 
   window.scrollTo(0, 0)
 
-  embedo.domify()
+  embedoInst.domify()
 
   if (typeof window.smbt !== 'undefined') {
     window.smbt.emit('pageview')
@@ -229,7 +216,7 @@ const renderMedia = (item) => {
         <iframe class="" src="${item.embedUrl}"></iframe>
       `
     case 'SocialMediaPosting':
-      return `<div data-embedo-url="${item.sharedContent.url}"></div>`
+      return `<div data-embedo-url="${item.sharedContent.url}" data-embedo-height="450"></div>`
     default:
       return ``
   }
@@ -261,4 +248,4 @@ export const renderContent = () => {
   `
 }
 
-export default { init: init }
+export default { init }
