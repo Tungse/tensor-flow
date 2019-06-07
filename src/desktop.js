@@ -216,7 +216,7 @@ const renderMedia = (item) => {
         <iframe class="" src="${item.embedUrl}"></iframe>
       `
     case 'SocialMediaPosting':
-      return `<div data-embedo-url="${item.sharedContent.url}"></div>`
+      return `<div data-embedo-url="${item.sharedContent.url}" data-embedo-height="450"></div>`
     default:
       return ``
   }
