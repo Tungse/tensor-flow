@@ -1,0 +1,39 @@
+.smb-gallery-media {
+  margin-bottom: 12.5px; }
+
+.ImageObject img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; }
+
+.VideoObject iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; }
+
+.smb-gallery-content *:last-child {
+  margin-bottom: 0; }
+
+.smb-gallery-ed-container {
+  text-align: center;
+  margin: 25px -15px;
+  min-height: 250px;
+  padding: 12.5px;
+  background: #f2f2f2; }
+
+.smb-gallery-header {
+  width: 940px; }
+
+.smb-gallery-info {
+  margin-bottom: 25px; }
+
+.lazyload {
+  opacity: 0;
+  transition: opacity .3s; }
+  .lazyload.loaded {
+    opacity: 1; }
+
+
+/*# sourceMappingURL=smb-gallery-mobile.css.map*/
