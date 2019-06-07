@@ -47,11 +47,11 @@ const determineItemsThatShouldHaveAds = (state) => {
  */
 const unAssignAds = (state, itemsThatShouldHaveAds) => {
   state.galleryItems.forEach((elm, index) => {
-    if (itemsThatShouldHaveAds.indexOf(elm) === -1) {
+    if (!itemsThatShouldHaveAds.includes(elm)) {
       const adContainer = elm.querySelector('[data-slotname]')
 
       if (adContainer.getAttribute('data-sdg-ad')) {
-        window.adLoader('_removeAds', [adContainer], true)
+        unloadAd(adContainer)
         adContainer.removeAttribute('data-sdg-ad')
       }
     }
@@ -71,9 +71,29 @@ const assignAds = (state, itemsThatShouldHaveAds) => {
       const slotname = adContainer.getAttribute('data-slotname')
 
       adContainer.setAttribute('data-sdg-ad', slotname)
-      window.adLoader('_loadAds', [adContainer])
+      loadAd(adContainer)
     }
   })
+}
+
+/**
+ * Load an ad by dom-element with given "data-sdg-ad"-attribute
+ * @param  {Object} adContainer
+ */
+const loadAd = (adContainer) => {
+  try {
+    window.adLoader('_loadAds', [adContainer])
+  } catch (e) {}
+}
+
+/**
+ * unload an ad by dom-element with given "data-sdg-ad"-attribute
+ * @param  {Object} adContainer
+ */
+const unloadAd = (adContainer) => {
+  try {
+    window.adLoader('_removeAds', [adContainer], true)
+  } catch (e) {}
 }
 
 export default circulateAds

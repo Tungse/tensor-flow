@@ -99,4 +99,4 @@ const bindEvents = () => {
   })
 }
 
-export default { init: init }
+export default { init }

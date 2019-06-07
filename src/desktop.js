@@ -72,7 +72,7 @@ const bindEvents = () => {
     })
   })
 
-  document.onkeydown = function (e) {
+  document.onkeydown = (e) => {
     switch (e.keyCode) {
       case 37:
         goPrev()
@@ -83,9 +83,9 @@ const bindEvents = () => {
     }
   }
 
-  window.onpopstate = function (event) {
-    if (event.state && event.state.page) {
-      state.currentPage = event.state.page
+  window.onpopstate = (e) => {
+    if (e.state && e.state.page) {
+      state.currentPage = e.state.page
     } else {
       state.currentPage = 1
     }
@@ -100,7 +100,7 @@ const bindEvents = () => {
 const goPrev = () => {
   if (state.currentPage > 1) {
     state.currentPage = state.currentPage - 1
-    window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+    window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
 
     go()
   }
@@ -112,7 +112,7 @@ const goPrev = () => {
 const goNext = () => {
   if (state.currentPage < state.length) {
     state.currentPage = state.currentPage + 1
-    window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+    window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
 
     go()
   }
@@ -248,4 +248,4 @@ export const renderContent = () => {
   `
 }
 
-export default { init: init }
+export default { init }

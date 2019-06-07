@@ -1,7 +1,12 @@
 {
   "name": "@smb/gallery",
-  "version": "1.0.0",
   "description": "",
+  "version": "0.1.0",
+  "homepage": "https://github.com/smb-ag/smb-gallery",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smb-ag/smb-gallery.git"
+  },
   "main": "src/mobile.js",
   "scripts": {
     "dev-mobile": "webpack-dev-server --open --env.device=mobile",

@@ -1,5 +1,5 @@
 const getReferrer = () => {
-  if (document.referrer.indexOf(location.protocol + '//' + location.host) === 0) {
+  if (document.referrer.includes(location.protocol + '//' + location.host)) {
     return document.referrer
   } else {
     return null
