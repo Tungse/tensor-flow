@@ -18,9 +18,15 @@ We use our well known default library here: https://github.com/verlok/lazyload
 
 Images and Ads are loaded in preserved boxes - this is good for performance and better UX.
 
+## 👾 Dependencies
+
+- window.adLoader has to be defined; see: [https://github.com/smb-ag/smb-adloader](https://github.com/smb-ag/smb-adloader)
+- lazyloading has to be setup with `elements_selector` set to `.lazyload `; see: [https://github.com/verlok/lazyload](https://github.com/verlok/lazyload)
+- window.smbt has to be defined; see [https://github.com/smb-ag/smb-tracking](https://github.com/smb-ag/smb-tracking)
+
 ## 👨‍💻 Getting started - HTML
 
-In order to make your gallery be injected in your html, you must provide some containers and make them easy selectable e.g. by some `data-` attributes. See below.
+In order to make your gallery be injected in your html, you must provide some containers and make them easy selectable e.g. by some `data-` attributes. See below:
 
 ### The Stage
 
@@ -79,7 +85,7 @@ An "default" article page should be a good starting point for smbGallery. But at
 
 ## 👨‍💻 Getting started - Stylesheets
 
-In order to make your gallery be styled ypu have to import the right stylesheet depending on desktop/mobile environment. See below.
+In order to make your gallery be styled you have to import the right stylesheet depending on desktop/mobile environment. See below:
 
 ### Mobile
 ```scss
@@ -93,14 +99,53 @@ In order to make your gallery be styled ypu have to import the right stylesheet 
 @import "node_modules/smb-gallery/src/desktop";
 ```
 ## 👨‍💻 Getting started - Script
+smb-gallery is exported as `umd`-module so there are. See below:
 
-### Dependencies
+### Include via es6 module
 
-#### Lazyloading
+#### Mobile
+```javascript
+import smbGalleryMobile from 'smbGallery/src/mobile'
 
-#### smbContext
+smbGalleryMobile.init({
+  dataSelector: '#data',
+  contentSelector: '#content',
+})
+```
 
-#### smbt
+#### Desktop
+```javascript
+import smbGalleryMobile from 'smbGallery/src/desktop'
+
+smbGalleryDesktop.init({
+  dataSelector: '#data',
+  stageSelector: '#stage',
+  contentSelector: '#content',
+})
+```
+
+### Include via RequireJS
+
+#### Mobile
+```javascript
+require('path_to_smb-gallery_mobile', function(smbGalleryMobile) {
+	smbGalleryMobile.init({
+	  dataSelector: '#data',
+	  contentSelector: '#content',
+	})
+})
+```
+
+#### Desktop
+```javascript
+require('path_to_smb-gallery_desktop', function(smbGalleryDesktop) {
+	smbGalleryMobile.init({
+	  dataSelector: '#data',
+	  stageSelector: '#stage',
+	  contentSelector: '#content',
+	})
+})
+```
 
 ## 😋 Tips & tricks
 
