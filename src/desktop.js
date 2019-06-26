@@ -10,6 +10,8 @@ const defaults = {
   dataSelector: '#galleryData',
   stageSelector: '#galleryStage',
   contentSelector: '#galleryContent',
+  nextIcon: '<i class="fas fa-angle-right"></i>',
+  prevIcon: '<i class="fas fa-angle-left"></i>',
 }
 
 let settings = {}
@@ -172,11 +174,12 @@ const renderStage = () => {
   const nextPage = state.data.itemListElement[state.currentPage]
 
   return `
+    <h2>${page.item.headline}</h2>
     <div class="smb-gallery-header">
       ${state.currentPage > 1 ? `
         <a role="smb-gallery-prev" class="smb-gallery-nav smb-gallery-nav-left" href="${prevPage.item.url}">
           <div class="smb-gallery-button">
-            <i class="fas fa-angle-left"></i>
+            ${settings.prevIcon}
           </div>
         </a>
       ` : ''}
@@ -186,7 +189,7 @@ const renderStage = () => {
       ${state.currentPage < state.length ? `
         <a role="smb-gallery-next" class="smb-gallery-nav smb-gallery-nav-right" href="${nextPage.item.url}">
           <div class="smb-gallery-button">
-            <i class="fas fa-angle-right"></i>
+            ${settings.nextIcon}
           </div>
         </a>
       ` : ''}
@@ -209,7 +212,13 @@ const renderMedia = (item) => {
   switch (item['@type']) {
     case 'ImageObject':
       return `
-        <img class="" src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 0, 450, 'u']])}" alt="">
+        ${item.width > 0 && item.height > 0 ? `
+          <div class="embed-responsive" style="padding-bottom: ${item.height / item.width * 100}%">
+            <img class="embed-responsive-item" src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 0, 450, 'u']])}" alt="">
+          </div>
+        ` : `
+          <img class="" src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 0, 450, 'u']])}" alt="">
+        `}
       `
     case 'VideoObject':
       return `

@@ -2,7 +2,6 @@
 
 .smb-gallery-header {
   position: relative;
-  background: #ddd;
 }
 
 .smb-gallery-nav {
@@ -11,6 +10,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+  z-index: 1;
 
   &:hover {
     text-decoration: none;
@@ -40,22 +40,15 @@
 }
 
 .smb-gallery-media {
-  height: 450px;
+  min-height: 450px;
+}
+
+.VideoObject {
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-}
 
-.ImageObject {
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-}
-
-.VideoObject {
   iframe {
     max-width: 100%;
     height: auto;
