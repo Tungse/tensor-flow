@@ -1,5 +1,3 @@
-import './stylesheets/desktop.scss'
-import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
 import getReferrer from './common/referrer.js'
 import getInitalPage from './common/url.js'
@@ -10,6 +8,8 @@ const defaults = {
   dataSelector: '#galleryData',
   stageSelector: '#galleryStage',
   contentSelector: '#galleryContent',
+  nextIcon: '<i class="fas fa-angle-right"></i>',
+  prevIcon: '<i class="fas fa-angle-left"></i>',
 }
 
 let settings = {}
@@ -126,7 +126,7 @@ const goNext = () => {
 const go = () => {
   renderPage()
 
-  window.scrollTo(0, 0)
+  // window.scrollTo(0, 0)
 
   embedoInst.domify()
 
@@ -172,31 +172,34 @@ const renderStage = () => {
   const nextPage = state.data.itemListElement[state.currentPage]
 
   return `
-    <div class="smb-gallery-header">
-      ${state.currentPage > 1 ? `
-        <a role="smb-gallery-prev" class="smb-gallery-nav smb-gallery-nav-left" href="${prevPage.item.url}">
-          <div class="smb-gallery-button">
-            <i class="fas fa-angle-left"></i>
-          </div>
-        </a>
-      ` : ''}
-      <div class="smb-gallery-media ${page.item['@type']}">
-        ${renderMedia(page.item)}
+    <div class="smb-gallery-stage smb-gallery-desktop">
+      <h2>${page.item.headline}</h2>
+      <div class="smb-gallery-header">
+        ${state.currentPage > 1 ? `
+          <a role="smb-gallery-prev" class="smb-gallery-nav smb-gallery-nav-left" href="${prevPage.item.url}">
+            <div class="smb-gallery-button">
+              ${settings.prevIcon}
+            </div>
+          </a>
+        ` : ''}
+        <div class="smb-gallery-media ${page.item['@type']}">
+          ${renderMedia(page.item)}
+        </div>
+        ${state.currentPage < state.length ? `
+          <a role="smb-gallery-next" class="smb-gallery-nav smb-gallery-nav-right" href="${nextPage.item.url}">
+            <div class="smb-gallery-button">
+              ${settings.nextIcon}
+            </div>
+          </a>
+        ` : ''}
       </div>
-      ${state.currentPage < state.length ? `
-        <a role="smb-gallery-next" class="smb-gallery-nav smb-gallery-nav-right" href="${nextPage.item.url}">
-          <div class="smb-gallery-button">
-            <i class="fas fa-angle-right"></i>
-          </div>
-        </a>
-      ` : ''}
-    </div>
 
-    <div class="smb-gallery-info">
-    ${page.item.copyrightHolder ? `
-      <small>Bildquelle: ${page.item.copyrightHolder}</small>
-    ` : '<small></small>'}
-      <small>${state.currentPage} / ${state.length}</small>
+      <div class="smb-gallery-info">
+      ${page.item.copyrightHolder ? `
+        <small>Bildquelle: ${page.item.copyrightHolder}</small>
+      ` : '<small></small>'}
+        <small>${state.currentPage} / ${state.length}</small>
+      </div>
     </div>
   `
 }
@@ -209,7 +212,13 @@ const renderMedia = (item) => {
   switch (item['@type']) {
     case 'ImageObject':
       return `
-        <img class="" src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 0, 450, 'u']])}" alt="">
+        ${item.width > 0 && item.height > 0 ? `
+          <div class="embed-responsive" style="padding-bottom: ${item.height / item.width * 100}%">
+            <img class="embed-responsive-item" src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 0, 450, 'u']])}" alt="">
+          </div>
+        ` : `
+          <img class="" src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 0, 450, 'u']])}" alt="">
+        `}
       `
     case 'VideoObject':
       return `
@@ -230,7 +239,7 @@ export const renderContent = () => {
   const page = state.data.itemListElement[state.currentPage - 1]
 
   return `
-    <div class="smg-gallery-body">
+    <div class="smg-gallery-body smb-gallery-desktop">
       ${page.item.description}
 
       <div class="smb-gallery-btn-nav">
@@ -248,4 +257,4 @@ export const renderContent = () => {
   `
 }
 
-export default { init }
+export default init

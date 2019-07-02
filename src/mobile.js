@@ -1,5 +1,3 @@
-import './stylesheets/mobile.scss'
-import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
 import getReferrer from './common/referrer.js'
 import getInitalPage from './common/url.js'
@@ -99,4 +97,4 @@ const bindEvents = () => {
   })
 }
 
-export default { init }
+export default init

@@ -1,13 +1,13 @@
 {
   "name": "@smb/gallery",
   "description": "",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/smb-ag/smb-gallery",
   "repository": {
     "type": "git",
     "url": "https://github.com/smb-ag/smb-gallery.git"
   },
-  "main": "src/mobile.js",
+  "main": "src/index.js",
   "scripts": {
     "dev-mobile": "webpack-dev-server --open --env.device=mobile",
     "dev-desktop": "webpack-dev-server --open --env.device=desktop",
@@ -21,6 +21,7 @@
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "babel-loader": "^8.0.5",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",

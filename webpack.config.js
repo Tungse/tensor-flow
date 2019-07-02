@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = (env) => {
   return {
-    entry: path.resolve(`./src/${env.device}.js`),
+    entry: ['./src/index.js'],
     mode: 'development',
     devtool: 'inline-source-map',
     module: {
@@ -17,6 +17,9 @@ module.exports = (env) => {
             options: {
               presets: [
                 ['@babel/preset-env'],
+              ],
+              plugins: [
+                ['syntax-dynamic-import'],
               ],
             },
           },
@@ -52,8 +55,8 @@ module.exports = (env) => {
       }),
     ],
     output: {
-      library: `smbGallery${env.device.charAt(0).toUpperCase() + env.device.slice(1)}`,
-      filename: `smb-gallery.${env.device}.js`,
+      library: 'smbGallery',
+      filename: 'smb-gallery.bundle.js',
       libraryTarget: 'var',
       libraryExport: 'default',
       path: path.resolve(__dirname, 'dist/'),

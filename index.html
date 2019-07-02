@@ -89,10 +89,8 @@
   <body>
     <div class="container">
       <h1>SMB Gallery Demo</h1>
-      <div class="smb-gallery">
-        <div id="stage"></div>
-        <div id="content"></div>
-      </div>
+      <div id="stage"></div>
+      <div id="content"></div>
     </div>
 
     <script type="application/ld+json" id="data">
@@ -316,14 +314,16 @@
 
       if (env === 'mobile') {
 
-        smbGalleryMobile.init({
+        smbGallery({
+          device: 'smartphone',
           dataSelector: '#data',
           contentSelector: '#content',
         })
 
       } else {
 
-        smbGalleryDesktop.init({
+        smbGallery({
+          device: 'desktop',
           dataSelector: '#data',
           stageSelector: '#stage',
           contentSelector: '#content',
