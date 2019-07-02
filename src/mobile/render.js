@@ -16,12 +16,13 @@ const renderGalleryItems = (state) => {
           `}
           <div class="smb-gallery-media ${page.item['@type']}">
             ${renderMedia(page.item)}
+              <div class="smb-gallery-info">
+              ${page.item.copyrightHolder ? `
+                <small>Bildquelle: ${page.item.copyrightHolder}</small>
+              ` : '<small></small>'}
+                <small>${i + 1} / ${state.length}</small>
+              </div>
           </div>
-          ${page.item.copyrightHolder ? `
-          <div class="smb-gallery-info">
-            <small>Bildquelle: ${page.item.copyrightHolder}</small>
-          </div>
-          ` : ''}
           <div class="smb-gallery-content">
             ${page.item.description}
           </div>

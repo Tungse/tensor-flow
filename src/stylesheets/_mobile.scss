@@ -1,6 +1,12 @@
 .smb-gallery-mobile {
   .smb-gallery-media {
-    margin-bottom: 12.5px;
+    margin-bottom: 25px;
+
+    .smb-gallery-info {
+      margin-top: 12.5px;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .ImageObject {
