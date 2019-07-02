@@ -5,6 +5,7 @@ $nav-link-button-bg-hover: rgba(0, 0, 0, .3);
 .smb-gallery-desktop {
   .smb-gallery-header {
     position: relative;
+    margin-bottom: 25px;
   }
 
   .smb-gallery-nav {
@@ -67,7 +68,7 @@ $nav-link-button-bg-hover: rgba(0, 0, 0, .3);
   }
 
   .smb-gallery-info {
-    padding: 12.5px 0;
+    margin-top: 12.5px;
     display: flex;
     justify-content: space-between;
   }
