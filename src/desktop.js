@@ -128,7 +128,7 @@ const goNext = () => {
 const go = () => {
   renderPage()
 
-  window.scrollTo(0, 0)
+  // window.scrollTo(0, 0)
 
   embedoInst.domify()
 
