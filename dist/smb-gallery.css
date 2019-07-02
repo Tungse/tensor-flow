@@ -1,0 +1,83 @@
+.smb-gallery-desktop .smb-gallery-header {
+  position: relative; }
+
+.smb-gallery-desktop .smb-gallery-nav {
+  top: 0;
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 1; }
+  .smb-gallery-desktop .smb-gallery-nav:hover {
+    text-decoration: none; }
+    .smb-gallery-desktop .smb-gallery-nav:hover .smb-gallery-button {
+      background-color: rgba(0, 0, 0, 0.3); }
+
+.smb-gallery-desktop .smb-gallery-button {
+  height: 120px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.15);
+  font-size: 4rem;
+  color: #fff; }
+
+.smb-gallery-desktop .smb-gallery-nav-right {
+  right: 0;
+  padding-left: 25px; }
+
+.smb-gallery-desktop .smb-gallery-nav-left {
+  padding-right: 25px; }
+
+.smb-gallery-desktop .VideoObject {
+  min-height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; }
+  .smb-gallery-desktop .VideoObject iframe {
+    max-width: 100%;
+    height: auto;
+    display: block; }
+
+.smb-gallery-desktop .SocialMediaPosting {
+  min-height: 450px; }
+  .smb-gallery-desktop .SocialMediaPosting iframe {
+    margin-bottom: 0 !important; }
+
+.smb-gallery-desktop .smb-gallery-info {
+  padding: 12.5px 0;
+  display: flex;
+  justify-content: space-between; }
+
+.smb-gallery-desktop .smb-gallery-btn-nav {
+  display: flex;
+  justify-content: space-between; }
+
+.smb-gallery-mobile .smb-gallery-media {
+  margin-bottom: 12.5px; }
+
+.smb-gallery-mobile .ImageObject img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto; }
+
+.smb-gallery-mobile .VideoObject iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; }
+
+.smb-gallery-mobile .smb-gallery-content *:last-child {
+  margin-bottom: 0; }
+
+.smb-gallery-mobile .smb-gallery-ed-container {
+  text-align: center;
+  margin: 25px -15px;
+  min-height: 250px;
+  padding: 12.5px;
+  background: #f2f2f2; }
+
+
+/*# sourceMappingURL=smb-gallery.css.map*/
