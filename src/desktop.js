@@ -1,5 +1,3 @@
-import './stylesheets/desktop.scss'
-import './stylesheets/demo.scss'
 import getData from './common/gallery-data.js'
 import getReferrer from './common/referrer.js'
 import getInitalPage from './common/url.js'
@@ -174,32 +172,34 @@ const renderStage = () => {
   const nextPage = state.data.itemListElement[state.currentPage]
 
   return `
-    <h2>${page.item.headline}</h2>
-    <div class="smb-gallery-header">
-      ${state.currentPage > 1 ? `
-        <a role="smb-gallery-prev" class="smb-gallery-nav smb-gallery-nav-left" href="${prevPage.item.url}">
-          <div class="smb-gallery-button">
-            ${settings.prevIcon}
-          </div>
-        </a>
-      ` : ''}
-      <div class="smb-gallery-media ${page.item['@type']}">
-        ${renderMedia(page.item)}
+    <div class="smb-gallery-stage smb-gallery-desktop">
+      <h2>${page.item.headline}</h2>
+      <div class="smb-gallery-header">
+        ${state.currentPage > 1 ? `
+          <a role="smb-gallery-prev" class="smb-gallery-nav smb-gallery-nav-left" href="${prevPage.item.url}">
+            <div class="smb-gallery-button">
+              ${settings.prevIcon}
+            </div>
+          </a>
+        ` : ''}
+        <div class="smb-gallery-media ${page.item['@type']}">
+          ${renderMedia(page.item)}
+        </div>
+        ${state.currentPage < state.length ? `
+          <a role="smb-gallery-next" class="smb-gallery-nav smb-gallery-nav-right" href="${nextPage.item.url}">
+            <div class="smb-gallery-button">
+              ${settings.nextIcon}
+            </div>
+          </a>
+        ` : ''}
       </div>
-      ${state.currentPage < state.length ? `
-        <a role="smb-gallery-next" class="smb-gallery-nav smb-gallery-nav-right" href="${nextPage.item.url}">
-          <div class="smb-gallery-button">
-            ${settings.nextIcon}
-          </div>
-        </a>
-      ` : ''}
-    </div>
 
-    <div class="smb-gallery-info">
-    ${page.item.copyrightHolder ? `
-      <small>Bildquelle: ${page.item.copyrightHolder}</small>
-    ` : '<small></small>'}
-      <small>${state.currentPage} / ${state.length}</small>
+      <div class="smb-gallery-info">
+      ${page.item.copyrightHolder ? `
+        <small>Bildquelle: ${page.item.copyrightHolder}</small>
+      ` : '<small></small>'}
+        <small>${state.currentPage} / ${state.length}</small>
+      </div>
     </div>
   `
 }
@@ -239,7 +239,7 @@ export const renderContent = () => {
   const page = state.data.itemListElement[state.currentPage - 1]
 
   return `
-    <div class="smg-gallery-body">
+    <div class="smg-gallery-body smb-gallery-desktop">
       ${page.item.description}
 
       <div class="smb-gallery-btn-nav">
@@ -257,4 +257,4 @@ export const renderContent = () => {
   `
 }
 
-export default { init }
+export default init

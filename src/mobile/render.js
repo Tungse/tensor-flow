@@ -6,29 +6,31 @@ import Filer from 'filer-js-sdk'
  */
 const renderGalleryItems = (state) => {
   return `
-    ${state.data.itemListElement.map((page, i) => `
-      <div class="smb-gallery-item">
-        <div class="smb-gallery-media ${page.item['@type']}">
-          ${renderMedia(page.item)}
+      <div class="smb-gallery-mobile">
+      ${state.data.itemListElement.map((page, i) => `
+        <div class="smb-gallery-item">
+          <div class="smb-gallery-media ${page.item['@type']}">
+            ${renderMedia(page.item)}
+          </div>
+          ${page.item.copyrightHolder ? `
+          <div class="smb-gallery-info">
+            <small>Bildquelle: ${page.item.copyrightHolder}</small>
+          </div>
+          ` : ''}
+          <div class="smb-gallery-content">
+          ${i === 0 ? `
+            <h1>${page.item.headline}</h1>
+          ` : `
+            <h2>${page.item.headline}</h2>
+          `}
+            ${page.item.description}
+          </div>
+          <div class="smb-gallery-ed-container">
+            <div data-slotname="${getSlotName(i)}"></div>
+          </div>
         </div>
-        ${page.item.copyrightHolder ? `
-        <div class="smb-gallery-info">
-          <small>Bildquelle: ${page.item.copyrightHolder}</small>
-        </div>
-        ` : ''}
-        <div class="smb-gallery-content">
-        ${i === 0 ? `
-          <h1>${page.item.headline}</h1>
-        ` : `
-          <h2>${page.item.headline}</h2>
-        `}
-          ${page.item.description}
-        </div>
-        <div class="smb-gallery-ed-container">
-          <div data-slotname="${getSlotName(i)}"></div>
-        </div>
-      </div>
     `.trim()).join('')}
+    </div>
   `
 }
 
