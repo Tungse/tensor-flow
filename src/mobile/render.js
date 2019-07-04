@@ -9,11 +9,7 @@ const renderGalleryItems = (state) => {
       <div class="smb-gallery-mobile">
       ${state.data.itemListElement.map((page, i) => `
         <div class="smb-gallery-item">
-          ${i === 0 ? `
-            <h1>${page.item.headline}</h1>
-            ` : `
-            <h2>${page.item.headline}</h2>
-          `}
+          <h2>${page.item.headline}</h2>
           <div class="smb-gallery-media ${page.item['@type']}">
             ${renderMedia(page.item)}
               <div class="smb-gallery-info">
