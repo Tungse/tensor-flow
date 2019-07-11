@@ -212,17 +212,13 @@ const renderMedia = (item) => {
   switch (item['@type']) {
     case 'ImageObject':
       return `
-        ${item.width > 0 && item.height > 0 ? `
-          <div class="embed-responsive" style="padding-bottom: ${item.height / item.width * 100}%">
-            <img class="embed-responsive-item" src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 0, 450, 'u']])}" alt="">
-          </div>
-        ` : `
-          <img class="" src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 0, 450, 'u']])}" alt="">
-        `}
+        <div class="embed-responsive" style="padding-bottom: 450px">
+          <img class="embed-extended embed-responsive-item" src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 0, 450, 'u']])}" alt="">
+        </div>
       `
     case 'VideoObject':
       return `
-        <iframe class="" src="${item.embedUrl}"></iframe>
+        <iframe src="${item.embedUrl}" frameborder="0" width="940" height="450" style="height: 450px;"></iframe>
       `
     case 'SocialMediaPosting':
       return `<div data-embedo-url="${item.sharedContent.url}" data-embedo-height="450"></div>`

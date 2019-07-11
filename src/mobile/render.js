@@ -41,14 +41,18 @@ const renderMedia = (item) => {
       return `
         ${item.width > 0 && item.height > 0 ? `
           <div class="embed-responsive" style="padding-bottom: ${item.height / item.width * 100}%">
-            <img class="embed-responsive-item lazyload" data-src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 480, 0, 'u']])}" alt="">
+            <img class="embed-extended embed-responsive-item lazyload" data-src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 480, 0, 'u']])}" alt="">
           </div>
         ` : `
           <img class="lazyload" data-src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 480, 0, 'u']])}" alt="">
         `}
       `
     case 'VideoObject':
-      return `<iframe class="lazyload" data-src="${item.embedUrl}"></iframe>`
+      return `
+        <div class="embed-responsive" style="padding-bottom: ${item.height / item.width * 100}%">
+          <iframe allowfullscreen class="embed-responsive-item lazyload" data-src="${item.embedUrl}"></iframe>
+        </div>
+      `
     case 'SocialMediaPosting':
       return `<div data-role="embedo" data-url="${item.sharedContent.url}"></div>`
   }
