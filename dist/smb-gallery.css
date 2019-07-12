@@ -56,6 +56,12 @@
   display: flex;
   justify-content: space-between; }
 
+.smb-gallery-desktop .embed-responsive-item.embed-extended {
+  width: unset;
+  left: unset;
+  right: 50%;
+  transform: translate(50%); }
+
 .smb-gallery-mobile .smb-gallery-media {
   margin-bottom: 25px; }
   .smb-gallery-mobile .smb-gallery-media .smb-gallery-info {
@@ -70,7 +76,6 @@
 
 .smb-gallery-mobile .VideoObject iframe {
   max-width: 100%;
-  height: auto;
   display: block;
   margin: 0 auto; }
 

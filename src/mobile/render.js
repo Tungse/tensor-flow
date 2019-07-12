@@ -41,7 +41,7 @@ const renderMedia = (item) => {
       return `
         ${item.width > 0 && item.height > 0 ? `
           <div class="embed-responsive" style="padding-bottom: ${item.height / item.width * 100}%">
-            <img class="embed-extended embed-responsive-item lazyload" data-src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 480, 0, 'u']])}" alt="">
+            <img class="embed-responsive-item lazyload" data-src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 480, 0, 'u']])}" alt="">
           </div>
         ` : `
           <img class="lazyload" data-src="${Filer.createVariantUrl(item.contentUrl, [['rcm', 480, 0, 'u']])}" alt="">

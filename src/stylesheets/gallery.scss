@@ -1,11 +1,2 @@
-.embed-responsive-item {
-  &.embed-extended {
-    width: unset;
-    left: unset;
-    right: 50%;
-    transform: translate(50%);
-  }
-}
-
 @import "desktop";
 @import "mobile";

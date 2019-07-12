@@ -77,4 +77,13 @@ $nav-link-button-bg-hover: rgba(0, 0, 0, .3);
     display: flex;
     justify-content: space-between;
   }
+
+  .embed-responsive-item {
+    &.embed-extended {
+      width: unset;
+      left: unset;
+      right: 50%;
+      transform: translate(50%);
+    }
+  }
 }
