@@ -68,7 +68,7 @@ const applyGalleryItems = () => {
  */
 const scrollInitialItemIntoView = () => {
   if (state.currentPage > 1) {
-    state.galleryItems[state.currentPage].scrollIntoView()
+    state.galleryItems[state.currentPage - 1].scrollIntoView()
   }
 }
 
