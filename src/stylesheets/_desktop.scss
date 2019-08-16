@@ -45,18 +45,8 @@ $nav-link-button-bg-hover: rgba(0, 0, 0, .3);
     padding-right: $nav-link-horizontal-padding;
   }
 
-  .VideoObject {
-    min-height: 450px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    iframe {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+  .smb-gallery-media {
+    text-align: center;
   }
 
   .SocialMediaPosting {
@@ -64,6 +54,10 @@ $nav-link-button-bg-hover: rgba(0, 0, 0, .3);
 
     iframe {
       margin-bottom: 0 !important;
+    }
+
+    [type="image/gif"] {
+      width: auto !important;
     }
   }
 

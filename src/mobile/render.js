@@ -49,10 +49,17 @@ const renderMedia = (item) => {
       `
     case 'VideoObject':
       return `
-        <div class="embed-responsive" style="padding-bottom: ${item.height / item.width * 100}%">
-          <iframe allowfullscreen class="embed-responsive-item lazyload" data-src="${item.embedUrl}"></iframe>
-        </div>
+        ${item.embedUrl.includes('youtube') ? `
+          <div class="embed-responsive embed-responsive-16by9">
+            <div class="embed-responsive-item" data-role="embedo" data-url="${item.embedUrl}"></div>
+          </div>
+        ` : `
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe allowfullscreen class="embed-responsive-item lazyload" data-src="${item.embedUrl}"></iframe>
+          </div>
+        `}
       `
+
     case 'SocialMediaPosting':
       return `<div data-role="embedo" data-url="${item.sharedContent.url}"></div>`
   }
