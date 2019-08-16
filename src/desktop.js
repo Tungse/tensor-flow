@@ -77,7 +77,13 @@ const bindEvents = () => {
       case 37:
         goPrev()
         break
+      case 65:
+        goPrev()
+        break
       case 39:
+        goNext()
+        break
+      case 68:
         goNext()
         break
     }
