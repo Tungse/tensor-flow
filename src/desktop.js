@@ -23,8 +23,8 @@ let state = {}
  */
 const init = (options, smbContext) => {
   setInitialState(options)
-  renderPage()
   initEmbedo()
+  renderPage()
 }
 
 /**
@@ -48,6 +48,7 @@ const renderPage = () => {
   document.querySelector(settings.stageSelector).innerHTML = renderStage()
   document.querySelector(settings.contentSelector).innerHTML = renderContent()
   bindEvents()
+  embedoInst.domify()
 
   if (typeof settings.afterPageRender === 'function') {
     settings.afterPageRender(state)
@@ -132,9 +133,7 @@ const goNext = () => {
 const go = () => {
   renderPage()
 
-  // window.scrollTo(0, 0)
-
-  embedoInst.domify()
+  window.scrollTo(0, 0)
 
   if (typeof window.smbt !== 'undefined') {
     window.smbt.emit('pageview')
