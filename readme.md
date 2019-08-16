@@ -4,12 +4,6 @@
 
 ## 😯 Notable features
 
-### Seperated bundles for mobile and desktop
-
-What? Are you crazy?
-
-No! SMB Gallery works very different on mobile and desktop devices but have also a lot of shared code. To reduce complexity, increase maintainability and but also have everything in one place this is way we decided to go.
-
 ### Lazyloading by Intersection Observer API
 
 We use our well known default library here: https://github.com/verlok/lazyload
