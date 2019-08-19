@@ -1,15 +1,9 @@
-import getData from './common/gallery-data.js'
-import getReferrer from './common/referrer.js'
-import getInitalPage from './common/url.js'
+import getSettings from './common/settings.js'
+import getState from './common/state.js'
 import { initEmbedo, embedoInst } from './common/embedo.js'
 import renderGalleryItems from './mobile/render.js'
 import circulateAds from './mobile/ads.js'
 import Observer from 'smb-element-observer'
-
-const defaults = {
-  dataSelector: '#galleryData',
-  contentSelector: '#galleryContent',
-}
 
 let settings = {}
 let state = {}
@@ -21,22 +15,10 @@ let state = {}
  * @param  {object} smbContext
  */
 const init = (options, smbContext) => {
-  setInitialState(options)
+  settings = getSettings(options)
+  state = getState(settings)
   renderGallery()
   initEmbedo()
-}
-
-/**
- * Assign settings and set init state based on gallery data
- * @param {Object} options
- */
-const setInitialState = (options) => {
-  settings = Object.assign({}, defaults, options)
-
-  state.data = getData(settings.dataSelector)
-  state.length = state.data.itemListElement.length
-  state.referrer = getReferrer()
-  state.currentPage = getInitalPage(state.length)
 }
 
 /**
@@ -46,6 +28,7 @@ const setInitialState = (options) => {
  */
 const renderGallery = () => {
   applyGalleryItems()
+  applyEndcard()
   scrollInitialItemIntoView()
   bindEvents()
 
@@ -60,6 +43,13 @@ const renderGallery = () => {
 const applyGalleryItems = () => {
   document.querySelector(settings.contentSelector).innerHTML = renderGalleryItems(state)
   state.galleryItems = document.querySelectorAll('.smb-gallery-item')
+}
+
+/**
+ * Apply endcard items to HTML
+ */
+const applyEndcard = () => {
+  // TODO: apply endcard
 }
 
 /**

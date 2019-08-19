@@ -93,11 +93,11 @@
       <div id="content"></div>
     </div>
 
-    <script type="application/ld+json" id="data">
+    <script type="application/ld+json" id="gallery-data">
       {
         "@context": "http://schema.org",
         "@type": "ItemList",
-        "numberOfItems": 4,
+        "numberOfItems": 9  ,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -261,6 +261,52 @@
       }
     </script>
 
+    <script type="application/ld+json" id="endcard-data">
+      {
+        "@context": "http://schema.org",
+        "@type": "ItemList",
+        "numberOfItems": 1  ,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@context": "http://schema.org",
+              "@type": "Article",
+              "mainEntityOfPage" : "https://www.giga.de/news/samsung-macht-ernst-neue-galaxy-smartphones-sollen-konkurrenz-richtig-in-schwitzen-bringen/",
+              "url": "https://www.giga.de/news/samsung-macht-ernst-neue-galaxy-smartphones-sollen-konkurrenz-richtig-in-schwitzen-bringen/",
+              "headline": "Samsung macht ernst: Neue Galaxy-Smartphones sollen Konkurrenz richtig in Schwitzen bringen",
+              "description": "Samsung ist der große Gewinner nach dem US-Bann von Huawei. Das Unternehmen ruht sich auf den guten Verkaufszahlen aber nicht aus, sondern plant für 2020 einen Rundumschlag, der die Absatzzahlen neuer Smartphones noch einmal so richtig steigern dürfte.",
+              "articleBody": "Vor wenigen Tagen hat Samsung den weltweit ersten 108-MP-Sensor für Smartphones vorgestellt , der in Kooperation mit Xiaomi entwickelt wurde. Dieser neue Sensor wird noch in diesem Jahr in einem Xiaomi-Smartphone zum Einsatz kommen, kurz danach aber auch in einem Galaxy-A-Handy. Samsung entwickelt zwar oft neue Technologien, verbaut diese aber nicht in seinen Smartphones, sondern verkauft sie an die Konkurrenz. Dieses Mal will Samsung den 108-MP-Sensor aber relativ schnell einsetzen . Das Samsung Galaxy A91 soll diese 108-MP-Kamera besitzen. Durch&nbsp;Pixel-Binning werden vier Pixel zu einem großen Pixel zusammengefasst, wodurch man in Low-Light-Situationen bessere Fotos schießen kann. Zudem kann so eine noch nie dagewesene Schärfe erreicht werden. Doch damit nicht genug. Samsung möchte diesem Mittelklasse-Handy eine Triple-Kamera mit Weitwinkellinse und fünffachem optischen Zoom verpassen. Nicht einmal das Galaxy Note 10 Plus hat diese Möglichkeit. Als wäre das nicht genug, soll sogar noch ein Time-of-Flight-Sensor verbaut sein. Nicht nur das Galaxy A91 könnte bessere Kameras erhalten, alle A-Modelle von Samsung für 2020 werden in dem Bereich einen enormen Sprung machen, wie der aktuelle Leak belegen soll: Samsung würde Huawei damit direkt ins Herz treffen. Der chinesische Hersteller verkauft in erster Linie viele Einsteiger- und Mittelklasse-Smartphones, die ein sehr gutes Preis-Leitungs-Verhältnis besitzen. Die Bemühungen Samsungs zahlen sich bereits aus. Das Galaxy A50 ist der aktuelle Beststeller in Deutschland . Dieses Smartphone hat uns auch im GIGA-Test positiv überrascht und kostet nicht viel Geld . Wenn Samsung so weiter macht, werden die nächsten Galaxy-A-Modelle wieder ein riesiger Erfolg. Die Kamera des Samsung Galaxy A50 im Test: Wenn Samsung den bisherigen Zeitplan zur Aktualisierung der Galaxy-A-Smartphones einhält, dann dürfte die Präsentation der ersten 2020er-Modelle im ersten Quartal beginnen. Bis dahin dürften noch viele Details auftauchen. Wir halten euch auf dem Laufenden.",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://static.giga.de/wp-content/uploads/2019/05/Samsung-Galaxy-A50-Test-q_giga-03-rcm625x413.jpg",
+                "width": "625",
+                "height": "413"
+              },
+              "datePublished": "2019-08-16T08:16:35+02:00",
+              "dateModified": "2019-08-16T09:02:24+02:00",
+              "keywords": "",
+              "author" : {
+                "@type" : "Person",
+                "name" : "Peter Hryciuk"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "GIGA.de",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://www.giga.de/static-local/dist/assets/images/logos/giga.png",
+                  "width": "300",
+                  "height": "143"
+                }
+              }
+            }
+          }
+        ]
+      }
+    </script>
+
     <script>
       window.adLoader('_loadAds');
     </script>
@@ -272,7 +318,8 @@
 
         smbGallery({
           device: 'smartphone',
-          dataSelector: '#data',
+          dataSelector: '#gallery-data',
+          endcardSelector: '#endcard-data',
           contentSelector: '#content',
         })
 
@@ -280,7 +327,8 @@
 
         smbGallery({
           device: 'desktop',
-          dataSelector: '#data',
+          dataSelector: '#gallery-data',
+          endcardSelector: '#endcard-data',
           stageSelector: '#stage',
           contentSelector: '#content',
         })
