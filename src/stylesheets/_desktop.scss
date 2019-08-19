@@ -76,6 +76,10 @@ $nav-link-button-bg-hover: rgba(0, 0, 0, .3);
   .smb-gallery-btn-nav {
     display: flex;
     justify-content: space-between;
+
+    .smb-gallery-back {
+      padding-left: 0;
+    }
   }
 
   .embed-responsive-item {
