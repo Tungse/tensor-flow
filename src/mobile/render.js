@@ -49,7 +49,7 @@ const renderMedia = (item) => {
       `
     case 'VideoObject':
       return `
-        ${item.embedUrl.includes('youtube') ? `
+        ${item.embedUrl.includes('youtube') || item.embedUrl.includes('youtu.be') ? `
           <div class="embed-responsive embed-responsive-16by9">
             <div class="embed-responsive-item" data-role="embedo" data-url="${item.embedUrl}"></div>
           </div>
