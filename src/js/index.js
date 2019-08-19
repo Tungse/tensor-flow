@@ -1,9 +1,9 @@
-import './stylesheets/gallery.scss'
-import desktop from './desktop'
-import mobile from './mobile.js'
+import '../stylesheets/gallery.scss'
+import desktop from './desktop/init.js'
+import mobile from './mobile/init.js'
 
 if (process.env.NODE_ENV === 'development') {
-  import('./stylesheets/demo.scss')
+  import('../stylesheets/demo.scss')
 }
 
 const init = (options) => {

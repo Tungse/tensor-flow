@@ -1,4 +1,4 @@
-import Filer from '../../node_modules/filer-js-sdk/dist/filer.js'
+import Filer from '../../../node_modules/filer-js-sdk/dist/filer.js'
 
 /**
  * Renders Stage depending on current state

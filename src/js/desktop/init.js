@@ -1,7 +1,7 @@
-import getSettings from './common/settings.js'
-import getState from './common/state.js'
-import { initEmbedo, embedoInst } from './common/embedo.js'
-import { renderStage, renderContent } from './desktop/render.js'
+import getSettings from '../common/settings.js'
+import getState from '../common/state.js'
+import { initEmbedo, embedoInst } from '../common/embedo.js'
+import { renderStage, renderContent } from './render.js'
 
 let settings = {}
 let state = {}

@@ -1,8 +1,8 @@
-import getSettings from './common/settings.js'
-import getState from './common/state.js'
-import { initEmbedo, embedoInst } from './common/embedo.js'
-import renderGalleryItems from './mobile/render.js'
-import circulateAds from './mobile/ads.js'
+import getSettings from '../common/settings.js'
+import getState from '../common/state.js'
+import { initEmbedo, embedoInst } from '../common/embedo.js'
+import renderGalleryItems from './render.js'
+import circulateAds from './ads.js'
 import Observer from 'smb-element-observer'
 
 let settings = {}
