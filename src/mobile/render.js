@@ -7,6 +7,11 @@ import Filer from 'filer-js-sdk'
 const renderGalleryItems = (state) => {
   return `
       <div class="smb-gallery-mobile">
+        <div>
+        ${state.referrer ? `
+          <a role="smb-gallery-back" class="btn btn-link smb-gallery-back" href="${state.referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
+        ` : ''}
+        </div>
       ${state.data.itemListElement.map((page, i) => `
         <div class="smb-gallery-item">
           <h2>${page.item.headline}</h2>

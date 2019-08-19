@@ -254,7 +254,7 @@ export const renderContent = () => {
       <div class="smb-gallery-btn-nav">
         <div>
         ${state.referrer ? `
-          <a role="smb-gallery-back" class="btn btn-link" href="${state.referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
+          <a role="smb-gallery-back" class="btn btn-link smb-gallery-back" href="${state.referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
         ` : ''}
         </div>
         <div>
