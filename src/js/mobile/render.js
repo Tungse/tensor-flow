@@ -17,7 +17,6 @@ const renderGalleryItems = (state) => {
       ${state.data.itemListElement.map((page, i) => `
         <div class="smb-gallery-item">
         ${page.item['@type'] === 'Thing' ? `
-          <h2>Weitere beliebte Bilderstrecken</h2>
           <div class="smb-gallery-content">
             ${page.item.description}
           </div>
