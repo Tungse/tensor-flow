@@ -7,22 +7,30 @@ import Filer from 'filer-js-sdk'
 const renderGalleryItems = (state) => {
   return `
       <div class="smb-gallery-mobile">
+      ${state.referrer ? `
         <div>
-        ${state.referrer ? `
-          <a role="smb-gallery-back" class="btn btn-link smb-gallery-back" href="${state.referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
-        ` : ''}
+          <a role="smb-gallery-back" class="btn btn-link smb-gallery-back" href="${state.referrer}">
+            <i class="fas fa-angle-left"></i> zurück zum Artikel
+          </a>
         </div>
+      ` : ''}
       ${state.data.itemListElement.map((page, i) => `
         <div class="smb-gallery-item">
+        ${page.item['@type'] === 'Thing' ? `
+          <h2>Weitere beliebte Bilderstrecken</h2>
+          <div class="smb-gallery-content">
+            ${page.item.description}
+          </div>
+        ` : `
           <h2>${page.item.headline}</h2>
           <div class="smb-gallery-media ${page.item['@type']}">
             ${renderMedia(page.item)}
-              <div class="smb-gallery-info">
-              ${page.item.copyrightHolder ? `
-                <small>Bildquelle: ${page.item.copyrightHolder}</small>
-              ` : '<small></small>'}
-                <small>${i + 1} / ${state.length}</small>
-              </div>
+            <div class="smb-gallery-info">
+            ${page.item.copyrightHolder ? `
+              <small>Bildquelle: ${page.item.copyrightHolder}</small>
+            ` : '<small></small>'}
+              <small>${i + 1} / ${state.length}</small>
+            </div>
           </div>
           <div class="smb-gallery-content">
             ${page.item.description}
@@ -31,6 +39,7 @@ const renderGalleryItems = (state) => {
             <div data-slotname="${getSlotName(i)}"></div>
           </div>
         </div>
+        `}
     `.trim()).join('')}
     </div>
   `

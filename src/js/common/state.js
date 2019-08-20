@@ -10,7 +10,6 @@ const getState = (settings) => {
   const state = {}
 
   state.data = getData(settings.dataSelector)
-  state.endcardData = getData(settings.endcardSelector)
   state.length = state.data.itemListElement.length
   state.referrer = getReferrer()
   state.currentPage = getInitalPage(state.length)

@@ -28,12 +28,11 @@ const init = (options, smbContext) => {
  */
 const renderGallery = () => {
   applyGalleryItems()
-  applyEndcard()
   scrollInitialItemIntoView()
   bindEvents()
 
-  if (typeof settings.afterPageRender === 'function') {
-    settings.afterPageRender(state)
+  if (typeof settings.mounted === 'function') {
+    settings.mounted(state)
   }
 }
 
@@ -43,13 +42,6 @@ const renderGallery = () => {
 const applyGalleryItems = () => {
   document.querySelector(settings.contentSelector).innerHTML = renderGalleryItems(state)
   state.galleryItems = document.querySelectorAll('.smb-gallery-item')
-}
-
-/**
- * Apply endcard items to HTML
- */
-const applyEndcard = () => {
-  // TODO: apply endcard
 }
 
 /**
@@ -67,14 +59,20 @@ const scrollInitialItemIntoView = () => {
  */
 const bindEvents = () => {
   state.galleryItems.forEach((elm, index) => {
-    Observer.repeat(elm.querySelector('.smb-gallery-content'), () => {
-      if (state.currentPage !== index + 1) {
-        state.currentPage = index + 1
-        window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
-      }
+    if (elm.querySelector('.smb-gallery-content')) {
+      Observer.repeat(elm.querySelector('.smb-gallery-content'), () => {
+        if (state.currentPage !== index + 1) {
+          state.currentPage = index + 1
+          window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+        }
 
-      circulateAds(state)
-    })
+        circulateAds(state)
+
+        if (typeof settings.changed === 'function') {
+          settings.changed(state)
+        }
+      })
+    }
 
     if (elm.querySelector('[data-role="embedo"]')) {
       const post = elm.querySelector('[data-role="embedo"]')
