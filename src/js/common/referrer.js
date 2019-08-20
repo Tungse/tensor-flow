@@ -7,7 +7,10 @@ const getReferrer = () => {
 
 const isContentIdInSessionStorage = () => {
   const via = JSON.parse(window.sessionStorage.getItem('smb_via'))
-  return via && String(via.targetId) === String(window.smbContext.content.id)
+  if (via && window.smbContext) {
+    return String(via.targetId) === String(window.smbContext.content.id)
+  }
+  return false
 }
 
 export default getReferrer

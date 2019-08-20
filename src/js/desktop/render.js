@@ -11,6 +11,9 @@ export const renderStage = (state, settings) => {
 
   return `
     <div class="smb-gallery-stage smb-gallery-desktop">
+      ${state.author && state.currentPage === 1 ? `
+        <div class="smb-gallery-author">${state.author.name} ${state.author.modDate}</div>
+      ` : ''}
       <h2>${page.item.headline}</h2>
       <div class="smb-gallery-header">
         ${state.currentPage > 1 ? `
@@ -86,7 +89,7 @@ export const renderContent = (state, settings) => {
 
       <div class="smb-gallery-btn-nav">
         <div>
-        ${state.referrer ? `
+        ${state.referrer && state.currentPage === 1 ? `
           <a role="smb-gallery-back" class="btn btn-link smb-gallery-back" href="${state.referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
         ` : ''}
         </div>

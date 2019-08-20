@@ -119,8 +119,8 @@ const go = () => {
     window.smbt.emit('pageview')
   }
 
-  if (typeof iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
-    window.iom.c(window.iam_data, 2)
+  if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
+    window.iom.c(window.iam_data, settings.iamMode)
   }
 
   if (typeof window.adLoader !== 'undefined') {
