@@ -1,4 +1,4 @@
-import renderGalleryItems from '../../../src/mobile/render.js'
+import renderGalleryItems from '../../../src/js/mobile/render.js'
 import { snapshot } from '../../helper/snapshot'
 
 test('Gallery markup is rendered as expected', () => {

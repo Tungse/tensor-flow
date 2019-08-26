@@ -1,4 +1,4 @@
-import { initEmbedo, embedoInst } from '../../../src/common/embedo.js'
+import { initEmbedo, embedoInst } from '../../../src/js/common/embedo.js'
 
 test('embedo gets instanciated', () => {
   expect(embedoInst).toBe(null)

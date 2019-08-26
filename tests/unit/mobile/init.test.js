@@ -1,6 +1,6 @@
-import init from '../../src/js/desktop/init.js'
+import init from '../../../src/js/mobile/init.js'
 
-describe('Desktop', () => {
+describe('Mobile', () => {
   test.only('init function is available', () => {
     expect(init).toBeDefined()
   })

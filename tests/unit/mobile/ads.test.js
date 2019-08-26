@@ -1,4 +1,4 @@
-import circulateAds from '../../../src/mobile/ads.js'
+import circulateAds from '../../../src/js/mobile/ads.js'
 
 beforeAll(() => {
   window.adLoader = jest.fn()

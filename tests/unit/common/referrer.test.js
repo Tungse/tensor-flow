@@ -1,4 +1,4 @@
-import getReferrer from '../../../src/common/referrer.js'
+import getReferrer from '../../../src/js/common/referrer.js'
 
 test('returns referrer if internal referrer', () => {
   Object.defineProperty(window.document, 'referrer', {
