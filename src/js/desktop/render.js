@@ -11,9 +11,6 @@ export const renderStage = (state, settings) => {
 
   return `
     <div class="smb-gallery-stage smb-gallery-desktop">
-      ${state.author && state.currentPage === 1 ? `
-        <div class="smb-gallery-author">${state.author.name} ${state.author.modDate}</div>
-      ` : ''}
       <h2>${page.item.headline}</h2>
       <div class="smb-gallery-header">
         ${state.currentPage > 1 ? `

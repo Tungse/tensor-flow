@@ -7,9 +7,6 @@ import Filer from 'filer-js-sdk'
 const renderGalleryItems = (state) => {
   return `
       <div class="smb-gallery-mobile">
-        ${state.author && state.currentPage === 1 ? `
-          <div class="smb-gallery-author">${state.author.name} ${state.author.modDate}</div>
-        ` : ''}
         ${state.referrer ? `
           <a role="smb-gallery-back" class="btn btn-link smb-gallery-back" href="${state.referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
         ` : ''}
