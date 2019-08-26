@@ -129,7 +129,7 @@ const go = () => {
     } catch (e) {}
   }
 
-  if (typeof settings.onItemChange === 'function') {
+  if (typeof settings.changed === 'function') {
     settings.changed(state)
   }
 }
