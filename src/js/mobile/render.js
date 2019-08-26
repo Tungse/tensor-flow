@@ -8,11 +8,9 @@ const renderGalleryItems = (state) => {
   return `
       <div class="smb-gallery-mobile">
       ${state.referrer ? `
-        <div>
-          <a role="smb-gallery-back" class="btn btn-link smb-gallery-back" href="${state.referrer}">
-            <i class="fas fa-angle-left"></i> zurück zum Artikel
-          </a>
-        </div>
+        <a role="smb-gallery-back" class="btn btn-link smb-gallery-back" href="${state.referrer}">
+          <i class="fas fa-angle-left"></i> zurück zum Artikel
+        </a>
       ` : ''}
       ${state.data.itemListElement.map((page, i) => `
         <div class="smb-gallery-item">

@@ -66,7 +66,9 @@ const bindEvents = () => {
           window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
         }
 
-        circulateAds(state)
+        if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
+        window.iom.c(window.iam_data, settings.iamMode)
+      }circulateAds(state)
 
         if (typeof settings.changed === 'function') {
           settings.changed(state)
