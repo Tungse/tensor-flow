@@ -17,6 +17,10 @@ const init = (options, smbContext) => {
   state = getState(settings)
   initEmbedo()
   renderPage()
+
+  if (typeof settings.mounted === 'function') {
+    settings.mounted(state)
+  }
 }
 
 /**
@@ -24,15 +28,10 @@ const init = (options, smbContext) => {
  * Execute "afterPageRender"-callback if provided.
  */
 const renderPage = () => {
-  // TODO: apply endcard
   document.querySelector(settings.stageSelector).innerHTML = renderStage(state, settings)
   document.querySelector(settings.contentSelector).innerHTML = renderContent(state, settings)
   bindEvents()
   embedoInst.domify()
-
-  if (typeof settings.afterPageRender === 'function') {
-    settings.afterPageRender(state)
-  }
 }
 
 /**
@@ -130,8 +129,8 @@ const go = () => {
     } catch (e) {}
   }
 
-  if (typeof settings.onItemChange === 'function') {
-    settings.onItemChange(state)
+  if (typeof settings.changed === 'function') {
+    settings.changed(state)
   }
 }
 

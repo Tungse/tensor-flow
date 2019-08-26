@@ -50,7 +50,7 @@ const unAssignAds = (state, itemsThatShouldHaveAds) => {
     if (!itemsThatShouldHaveAds.includes(elm)) {
       const adContainer = elm.querySelector('[data-slotname]')
 
-      if (adContainer.getAttribute('data-sdg-ad')) {
+      if (adContainer && adContainer.getAttribute('data-sdg-ad')) {
         unloadAd(adContainer)
         adContainer.removeAttribute('data-sdg-ad')
       }
@@ -67,7 +67,7 @@ const assignAds = (state, itemsThatShouldHaveAds) => {
   itemsThatShouldHaveAds.forEach((elm, i) => {
     const adContainer = elm.querySelector('[data-slotname]')
 
-    if (!adContainer.hasAttribute('data-sdg-ad')) {
+    if (adContainer && !adContainer.hasAttribute('data-sdg-ad')) {
       const slotname = adContainer.getAttribute('data-slotname')
 
       adContainer.setAttribute('data-sdg-ad', slotname)

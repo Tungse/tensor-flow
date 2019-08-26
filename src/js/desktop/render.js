@@ -9,6 +9,11 @@ export const renderStage = (state, settings) => {
   const page = state.data.itemListElement[state.currentPage - 1]
   const nextPage = state.data.itemListElement[state.currentPage]
 
+  // on last page (endcard), we dont show stage
+  if (state.currentPage === state.length) {
+    return ''
+  }
+
   return `
     <div class="smb-gallery-stage smb-gallery-desktop">
       <h2>${page.item.headline}</h2>
