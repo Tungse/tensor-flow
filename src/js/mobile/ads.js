@@ -2,8 +2,8 @@
  * Find all galleryItems that should have ads and load them.
  * Find all galleryItems that should not have ads and remove them.
  */
-const circulateAds = (state) => {
-  const itemsThatShouldHaveAds = determineItemsThatShouldHaveAds(state)
+const circulateAds = (state, settings) => {
+  const itemsThatShouldHaveAds = determineItemsThatShouldHaveAds(state, settings)
 
   unAssignAds(state, itemsThatShouldHaveAds)
   assignAds(state, itemsThatShouldHaveAds)
@@ -11,30 +11,56 @@ const circulateAds = (state) => {
 
 /**
  * Returns Array with galleryItems that should have ads.
- * We select current page, page before, next page and page after next page
  * @return {Array} [description]
  */
-const determineItemsThatShouldHaveAds = (state) => {
+const determineItemsThatShouldHaveAds = (state, settings) => {
   let itemsThatShouldHaveAds = []
 
-  // page before
-  if (state.galleryItems[state.currentPage - 2]) {
-    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 2])
-  }
+  if (settings.adMode === 1) {
+    // page before
+    if (state.galleryItems[state.currentPage - 2]) {
+      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 2])
+    }
 
-  // current page
-  if (state.galleryItems[state.currentPage - 1]) {
-    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 1])
-  }
+    // current page
+    if (state.galleryItems[state.currentPage - 1]) {
+      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 1])
+    }
 
-  // next page
-  if (state.galleryItems[state.currentPage]) {
-    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage])
-  }
+    // current page + 1
+    if (state.galleryItems[state.currentPage]) {
+      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage])
+    }
 
-  // page after next page
-  if (state.galleryItems[state.currentPage + 1]) {
-    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 1])
+    // current page + 2
+    if (state.galleryItems[state.currentPage + 1]) {
+      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 1])
+    }
+
+    // current page + 3
+    if (state.galleryItems[state.currentPage + 2]) {
+      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 2])
+    }
+  } else {
+    // page before
+    if (state.galleryItems[state.currentPage - 2]) {
+      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 2])
+    }
+
+    // current page
+    if (state.galleryItems[state.currentPage - 1]) {
+      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 1])
+    }
+
+    // current page + 1
+    if (state.galleryItems[state.currentPage]) {
+      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage])
+    }
+
+    // current page + 2
+    if (state.galleryItems[state.currentPage + 1]) {
+      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 1])
+    }
   }
 
   return itemsThatShouldHaveAds

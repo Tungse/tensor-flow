@@ -4,7 +4,7 @@ import Filer from 'filer-js-sdk'
  * Build template string for gallery
  * @return {string} template string
  */
-const renderGalleryItems = (state) => {
+const renderGalleryItems = (state, settings) => {
   return `
       <div class="smb-gallery-mobile">
       ${state.referrer ? `
@@ -33,7 +33,7 @@ const renderGalleryItems = (state) => {
             ${page.item.description}
           </div>
           <div class="smb-gallery-ed-container">
-            <div data-slotname="${getSlotName(i)}"></div>
+            <div data-slotname="${getSlotName(i, settings)}"></div>
           </div>
         </div>
         `}
@@ -79,18 +79,34 @@ const renderMedia = (item) => {
 /**
  * Find slotname by index
  * @param  {Int} i
+ * @param  {Object} state
  * @return {String}
  */
-const getSlotName = (i) => {
-  switch (i % 4) {
-    case 0:
-      return 'galleryad'
-    case 1:
-      return 'galleryad2'
-    case 2:
-      return 'galleryad3'
-    case 3:
-      return 'galleryad4'
+const getSlotName = (i, settings) => {
+  if (settings.adMode === 1) {
+    switch (i % 5) {
+      case 0:
+        return 'topmobile2'
+      case 1:
+        return 'topmobile3'
+      case 2:
+        return 'topmobile4'
+      case 3:
+        return 'topmobile5'
+      case 4:
+        return 'topmobile6'
+    }
+  } else {
+    switch (i % 4) {
+      case 0:
+        return 'galleryad2'
+      case 1:
+        return 'galleryad3'
+      case 2:
+        return 'galleryad4'
+      case 3:
+        return 'galleryad5'
+    }
   }
 }
 

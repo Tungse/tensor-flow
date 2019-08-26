@@ -141,6 +141,16 @@ require('path_to_smb-gallery_desktop', function(smbGalleryDesktop) {
 })
 ```
 
-## 😋 Tips & tricks
+## 🔌 Options
 
-## 🔌 API
+Here's the list of the options to change gallery behaviour:
+
+`adMode` - Int
+
+Set the mode for advertisement on mobile.
+- `1`:  Ads named with `topmobile2`, `topmobile3`, `topmobile4`, `topmobile5`, `topmobile6`
+- `2`:  Ads named with `galleryad2`, `galleryad3`, `galleryad4`, `galleryad5`
+- default: `1`
+
+
+## 😋 Tips & tricks

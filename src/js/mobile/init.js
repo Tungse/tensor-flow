@@ -40,7 +40,7 @@ const renderGallery = () => {
  * Apply gallers Items to HTML and to stateObject
  */
 const applyGalleryItems = () => {
-  document.querySelector(settings.contentSelector).innerHTML = renderGalleryItems(state)
+  document.querySelector(settings.contentSelector).innerHTML = renderGalleryItems(state, settings)
   state.galleryItems = document.querySelectorAll('.smb-gallery-item')
 }
 
@@ -67,8 +67,10 @@ const bindEvents = () => {
         }
 
         if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
-        window.iom.c(window.iam_data, settings.iamMode)
-      }circulateAds(state)
+          window.iom.c(window.iam_data, settings.iamMode)
+        }
+
+        circulateAds(state, settings)
 
         if (typeof settings.changed === 'function') {
           settings.changed(state)
