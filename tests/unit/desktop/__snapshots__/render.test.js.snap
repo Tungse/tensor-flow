@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gallery markup is rendered as expected 1`] = `
+"
+    <div class=\\"smb-gallery-stage smb-gallery-desktop\\">
+      <h2>Headline 1</h2>
+      <div class=\\"smb-gallery-header\\">
+        
+        <div class=\\"smb-gallery-media ImageObject\\">
+          
+        <div class=\\"embed-responsive\\" style=\\"padding-bottom: 450px\\">
+          <img class=\\"embed-extended embed-responsive-item\\" src=\\"//static.kino.de/wp-content/uploads/2018/05/geplante-star-wars-filme-7-rcm0x450u.jpg\\" alt=\\"\\">
+        </div>
+      
+        </div>
+        
+        <div class=\\"smb-gallery-info\\">
+          
+          <small>Bildquelle: Disney</small>
+          
+          <small>1 / undefined</small>
+        </div>
+      </div>
+
+    </div>
+  "
+`;
+
+exports[`Gallery markup is rendered as expected 2`] = `
+"
+    <div class=\\"smg-gallery-body smb-gallery-desktop\\">
+      Description 1
+
+      <div class=\\"smb-gallery-btn-nav\\">
+        <div>
+        
+        </div>
+        <div>
+          <a role=\\"smb-gallery-prev\\" class=\\"btn btn-primary disabled\\" href=\\"#\\"><i class=\\"fas fa-angle-left\\"></i> zurück</a>
+          <a role=\\"smb-gallery-next\\" class=\\"btn btn-primary \\" href=\\"#\\">weiter <i class=\\"fas fa-angle-right\\"></i></a>
+        </div>
+      </div>
+    </div>
+  "
+`;
