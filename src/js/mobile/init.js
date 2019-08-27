@@ -69,6 +69,7 @@ const bindEvents = () => {
           track.pageview(state)
           window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
         }
+
         if (state.currentPage === state.length) {
           track.endcardEmbed()
           track.endcardVisible()
