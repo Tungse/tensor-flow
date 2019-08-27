@@ -10,19 +10,15 @@ describe('Init', () => {
     device: 'smartphone',
   })
 
-  it('calls mobile init function if device: "mobile" is set', () => {
-    test.only('init function is available', () => {
-      expect(initMobile).toBeCalled()
-    })
+  test('calls mobile init function if device: "mobile" is set', () => {
+    expect(initMobile).toBeCalled()
   })
 
   init({
-    device: 'smartphone',
+    device: 'desktop',
   })
 
-  it('calls mobile init function if device: "desktop" is set', () => {
-    test.only('init function is available', () => {
-      expect(initDesktop).toBeCalled()
-    })
+  test('calls desktop init function if device: "desktop" is set', () => {
+    expect(initDesktop).toBeCalled()
   })
 })
