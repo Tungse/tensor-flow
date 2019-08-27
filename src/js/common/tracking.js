@@ -16,7 +16,7 @@ export const pageview = (state) => {
       locationPath: state.data.itemListElement[state.currentPage - 1].item.url,
     })
   } catch (e) {
-    console.error('error: tracking.pageview()', e)
+    console.warn('error: tracking.pageview()', e)
   }
 }
 
@@ -34,7 +34,7 @@ export const listenToBackButtonClick = (state) => {
     try {
       window.smbt.emit('itemstream-back-btn-clicked', {currentPage: state.currentPage})
     } catch (e) {
-      console.error('error: tracking.listenToBackButtonClick()', e)
+      console.warn('error: tracking.listenToBackButtonClick()', e)
     }
   })
 }
@@ -47,7 +47,7 @@ export const endcardEmbed = () => {
   try {
     window.smbt.emit('itemstream-endcard-embed', {oid: window.smbContext.content.id})
   } catch (e) {
-    console.error('error: tracking.endcardEmbed()', e)
+    console.warn('error: tracking.endcardEmbed()', e)
   }
   trackedEmbed = true
 }
@@ -67,7 +67,7 @@ export const listenToEndcardVisible = () => {
       window.smbt.emit('itemstream-endcard-visible', {oid: window.smbContext.content.id})
     })
   } catch (e) {
-    console.error('error: tracking.listenToEndcardVisible()', e)
+    console.warn('error: tracking.listenToEndcardVisible()', e)
   }
   addedVisibleEventListerner = true
 }
@@ -92,7 +92,7 @@ export const listenToEndcardClick = () => {
           teaserCount: index,
         })
       } catch (e) {
-        console.error('error: tracking.listenToEndcardClick()', e)
+        console.warn('error: tracking.listenToEndcardClick()', e)
       }
     })
   })

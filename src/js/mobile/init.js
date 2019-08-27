@@ -36,7 +36,7 @@ const renderGallery = () => {
     try {
       settings.mounted(state)
     } catch (e) {
-      console.error('error: mobile init.mounted()', e)
+      console.warn('error: mobile init.mounted()', e)
     }
   }
 }
@@ -77,7 +77,7 @@ const bindEvents = () => {
           try {
             window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
           } catch (e) {
-            console.error('error: mobile init.bindEvents() pushState', e)
+            console.warn('error: mobile init.bindEvents() pushState', e)
           }
         }
 
@@ -91,7 +91,7 @@ const bindEvents = () => {
           try {
             window.iom.c(window.iam_data, settings.iamMode)
           } catch (e) {
-            console.error('error: mobile init.bindEvents() iom', e)
+            console.warn('error: mobile init.bindEvents() iom', e)
           }
         }
 
@@ -101,7 +101,7 @@ const bindEvents = () => {
           try {
             settings.changed(state)
           } catch (e) {
-            console.error('error: mobile init.bindEvents() changed', e)
+            console.warn('error: mobile init.bindEvents() changed', e)
           }
         }
       })
@@ -116,7 +116,7 @@ const bindEvents = () => {
           embedoInst.load(post, postUrl, { centerize: true })
         }, 200)
       } catch (e) {
-        console.error('error: mobile init.bindEvents() embedo', e)
+        console.warn('error: mobile init.bindEvents() embedo', e)
       }
     }
   })

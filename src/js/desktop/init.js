@@ -23,7 +23,7 @@ const init = (options, smbContext) => {
     try {
       settings.mounted(state)
     } catch (e) {
-      console.error('error: desktop init.init() mounted', e)
+      console.warn('error: desktop init.init() mounted', e)
     }
   }
 }
@@ -101,7 +101,7 @@ const goPrev = () => {
     try {
       window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
     } catch (e) {
-      console.error('error: desktop init.goPrev()', e)
+      console.warn('error: desktop init.goPrev()', e)
     }
 
     go()
@@ -117,7 +117,7 @@ const goNext = () => {
     try {
       window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
     } catch (e) {
-      console.error('error: desktop init.goNext()', e)
+      console.warn('error: desktop init.goNext()', e)
     }
 
     go()
@@ -138,7 +138,7 @@ const go = () => {
     try {
       window.iom.c(window.iam_data, settings.iamMode)
     } catch (e) {
-      console.error('error: desktop init.go() iom', e)
+      console.warn('error: desktop init.go() iom', e)
     }
   }
 
@@ -147,7 +147,7 @@ const go = () => {
       resetBodyStyles()
       window.adLoader('_reloadAds')
     } catch (e) {
-      console.error('error: desktop init.go() adLoader', e)
+      console.warn('error: desktop init.go() adLoader', e)
     }
   }
 
@@ -157,7 +157,7 @@ const go = () => {
     try {
       settings.changed(state)
     } catch (e) {
-      console.error('error: desktop init.go() changed', e)
+      console.warn('error: desktop init.go() changed', e)
     }
   }
 }
@@ -173,7 +173,7 @@ const resetBodyStyles = () => {
     try {
       window.bb.unload()
     } catch (e) {
-      console.error('error: desktop init.resetBodyStyles()', e)
+      console.warn('error: desktop init.resetBodyStyles()', e)
     }
   }
 }

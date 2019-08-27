@@ -13,6 +13,6 @@ export const initEmbedo = () => {
       pinterest: true,
     })
   } catch (e) {
-    console.error('error: embedo.initEmbedo()', e)
+    console.warn('error: embedo.initEmbedo()', e)
   }
 }
