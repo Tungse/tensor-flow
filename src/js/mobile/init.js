@@ -4,6 +4,7 @@ import { initEmbedo, embedoInst } from '../common/embedo.js'
 import renderGalleryItems from './render.js'
 import circulateAds from './ads.js'
 import Observer from 'smb-element-observer'
+import * as track from '../common/tracking'
 
 let settings = {}
 let state = {}
@@ -61,17 +62,28 @@ const scrollInitialItemIntoView = () => {
  * Bind events for intersection, popstate and tracking
  */
 const bindEvents = () => {
+  track.listenToBackButtonClick(state)
+
   state.galleryItems.forEach((elm, index) => {
     if (elm.querySelector('.smb-gallery-content')) {
       Observer.repeat(elm.querySelector('.smb-gallery-content'), () => {
         if (state.currentPage !== index + 1) {
           state.currentPage = index + 1
+          track.pageview(state)
           window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
         }
 
+        if (state.currentPage === state.length) {
+          track.endcardEmbed()
+          track.listenToEndcardVisible()
+          track.listenToEndcardClick()
+        }
+
         if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
-        window.iom.c(window.iam_data, settings.iamMode)
-      }circulateAds(state)
+          window.iom.c(window.iam_data, settings.iamMode)
+        }
+
+        circulateAds(state)
 
         if (typeof settings.changed === 'function') {
           settings.changed(state)

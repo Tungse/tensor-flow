@@ -1,5 +1,6 @@
 import getSettings from '../common/settings.js'
 import getState from '../common/state.js'
+import * as track from '../common/tracking.js'
 import { initEmbedo, embedoInst } from '../common/embedo.js'
 import { renderStage, renderContent } from './render.js'
 
@@ -51,6 +52,13 @@ const bindEvents = () => {
       goNext()
     })
   })
+
+  track.listenToBackButtonClick(state)
+  if (state.currentPage === state.length) {
+    track.endcardEmbed()
+    track.listenToEndcardVisible()
+    track.listenToEndcardClick()
+  }
 
   document.onkeydown = (e) => {
     switch (e.keyCode) {
@@ -114,10 +122,6 @@ const go = () => {
 
   window.scrollTo(0, 0)
 
-  if (typeof window.smbt !== 'undefined') {
-    window.smbt.emit('pageview')
-  }
-
   if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
     window.iom.c(window.iam_data, settings.iamMode)
   }
@@ -128,6 +132,8 @@ const go = () => {
       window.adLoader('_reloadAds')
     } catch (e) {}
   }
+
+  track.pageview(state)
 
   if (typeof settings.changed === 'function') {
     settings.changed(state)
