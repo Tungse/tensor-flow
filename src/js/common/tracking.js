@@ -16,7 +16,7 @@ export const pageview = (state) => {
   })
 }
 
-export const backButtonClick = (state) => {
+export const listenToBackButtonClick = (state) => {
   if (typeof window.smbt === 'undefined' || state.referrer === null) {
     return
   }
@@ -40,7 +40,7 @@ export const endcardEmbed = () => {
   trackedEmbed = true
 }
 
-export const endcardVisible = () => {
+export const listenToEndcardVisible = () => {
   if (typeof window.smbt === 'undefined' || addedVisibleEventListerner || !window.smbContext) {
     return
   }
@@ -56,7 +56,7 @@ export const endcardVisible = () => {
   addedVisibleEventListerner = true
 }
 
-export const endcardClick = () => {
+export const listenToEndcardClick = () => {
   if (typeof window.smbt === 'undefined' || addedClickEventListerner || !window.smbContext) {
     return
   }
@@ -66,13 +66,13 @@ export const endcardClick = () => {
     return
   }
 
-  endcardTeasers.forEach((endcardTeaser) => {
-    endcardTeaser.addEventListener('click', function (e) {
+  endcardTeasers.forEach((endcardTeaser, index) => {
+    endcardTeaser.addEventListener('click', function () {
       window.smbt.emit('itemstream-endcard-clicked', {
         id: endcardTeaser.getAttribute('data-post-id'),
         teaserType: 'auto',
         oid: window.smbContext.content.id,
-        teaserCount: endcardTeaser.getAttribute('data-index'),
+        teaserCount: index,
       })
     })
   })

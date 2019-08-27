@@ -59,7 +59,7 @@ const scrollInitialItemIntoView = () => {
  * Bind events for intersection, popstate and tracking
  */
 const bindEvents = () => {
-  track.backButtonClick(state)
+  track.listenToBackButtonClick(state)
 
   state.galleryItems.forEach((elm, index) => {
     if (elm.querySelector('.smb-gallery-content')) {
@@ -72,8 +72,8 @@ const bindEvents = () => {
 
         if (state.currentPage === state.length) {
           track.endcardEmbed()
-          track.endcardVisible()
-          track.endcardClick()
+          track.listenToEndcardVisible()
+          track.listenToEndcardClick()
         }
 
         if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {

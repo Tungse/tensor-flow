@@ -53,11 +53,11 @@ const bindEvents = () => {
     })
   })
 
-  track.backButtonClick(state)
+  track.listenToBackButtonClick(state)
   if (state.currentPage === state.length) {
     track.endcardEmbed()
-    track.endcardVisible()
-    track.endcardClick()
+    track.listenToEndcardVisible()
+    track.listenToEndcardClick()
   }
 
   document.onkeydown = (e) => {
