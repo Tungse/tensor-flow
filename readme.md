@@ -142,5 +142,10 @@ require('path_to_smb-gallery_desktop', function(smbGalleryDesktop) {
 ```
 
 ## 😋 Tips & tricks
+`iamMode` - Int
 
+Set the mode for the iom.c(data, iamMode) function. Docomented here: http://www.oewa.at/Implementierung#c1527
+- `0`: Default mode - using document.write()
+- `1`: Default mode - using AppendChild()
+- `2`: Default mode - using newImage()
 ## 🔌 API
