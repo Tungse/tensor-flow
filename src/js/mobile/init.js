@@ -40,8 +40,11 @@ const renderGallery = () => {
  * Apply gallers Items to HTML and to stateObject
  */
 const applyGalleryItems = () => {
-  document.querySelector(settings.contentSelector).innerHTML = renderGalleryItems(state)
+  var startTime = performance.now()
+  document.querySelector(settings.contentSelector).insertAdjacentHTML('beforeend', renderGalleryItems(state))
   state.galleryItems = document.querySelectorAll('.smb-gallery-item')
+  var endTime = performance.now()
+  console.info('Rendering Galleryitems took ' + (startTime - endTime) + ' Milliseconds.')
 }
 
 /**
