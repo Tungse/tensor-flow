@@ -41,10 +41,11 @@ const renderGallery = () => {
  * Apply gallers Items to HTML and to stateObject
  */
 const applyGalleryItems = () => {
-  var startTime = performance.now()
-  document.querySelector(settings.contentSelector).insertAdjacentHTML('beforeend', renderGalleryItems(state))
+  const startTime = performance.now()
+  const html = renderGalleryItems(state, settings)
+  document.querySelector(settings.contentSelector).insertAdjacentHTML('beforeend', html)
   state.galleryItems = document.querySelectorAll('.smb-gallery-item')
-  var endTime = performance.now()
+  const endTime = performance.now()
   console.info('Rendering Galleryitems took ' + (startTime - endTime) + ' Milliseconds.')
 }
 
@@ -83,7 +84,7 @@ const bindEvents = () => {
           window.iom.c(window.iam_data, settings.iamMode)
         }
 
-        circulateAds(state)
+        circulateAds(state, settings)
 
         if (typeof settings.changed === 'function') {
           settings.changed(state)

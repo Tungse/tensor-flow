@@ -141,11 +141,25 @@ require('path_to_smb-gallery_desktop', function(smbGalleryDesktop) {
 })
 ```
 
-## 😋 Tips & tricks
-`iamMode` - Int
+## 🔌 Options
 
-Set the mode for the iom.c(data, iamMode) function. Docomented here: http://www.oewa.at/Implementierung#c1527
+Here's the list of the options to change gallery behaviour:
+
+### `iamMode` - Int
+
+Set the mode for the iom.c(data, iamMode) function. Documented here: http://www.oewa.at/Implementierung#c1527
+
 - `0`: Default mode - using document.write()
 - `1`: Default mode - using AppendChild()
 - `2`: Default mode - using newImage()
-## 🔌 API
+
+### `adMode` - Int
+
+Set the mode for advertisement on mobile
+
+- `1`:  Ads named with `topmobile2`, `topmobile3`, `topmobile4`, `topmobile5`, `topmobile6`
+- `2`:  Ads named with `galleryad2`, `galleryad3`, `galleryad4`, `galleryad5`
+- default: `1`
+
+
+## 😋 Tips & tricks

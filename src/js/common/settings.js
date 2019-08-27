@@ -1,5 +1,6 @@
 const defaults = {
   iamMode: 2,
+  adMode: 1,
   dataSelector: '#galleryData',
   endcardSelector: '#endcardData',
   stageSelector: '#galleryStage',
