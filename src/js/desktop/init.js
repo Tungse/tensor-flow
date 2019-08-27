@@ -22,9 +22,7 @@ const init = (options, smbContext) => {
   if (typeof settings.mounted === 'function') {
     try {
       settings.mounted(state)
-    } catch (e) {
-      console.warn('smb-gallery: desktop init.init() mounted', e)
-    }
+    } catch (e) {}
   }
 }
 
@@ -39,9 +37,7 @@ const renderPage = () => {
 
   try {
     embedoInst.domify()
-  } catch (e) {
-    console.warn('smb-gallery: desktop init.renderPage() domify', e)
-  }
+  } catch (e) {}
 }
 
 /**
@@ -134,18 +130,14 @@ const go = () => {
   if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
     try {
       window.iom.c(window.iam_data, settings.iamMode)
-    } catch (e) {
-      console.warn('smb-gallery: desktop init.go() iom', e)
-    }
+    } catch (e) {}
   }
 
   if (typeof window.adLoader !== 'undefined') {
     try {
       resetBodyStyles()
       window.adLoader('_reloadAds')
-    } catch (e) {
-      console.warn('smb-gallery: desktop init.go() adLoader', e)
-    }
+    } catch (e) {}
   }
 
   track.pageview(state)
@@ -153,9 +145,7 @@ const go = () => {
   if (typeof settings.changed === 'function') {
     try {
       settings.changed(state)
-    } catch (e) {
-      console.warn('smb-gallery: desktop init.go() changed', e)
-    }
+    } catch (e) {}
   }
 }
 
@@ -169,9 +159,7 @@ const resetBodyStyles = () => {
   if (window.bb) {
     try {
       window.bb.unload()
-    } catch (e) {
-      console.warn('smb-gallery: desktop init.resetBodyStyles()', e)
-    }
+    } catch (e) {}
   }
 }
 

@@ -83,9 +83,7 @@ const assignAds = (state, itemsThatShouldHaveAds) => {
 const loadAd = (adContainer) => {
   try {
     window.adLoader('_loadAds', [adContainer])
-  } catch (e) {
-    console.warn('smb-gallery: mobile ads.loadAd()', e)
-  }
+  } catch (e) {}
 }
 
 /**
@@ -95,9 +93,7 @@ const loadAd = (adContainer) => {
 const unloadAd = (adContainer) => {
   try {
     window.adLoader('_removeAds', [adContainer], true)
-  } catch (e) {
-    console.warn('smb-gallery: mobile ads.unloadAd()', e)
-  }
+  } catch (e) {}
 }
 
 export default circulateAds

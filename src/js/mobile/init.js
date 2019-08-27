@@ -35,9 +35,7 @@ const renderGallery = () => {
   if (typeof settings.mounted === 'function') {
     try {
       settings.mounted(state)
-    } catch (e) {
-      console.warn('smb-gallery: mobile init.mounted()', e)
-    }
+    } catch (e) {}
   }
 }
 
@@ -86,9 +84,7 @@ const bindEvents = () => {
         if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
           try {
             window.iom.c(window.iam_data, settings.iamMode)
-          } catch (e) {
-            console.warn('smb-gallery: mobile init.bindEvents() iom', e)
-          }
+          } catch (e) {}
         }
 
         circulateAds(state)
@@ -96,9 +92,7 @@ const bindEvents = () => {
         if (typeof settings.changed === 'function') {
           try {
             settings.changed(state)
-          } catch (e) {
-            console.warn('smb-gallery: mobile init.bindEvents() changed', e)
-          }
+          } catch (e) {}
         }
       })
     }
@@ -110,9 +104,7 @@ const bindEvents = () => {
       Observer.once(elm, () => {
         try {
           embedoInst.load(post, postUrl, {centerize: true})
-        } catch (e) {
-          console.warn('smb-gallery: mobile init.bindEvents() embedo', e)
-        }
+        } catch (e) {}
       }, 200)
     }
   })

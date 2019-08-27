@@ -15,9 +15,7 @@ export const pageview = (state) => {
       itemsCount: state.length,
       locationPath: state.data.itemListElement[state.currentPage - 1].item.url,
     })
-  } catch (e) {
-    console.warn('smb-gallery: tracking.pageview()', e)
-  }
+  } catch (e) {}
 }
 
 export const listenToBackButtonClick = (state) => {
@@ -33,9 +31,7 @@ export const listenToBackButtonClick = (state) => {
   referrerButton.addEventListener('click', function () {
     try {
       window.smbt.emit('itemstream-back-btn-clicked', {currentPage: state.currentPage})
-    } catch (e) {
-      console.warn('smb-gallery: tracking.listenToBackButtonClick()', e)
-    }
+    } catch (e) {}
   })
 }
 
@@ -46,9 +42,7 @@ export const endcardEmbed = () => {
 
   try {
     window.smbt.emit('itemstream-endcard-embed', {oid: window.smbContext.content.id})
-  } catch (e) {
-    console.warn('smb-gallery: tracking.endcardEmbed()', e)
-  }
+  } catch (e) {}
   trackedEmbed = true
 }
 
@@ -65,9 +59,7 @@ export const listenToEndcardVisible = () => {
   Observer.once(endcardContainer, () => {
     try {
       window.smbt.emit('itemstream-endcard-visible', {oid: window.smbContext.content.id})
-    } catch (e) {
-      console.warn('smb-gallery: tracking.listenToEndcardVisible()', e)
-    }
+    } catch (e) {}
   })
   addedVisibleEventListerner = true
 }
@@ -91,9 +83,7 @@ export const listenToEndcardClick = () => {
           oid: window.smbContext.content.id,
           teaserCount: index,
         })
-      } catch (e) {
-        console.warn('smb-gallery: tracking.listenToEndcardClick()', e)
-      }
+      } catch (e) {}
     })
   })
   addedClickEventListerner = true
