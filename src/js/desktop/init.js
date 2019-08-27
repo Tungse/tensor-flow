@@ -134,8 +134,8 @@ const go = () => {
   }
 
   if (typeof window.adLoader !== 'undefined') {
+    resetBodyStyles()
     try {
-      resetBodyStyles()
       window.adLoader('_reloadAds')
     } catch (e) {}
   }
