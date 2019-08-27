@@ -16,51 +16,29 @@ const circulateAds = (state, settings) => {
 const determineItemsThatShouldHaveAds = (state, settings) => {
   let itemsThatShouldHaveAds = []
 
-  if (settings.adMode === 1) {
-    // page before
-    if (state.galleryItems[state.currentPage - 2]) {
-      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 2])
-    }
+  // page before
+  if (state.galleryItems[state.currentPage - 2]) {
+    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 2])
+  }
 
-    // current page
-    if (state.galleryItems[state.currentPage - 1]) {
-      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 1])
-    }
+  // current page
+  if (state.galleryItems[state.currentPage - 1]) {
+    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 1])
+  }
 
-    // current page + 1
-    if (state.galleryItems[state.currentPage]) {
-      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage])
-    }
+  // current page + 1
+  if (state.galleryItems[state.currentPage]) {
+    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage])
+  }
 
-    // current page + 2
-    if (state.galleryItems[state.currentPage + 1]) {
-      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 1])
-    }
+  // current page + 2
+  if (state.galleryItems[state.currentPage + 1]) {
+    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 1])
+  }
 
-    // current page + 3
-    if (state.galleryItems[state.currentPage + 2]) {
-      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 2])
-    }
-  } else {
-    // page before
-    if (state.galleryItems[state.currentPage - 2]) {
-      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 2])
-    }
-
-    // current page
-    if (state.galleryItems[state.currentPage - 1]) {
-      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 1])
-    }
-
-    // current page + 1
-    if (state.galleryItems[state.currentPage]) {
-      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage])
-    }
-
-    // current page + 2
-    if (state.galleryItems[state.currentPage + 1]) {
-      itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 1])
-    }
+  // current page + 3 (only if adMode = 1)
+  if (settings.adMode === 1 && state.galleryItems[state.currentPage + 2]) {
+    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 2])
   }
 
   return itemsThatShouldHaveAds
