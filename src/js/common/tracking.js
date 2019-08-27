@@ -30,7 +30,7 @@ export const listenToBackButtonClick = (state) => {
 
   referrerButton.addEventListener('click', function () {
     try {
-      window.smbt.emit('itemstream-back-btn-clicked', {currentPage: state.currentPage})
+      window.smbt.emit('itemstream-back-btn-clicked', { currentPage: state.currentPage })
     } catch (e) {}
   })
 }
@@ -41,7 +41,7 @@ export const endcardEmbed = () => {
   }
 
   try {
-    window.smbt.emit('itemstream-endcard-embed', {oid: window.smbContext.content.id})
+    window.smbt.emit('itemstream-endcard-embed', { oid: window.smbContext.content.id })
   } catch (e) {}
   trackedEmbed = true
 }
@@ -58,7 +58,7 @@ export const listenToEndcardVisible = () => {
 
   Observer.once(endcardContainer, () => {
     try {
-      window.smbt.emit('itemstream-endcard-visible', {oid: window.smbContext.content.id})
+      window.smbt.emit('itemstream-endcard-visible', { oid: window.smbContext.content.id })
     } catch (e) {}
   })
   addedVisibleEventListerner = true
