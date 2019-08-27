@@ -1,11 +1,16 @@
 const getData = (dataSelector) => {
-  const galleryContainer = document.querySelector(dataSelector)
+  const dataElement = document.querySelector(dataSelector)
 
-  if (galleryContainer === null) {
-    return {}
+  if (dataElement === null) {
+    throw 'data element not found'
   }
 
-  return JSON.parse(galleryContainer.innerHTML)
+  const data = dataElement.innerHTML
+  if (data.trim().length === 0) {
+    throw 'data is empty'
+  }
+
+  return JSON.parse(data)
 }
 
 export default getData

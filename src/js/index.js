@@ -7,10 +7,21 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const init = (options) => {
-  if (options && options.device === 'smartphone') {
-    mobile(options)
-  } else {
-    desktop(options)
+  try {
+    if (options && options.device === 'smartphone') {
+      mobile(options)
+    } else {
+      desktop(options)
+    }
+  } catch (e) {
+    renderErrorMessage(options)
+    console.error('smb-gallery: index.init()', e)
+  }
+}
+
+const renderErrorMessage = (options) => {
+  if (options && document.querySelector(options.contentSelector)) {
+    document.querySelector(options.contentSelector).innerHTML = 'Die Bilderstrecke kann nicht angezeigt werden.'
   }
 }
 

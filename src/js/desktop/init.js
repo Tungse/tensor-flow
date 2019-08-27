@@ -23,7 +23,7 @@ const init = (options, smbContext) => {
     try {
       settings.mounted(state)
     } catch (e) {
-      console.warn('error: desktop init.init() mounted', e)
+      console.warn('smb-gallery: desktop init.init() mounted', e)
     }
   }
 }
@@ -36,7 +36,12 @@ const renderPage = () => {
   document.querySelector(settings.stageSelector).innerHTML = renderStage(state, settings)
   document.querySelector(settings.contentSelector).innerHTML = renderContent(state, settings)
   bindEvents()
-  embedoInst.domify()
+
+  try {
+    embedoInst.domify()
+  } catch (e) {
+    console.warn('smb-gallery: desktop init.renderPage() domify', e)
+  }
 }
 
 /**
@@ -98,11 +103,7 @@ const bindEvents = () => {
 const goPrev = () => {
   if (state.currentPage > 1) {
     state.currentPage = state.currentPage - 1
-    try {
-      window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
-    } catch (e) {
-      console.warn('error: desktop init.goPrev()', e)
-    }
+    window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
 
     go()
   }
@@ -114,11 +115,7 @@ const goPrev = () => {
 const goNext = () => {
   if (state.currentPage < state.length) {
     state.currentPage = state.currentPage + 1
-    try {
-      window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
-    } catch (e) {
-      console.warn('error: desktop init.goNext()', e)
-    }
+    window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
 
     go()
   }
@@ -138,7 +135,7 @@ const go = () => {
     try {
       window.iom.c(window.iam_data, settings.iamMode)
     } catch (e) {
-      console.warn('error: desktop init.go() iom', e)
+      console.warn('smb-gallery: desktop init.go() iom', e)
     }
   }
 
@@ -147,7 +144,7 @@ const go = () => {
       resetBodyStyles()
       window.adLoader('_reloadAds')
     } catch (e) {
-      console.warn('error: desktop init.go() adLoader', e)
+      console.warn('smb-gallery: desktop init.go() adLoader', e)
     }
   }
 
@@ -157,7 +154,7 @@ const go = () => {
     try {
       settings.changed(state)
     } catch (e) {
-      console.warn('error: desktop init.go() changed', e)
+      console.warn('smb-gallery: desktop init.go() changed', e)
     }
   }
 }
@@ -173,7 +170,7 @@ const resetBodyStyles = () => {
     try {
       window.bb.unload()
     } catch (e) {
-      console.warn('error: desktop init.resetBodyStyles()', e)
+      console.warn('smb-gallery: desktop init.resetBodyStyles()', e)
     }
   }
 }

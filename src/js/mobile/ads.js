@@ -84,7 +84,7 @@ const loadAd = (adContainer) => {
   try {
     window.adLoader('_loadAds', [adContainer])
   } catch (e) {
-    console.warn('error: mobile ads.loadAd()', e)
+    console.warn('smb-gallery: mobile ads.loadAd()', e)
   }
 }
 
@@ -96,7 +96,7 @@ const unloadAd = (adContainer) => {
   try {
     window.adLoader('_removeAds', [adContainer], true)
   } catch (e) {
-    console.warn('error: mobile ads.unloadAd()', e)
+    console.warn('smb-gallery: mobile ads.unloadAd()', e)
   }
 }
 
