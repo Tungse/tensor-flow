@@ -92,7 +92,7 @@ export const renderContent = (state, settings) => {
       <div class="smb-gallery-btn-nav">
         <div>
         ${state.referrer && state.currentPage === 1 ? `
-          <a role="smb-gallery-back" class="btn btn-link smb-gallery-back" href="${state.referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
+          <a role="smb-gallery-referrer" class="btn btn-link smb-gallery-referrer" href="${state.referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
         ` : ''}
         </div>
         <div>
