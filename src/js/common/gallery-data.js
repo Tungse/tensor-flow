@@ -1,7 +1,11 @@
 const getData = (dataSelector) => {
-  const htmlString = document.querySelector(dataSelector).innerHTML
+  const galleryContainer = document.querySelector(dataSelector)
 
-  return JSON.parse(htmlString)
+  if (galleryContainer === null) {
+    return {}
+  }
+
+  return JSON.parse(galleryContainer.innerHTML)
 }
 
 export default getData

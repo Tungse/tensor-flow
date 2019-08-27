@@ -33,7 +33,11 @@ const renderGallery = () => {
   bindEvents()
 
   if (typeof settings.mounted === 'function') {
-    settings.mounted(state)
+    try {
+      settings.mounted(state)
+    } catch (e) {
+      console.error('error: mobile init.mounted()', e)
+    }
   }
 }
 
@@ -70,7 +74,11 @@ const bindEvents = () => {
         if (state.currentPage !== index + 1) {
           state.currentPage = index + 1
           track.pageview(state)
-          window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+          try {
+            window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+          } catch (e) {
+            console.error('error: mobile init.bindEvents() pushState', e)
+          }
         }
 
         if (state.currentPage === state.length) {
@@ -80,13 +88,21 @@ const bindEvents = () => {
         }
 
         if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
-          window.iom.c(window.iam_data, settings.iamMode)
+          try {
+            window.iom.c(window.iam_data, settings.iamMode)
+          } catch (e) {
+            console.error('error: mobile init.bindEvents() iom', e)
+          }
         }
 
         circulateAds(state)
 
         if (typeof settings.changed === 'function') {
-          settings.changed(state)
+          try {
+            settings.changed(state)
+          } catch (e) {
+            console.error('error: mobile init.bindEvents() changed', e)
+          }
         }
       })
     }
@@ -95,9 +111,13 @@ const bindEvents = () => {
       const post = elm.querySelector('[data-role="embedo"]')
       const postUrl = post.getAttribute('data-url')
 
-      Observer.once(elm, () => {
-        embedoInst.load(post, postUrl, { centerize: true })
-      }, 200)
+      try {
+        Observer.once(elm, () => {
+          embedoInst.load(post, postUrl, { centerize: true })
+        }, 200)
+      } catch (e) {
+        console.error('error: mobile init.bindEvents() embedo', e)
+      }
     }
   })
 }

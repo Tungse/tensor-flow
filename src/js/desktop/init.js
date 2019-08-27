@@ -20,7 +20,11 @@ const init = (options, smbContext) => {
   renderPage()
 
   if (typeof settings.mounted === 'function') {
-    settings.mounted(state)
+    try {
+      settings.mounted(state)
+    } catch (e) {
+      console.error('error: desktop init.init() mounted', e)
+    }
   }
 }
 
@@ -94,7 +98,11 @@ const bindEvents = () => {
 const goPrev = () => {
   if (state.currentPage > 1) {
     state.currentPage = state.currentPage - 1
-    window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
+    try {
+      window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
+    } catch (e) {
+      console.error('error: desktop init.goPrev()', e)
+    }
 
     go()
   }
@@ -106,7 +114,11 @@ const goPrev = () => {
 const goNext = () => {
   if (state.currentPage < state.length) {
     state.currentPage = state.currentPage + 1
-    window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
+    try {
+      window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
+    } catch (e) {
+      console.error('error: desktop init.goNext()', e)
+    }
 
     go()
   }
@@ -123,20 +135,30 @@ const go = () => {
   window.scrollTo(0, 0)
 
   if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
-    window.iom.c(window.iam_data, settings.iamMode)
+    try {
+      window.iom.c(window.iam_data, settings.iamMode)
+    } catch (e) {
+      console.error('error: desktop init.go() iom', e)
+    }
   }
 
   if (typeof window.adLoader !== 'undefined') {
     try {
       resetBodyStyles()
       window.adLoader('_reloadAds')
-    } catch (e) {}
+    } catch (e) {
+      console.error('error: desktop init.go() adLoader', e)
+    }
   }
 
   track.pageview(state)
 
   if (typeof settings.changed === 'function') {
-    settings.changed(state)
+    try {
+      settings.changed(state)
+    } catch (e) {
+      console.error('error: desktop init.go() changed', e)
+    }
   }
 }
 
@@ -148,7 +170,11 @@ const resetBodyStyles = () => {
   document.body.style = ''
 
   if (window.bb) {
-    window.bb.unload()
+    try {
+      window.bb.unload()
+    } catch (e) {
+      console.error('error: desktop init.resetBodyStyles()', e)
+    }
   }
 }
 

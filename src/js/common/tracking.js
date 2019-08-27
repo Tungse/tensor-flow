@@ -9,11 +9,15 @@ export const pageview = (state) => {
     return
   }
 
-  window.smbt.emit('itemstream-pageview', {
-    currentPage: state.currentPage,
-    itemsCount: state.length,
-    locationPath: state.data.itemListElement[state.currentPage - 1].item.url,
-  })
+  try {
+    window.smbt.emit('itemstream-pageview', {
+      currentPage: state.currentPage,
+      itemsCount: state.length,
+      locationPath: state.data.itemListElement[state.currentPage - 1].item.url,
+    })
+  } catch (e) {
+    console.error('error: tracking.pageview()', e)
+  }
 }
 
 export const listenToBackButtonClick = (state) => {
@@ -27,7 +31,11 @@ export const listenToBackButtonClick = (state) => {
   }
 
   referrerButton.addEventListener('click', function () {
-    window.smbt.emit('itemstream-back-btn-clicked', {currentPage: state.currentPage})
+    try {
+      window.smbt.emit('itemstream-back-btn-clicked', {currentPage: state.currentPage})
+    } catch (e) {
+      console.error('error: tracking.listenToBackButtonClick()', e)
+    }
   })
 }
 
@@ -36,7 +44,11 @@ export const endcardEmbed = () => {
     return
   }
 
-  window.smbt.emit('itemstream-endcard-embed', {oid: window.smbContext.content.id})
+  try {
+    window.smbt.emit('itemstream-endcard-embed', {oid: window.smbContext.content.id})
+  } catch (e) {
+    console.error('error: tracking.endcardEmbed()', e)
+  }
   trackedEmbed = true
 }
 
@@ -50,9 +62,13 @@ export const listenToEndcardVisible = () => {
     return
   }
 
-  Observer.once(endcardContainer, () => {
-    window.smbt.emit('itemstream-endcard-visible', {oid: window.smbContext.content.id})
-  })
+  try {
+    Observer.once(endcardContainer, () => {
+      window.smbt.emit('itemstream-endcard-visible', {oid: window.smbContext.content.id})
+    })
+  } catch (e) {
+    console.error('error: tracking.listenToEndcardVisible()', e)
+  }
   addedVisibleEventListerner = true
 }
 
@@ -68,12 +84,16 @@ export const listenToEndcardClick = () => {
 
   endcardTeasers.forEach((endcardTeaser, index) => {
     endcardTeaser.addEventListener('click', function () {
-      window.smbt.emit('itemstream-endcard-clicked', {
-        id: endcardTeaser.getAttribute('data-post-id'),
-        teaserType: 'auto',
-        oid: window.smbContext.content.id,
-        teaserCount: index,
-      })
+      try {
+        window.smbt.emit('itemstream-endcard-clicked', {
+          id: endcardTeaser.getAttribute('data-post-id'),
+          teaserType: 'auto',
+          oid: window.smbContext.content.id,
+          teaserCount: index,
+        })
+      } catch (e) {
+        console.error('error: tracking.listenToEndcardClick()', e)
+      }
     })
   })
   addedClickEventListerner = true

@@ -83,7 +83,9 @@ const assignAds = (state, itemsThatShouldHaveAds) => {
 const loadAd = (adContainer) => {
   try {
     window.adLoader('_loadAds', [adContainer])
-  } catch (e) {}
+  } catch (e) {
+    console.error('error: mobile ads.loadAd()', e)
+  }
 }
 
 /**
@@ -93,7 +95,9 @@ const loadAd = (adContainer) => {
 const unloadAd = (adContainer) => {
   try {
     window.adLoader('_removeAds', [adContainer], true)
-  } catch (e) {}
+  } catch (e) {
+    console.error('error: mobile ads.unloadAd()', e)
+  }
 }
 
 export default circulateAds
