@@ -74,7 +74,7 @@ const bindEvents = () => {
         if (state.currentPage !== index + 1) {
           state.currentPage = index + 1
           track.pageview(state)
-          window.history.pushState({page: state.currentPage}, '', '#page-' + state.currentPage)
+          window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
         }
 
         if (state.currentPage === state.length) {
