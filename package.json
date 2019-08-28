@@ -13,7 +13,8 @@
     "dev-desktop": "webpack-dev-server --open --env.device=desktop",
     "build": "webpack --config webpack.config.prod.js",
     "test": "jest",
-    "test-coverage": "jest --coverage"
+    "test-coverage": "jest --coverage",
+    "test-update": "jest --updateSnapshot"
   },
   "author": "",
   "license": "ISC",

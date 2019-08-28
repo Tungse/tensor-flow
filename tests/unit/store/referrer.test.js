@@ -1,4 +1,4 @@
-import getReferrer from '../../../src/js/common/referrer.js'
+import getReferrer from '../../../src/js/store/referrer.js'
 
 beforeAll(() => {
   global.window.smbContext = {
@@ -32,7 +32,7 @@ test('returns referrer if internal referrer', () => {
     configurable: true,
   })
   for (let testCase of testCases) {
-    global.window.sessionStorage.setItem('smb_via', JSON.stringify({targetId: testCase.viaId}))
+    global.window.sessionStorage.setItem('smb_via', JSON.stringify({ targetId: testCase.viaId }))
     global.window.smbContext.content.id = testCase.smbContextId
     expect(getReferrer()).toBe(testCase.expected)
   }

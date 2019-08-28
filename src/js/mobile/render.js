@@ -1,18 +1,19 @@
+import store from '../store/store.js'
 import Filer from 'filer-js-sdk'
 
 /**
  * Build template string for gallery
  * @return {string} template string
  */
-const renderGalleryItems = (state, settings) => {
+const renderGalleryItems = () => {
   return `
       <div class="smb-gallery-mobile">
-      ${state.referrer ? `
-        <a role="smb-gallery-referrer" class="btn btn-link smb-gallery-referrer" href="${state.referrer}">
+      ${store.get().referrer ? `
+        <a role="smb-gallery-referrer" class="btn btn-link smb-gallery-referrer" href="${store.get().referrer}">
           <i class="fas fa-angle-left"></i> zurück zum Artikel
         </a>
       ` : ''}
-      ${state.data.itemListElement.map((page, i) => `
+      ${store.get().data.itemListElement.map((page, i) => `
         <div class="smb-gallery-item">
         ${page.item['@type'] === 'Thing' ? `
           <div class="smb-gallery-content">
@@ -26,14 +27,14 @@ const renderGalleryItems = (state, settings) => {
             ${page.item.copyrightHolder ? `
               <small>Bildquelle: ${page.item.copyrightHolder}</small>
             ` : '<small></small>'}
-              <small>${i + 1} / ${state.length}</small>
+              <small>${i + 1} / ${store.get().galleryLength}</small>
             </div>
           </div>
           <div class="smb-gallery-content">
             ${page.item.description}
           </div>
           <div class="smb-gallery-ed-container">
-            <div data-slotname="${getSlotName(i, settings)}"></div>
+            <div data-slotname="${getSlotName(i)}"></div>
           </div>
         </div>
         `}
@@ -79,11 +80,10 @@ const renderMedia = (item) => {
 /**
  * Find slotname by index
  * @param  {Int} i
- * @param  {Object} state
  * @return {String}
  */
-const getSlotName = (i, settings) => {
-  if (settings.adMode === 1) {
+const getSlotName = (i) => {
+  if (store.get().settings.adMode === 1) {
     switch (i % 5) {
       case 0:
         return 'topmobile2'

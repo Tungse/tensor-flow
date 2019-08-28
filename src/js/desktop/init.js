@@ -1,11 +1,7 @@
-import getSettings from '../common/settings.js'
-import getState from '../common/state.js'
+import store from '../store/store.js'
 import * as track from '../common/tracking.js'
 import { initEmbedo, embedoInst } from '../common/embedo.js'
 import { renderStage, renderContent } from './render.js'
-
-let settings = {}
-let state = {}
 
 /**
  * set initial state and render page depending
@@ -14,13 +10,12 @@ let state = {}
  * @param  {object} smbContext
  */
 const init = (options, smbContext) => {
-  settings = getSettings(options)
-  state = getState(settings)
+  store.init(options)
   initEmbedo()
   renderPage()
 
-  if (typeof settings.mounted === 'function') {
-    settings.mounted(state)
+  if (typeof store.get().mounted === 'function') {
+    store.get().mounted(store.get())
   }
 }
 
@@ -29,8 +24,8 @@ const init = (options, smbContext) => {
  * Execute "afterPageRender"-callback if provided.
  */
 const renderPage = () => {
-  document.querySelector(settings.stageSelector).innerHTML = renderStage(state, settings)
-  document.querySelector(settings.contentSelector).innerHTML = renderContent(state, settings)
+  document.querySelector(store.get().settings.stageSelector).innerHTML = renderStage()
+  document.querySelector(store.get().settings.contentSelector).innerHTML = renderContent()
   bindEvents()
   embedoInst.domify()
 }
@@ -53,8 +48,9 @@ const bindEvents = () => {
     })
   })
 
-  track.listenToBackButtonClick(state)
-  if (state.currentPage === state.length) {
+  track.listenToBackButtonClick()
+
+  if (store.get().currentPage === store.get().galleryLength) {
     track.endcardEmbed()
     track.listenToEndcardVisible()
     track.listenToEndcardClick()
@@ -79,9 +75,13 @@ const bindEvents = () => {
 
   window.onpopstate = (e) => {
     if (e.state && e.state.page) {
-      state.currentPage = e.state.page
+      store.set({
+        currentPage: e.state.page,
+      })
     } else {
-      state.currentPage = 1
+      store.set({
+        currentPage: 1,
+      })
     }
 
     go()
@@ -92,9 +92,11 @@ const bindEvents = () => {
  * Set state to prev page push new page to history
  */
 const goPrev = () => {
-  if (state.currentPage > 1) {
-    state.currentPage = state.currentPage - 1
-    window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
+  if (store.get().currentPage > 1) {
+    store.set({
+      currentPage: store.get().currentPage - 1,
+    })
+    window.history.pushState({ page: store.get().currentPage }, '', `#page-${store.get().currentPage}`)
 
     go()
   }
@@ -104,9 +106,11 @@ const goPrev = () => {
  * Set state to next page push new page to history
  */
 const goNext = () => {
-  if (state.currentPage < state.length) {
-    state.currentPage = state.currentPage + 1
-    window.history.pushState({ page: state.currentPage }, '', `#page-${state.currentPage}`)
+  if (store.get().currentPage < store.get().galleryLength) {
+    store.set({
+      currentPage: store.get().currentPage + 1,
+    })
+    window.history.pushState({ page: store.get().currentPage }, '', `#page-${store.get().currentPage}`)
 
     go()
   }
@@ -123,7 +127,7 @@ const go = () => {
   window.scrollTo(0, 0)
 
   if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
-    window.iom.c(window.iam_data, settings.iamMode)
+    window.iom.c(window.iam_data, store.get().settings.iamMode)
   }
 
   if (typeof window.adLoader !== 'undefined') {
@@ -133,10 +137,10 @@ const go = () => {
     } catch (e) {}
   }
 
-  track.pageview(state)
+  track.pageview()
 
-  if (typeof settings.changed === 'function') {
-    settings.changed(state)
+  if (typeof store.get().settings.changed === 'function') {
+    store.get().settings.changed(store.get())
   }
 }
 
