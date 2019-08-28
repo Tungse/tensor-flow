@@ -12,7 +12,7 @@ export const pageview = () => {
 
   window.smbt.emit('itemstream-pageview', {
     currentPage: store.get().currentPage,
-    itemsCount: store.get().length,
+    itemsCount: store.get().galleryLength,
     locationPath: store.get().data.itemListElement[store.get().currentPage - 1].item.url,
   })
 }

@@ -25,7 +25,7 @@ const init = (options) => {
     data: data,
     galleryLength: data.itemListElement.length,
     referrer: getReferrer(),
-    currentPage: getInitalPage(store.galleryLength),
+    currentPage: getInitalPage(data.itemListElement.length),
   })
 }
 

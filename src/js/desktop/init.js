@@ -15,7 +15,7 @@ const init = (options, smbContext) => {
   renderPage()
 
   if (typeof store.get().mounted === 'function') {
-    store.get().mounted()
+    store.get().mounted(store.get())
   }
 }
 
@@ -93,7 +93,9 @@ const bindEvents = () => {
  */
 const goPrev = () => {
   if (store.get().currentPage > 1) {
-    store.get().currentPage = store.get().currentPage - 1
+    store.set({
+      currentPage: store.get().currentPage - 1,
+    })
     window.history.pushState({ page: store.get().currentPage }, '', `#page-${store.get().currentPage}`)
 
     go()
@@ -105,7 +107,9 @@ const goPrev = () => {
  */
 const goNext = () => {
   if (store.get().currentPage < store.get().galleryLength) {
-    store.get().currentPage = store.get().currentPage + 1
+    store.set({
+      currentPage: store.get().currentPage + 1,
+    })
     window.history.pushState({ page: store.get().currentPage }, '', `#page-${store.get().currentPage}`)
 
     go()
