@@ -1,16 +1,17 @@
+import store from '../store/store.js'
 import Filer from '../../../node_modules/filer-js-sdk/dist/filer.js'
 
 /**
  * Renders Stage depending on current state
  * @return {string} template string
  */
-export const renderStage = (state, settings) => {
-  const prevPage = state.data.itemListElement[state.currentPage - 2]
-  const page = state.data.itemListElement[state.currentPage - 1]
-  const nextPage = state.data.itemListElement[state.currentPage]
+export const renderStage = () => {
+  const prevPage = store.get().data.itemListElement[store.get().currentPage - 2]
+  const page = store.get().data.itemListElement[store.get().currentPage - 1]
+  const nextPage = store.get().data.itemListElement[store.get().currentPage]
 
   // on last page (endcard), we dont show stage
-  if (state.currentPage === state.length) {
+  if (store.get().currentPage === store.get().galleryLength) {
     return ''
   }
 
@@ -18,20 +19,20 @@ export const renderStage = (state, settings) => {
     <div class="smb-gallery-stage smb-gallery-desktop">
       <h2>${page.item.headline}</h2>
       <div class="smb-gallery-header">
-        ${state.currentPage > 1 ? `
+        ${store.get().currentPage > 1 ? `
           <a role="smb-gallery-prev" class="smb-gallery-nav smb-gallery-nav-left" href="${prevPage.item.url}">
             <div class="smb-gallery-button">
-              ${settings.prevIcon}
+              ${store.get().settings.prevIcon}
             </div>
           </a>
         ` : ''}
         <div class="smb-gallery-media ${page.item['@type']}">
           ${renderMedia(page.item)}
         </div>
-        ${state.currentPage < state.length ? `
+        ${store.get().currentPage < store.get().galleryLength ? `
           <a role="smb-gallery-next" class="smb-gallery-nav smb-gallery-nav-right" href="${nextPage.item.url}">
             <div class="smb-gallery-button">
-              ${settings.nextIcon}
+              ${store.get().settings.nextIcon}
             </div>
           </a>
         ` : ''}
@@ -39,7 +40,7 @@ export const renderStage = (state, settings) => {
           ${page.item.copyrightHolder ? `
           <small>Bildquelle: ${page.item.copyrightHolder}</small>
           ` : '<small></small>'}
-          <small>${state.currentPage} / ${state.length}</small>
+          <small>${store.get().currentPage} / ${store.get().galleryLength}</small>
         </div>
       </div>
 
@@ -82,8 +83,8 @@ const renderMedia = (item) => {
  * Renders Content depending on current state
  * @return {string} template string
  */
-export const renderContent = (state, settings) => {
-  const page = state.data.itemListElement[state.currentPage - 1]
+export const renderContent = () => {
+  const page = store.get().data.itemListElement[store.get().currentPage - 1]
 
   return `
     <div class="smg-gallery-body smb-gallery-desktop">
@@ -91,13 +92,13 @@ export const renderContent = (state, settings) => {
 
       <div class="smb-gallery-btn-nav">
         <div>
-        ${state.referrer && state.currentPage === 1 ? `
-          <a role="smb-gallery-referrer" class="btn btn-link smb-gallery-referrer" href="${state.referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
+        ${store.get().referrer && store.get().currentPage === 1 ? `
+          <a role="smb-gallery-referrer" class="btn btn-link smb-gallery-referrer" href="${store.get().referrer}"><i class="fas fa-angle-left"></i> zurück zum Artikel</a>
         ` : ''}
         </div>
         <div>
-          <a role="smb-gallery-prev" class="btn btn-primary ${state.currentPage === 1 ? 'disabled' : ''}" href="#"><i class="fas fa-angle-left"></i> zurück</a>
-          <a role="smb-gallery-next" class="btn btn-primary ${state.currentPage === state.length ? 'disabled' : ''}" href="#">weiter <i class="fas fa-angle-right"></i></a>
+          <a role="smb-gallery-prev" class="btn btn-primary ${store.get().currentPage === 1 ? 'disabled' : ''}" href="#"><i class="fas fa-angle-left"></i> zurück</a>
+          <a role="smb-gallery-next" class="btn btn-primary ${store.get().currentPage === store.get().galleryLength ? 'disabled' : ''}" href="#">weiter <i class="fas fa-angle-right"></i></a>
         </div>
       </div>
     </div>

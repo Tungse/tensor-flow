@@ -1,4 +1,5 @@
 import renderGalleryItems from '../../../src/js/mobile/render.js'
+import store from '../../../src/js/store/store.js'
 
 test('Gallery markup is rendered as expected', () => {
   const state = {
@@ -56,8 +57,12 @@ test('Gallery markup is rendered as expected', () => {
       ],
     },
     currentPage: 2,
+    settings: {
+      adMode: 1,
+    },
   }
+  store.set(state)
 
-  const tree = renderGalleryItems(state)
+  const tree = renderGalleryItems()
   expect(tree).toMatchSnapshot()
 })

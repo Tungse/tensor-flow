@@ -1,13 +1,9 @@
-import getSettings from '../common/settings.js'
-import getState from '../common/state.js'
+import store from '../store/store.js'
 import { initEmbedo, embedoInst } from '../common/embedo.js'
 import renderGalleryItems from './render.js'
 import circulateAds from './ads.js'
 import Observer from 'smb-element-observer'
 import * as track from '../common/tracking'
-
-let settings = {}
-let state = {}
 
 /**
  * set initial state and render page depending
@@ -16,8 +12,7 @@ let state = {}
  * @param  {object} smbContext
  */
 const init = (options, smbContext) => {
-  settings = getSettings(options)
-  state = getState(settings)
+  store.init(options)
   renderGallery()
   initEmbedo()
 }
@@ -32,9 +27,9 @@ const renderGallery = () => {
   scrollInitialItemIntoView()
   bindEvents()
 
-  if (typeof settings.mounted === 'function') {
+  if (typeof store.get().settings.mounted === 'function') {
     try {
-      settings.mounted(state)
+      store.get().settings.mounted(store.get())
     } catch (e) {}
   }
 }
@@ -43,10 +38,15 @@ const renderGallery = () => {
  * Apply gallers Items to HTML and to stateObject
  */
 const applyGalleryItems = () => {
-  var startTime = performance.now()
-  document.querySelector(settings.contentSelector).insertAdjacentHTML('beforeend', renderGalleryItems(state))
-  state.galleryItems = document.querySelectorAll('.smb-gallery-item')
-  var endTime = performance.now()
+  const startTime = performance.now()
+
+  const html = renderGalleryItems()
+  document.querySelector(store.get().settings.contentSelector).insertAdjacentHTML('beforeend', html)
+  store.set({
+    galleryItems: document.querySelectorAll('.smb-gallery-item'),
+  })
+
+  const endTime = performance.now()
   console.info('Rendering Galleryitems took ' + (startTime - endTime) + ' Milliseconds.')
 }
 
@@ -55,8 +55,8 @@ const applyGalleryItems = () => {
  * into the viewport
  */
 const scrollInitialItemIntoView = () => {
-  if (state.currentPage > 1) {
-    state.galleryItems[state.currentPage - 1].scrollIntoView()
+  if (store.get().currentPage > 1) {
+    store.get().galleryItems[store.get().currentPage - 1].scrollIntoView()
   }
 }
 
@@ -64,18 +64,20 @@ const scrollInitialItemIntoView = () => {
  * Bind events for intersection, popstate and tracking
  */
 const bindEvents = () => {
-  track.listenToBackButtonClick(state)
+  track.listenToBackButtonClick()
 
-  state.galleryItems.forEach((elm, index) => {
+  store.get().galleryItems.forEach((elm, index) => {
     if (elm.querySelector('.smb-gallery-content')) {
       Observer.repeat(elm.querySelector('.smb-gallery-content'), () => {
-        if (state.currentPage !== index + 1) {
-          state.currentPage = index + 1
-          track.pageview(state)
-          window.history.pushState({ page: state.currentPage }, '', '#page-' + state.currentPage)
+        if (store.get().currentPage !== index + 1) {
+          store.set({
+            currentPage: index + 1,
+          })
+          track.pageview()
+          window.history.pushState({ page: store.get().currentPage }, '', '#page-' + store.get().currentPage)
         }
 
-        if (state.currentPage === state.length) {
+        if (store.get().currentPage === store.get().galleryLength) {
           track.endcardEmbed()
           track.listenToEndcardVisible()
           track.listenToEndcardClick()
@@ -83,15 +85,15 @@ const bindEvents = () => {
 
         if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
           try {
-            window.iom.c(window.iam_data, settings.iamMode)
+            window.iom.c(window.iam_data, store.get().settings.iamMode)
           } catch (e) {}
         }
 
-        circulateAds(state)
+        circulateAds()
 
-        if (typeof settings.changed === 'function') {
+        if (typeof store.get().settings.changed === 'function') {
           try {
-            settings.changed(state)
+            store.get().settings.changed(store.get())
           } catch (e) {}
         }
       })

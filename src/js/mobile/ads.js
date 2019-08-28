@@ -1,40 +1,46 @@
+import store from '../store/store.js'
+
 /**
  * Find all galleryItems that should have ads and load them.
  * Find all galleryItems that should not have ads and remove them.
  */
-const circulateAds = (state) => {
-  const itemsThatShouldHaveAds = determineItemsThatShouldHaveAds(state)
+const circulateAds = () => {
+  const itemsThatShouldHaveAds = determineItemsThatShouldHaveAds()
 
-  unAssignAds(state, itemsThatShouldHaveAds)
-  assignAds(state, itemsThatShouldHaveAds)
+  unAssignAds(itemsThatShouldHaveAds)
+  assignAds(itemsThatShouldHaveAds)
 }
 
 /**
  * Returns Array with galleryItems that should have ads.
- * We select current page, page before, next page and page after next page
  * @return {Array} [description]
  */
-const determineItemsThatShouldHaveAds = (state) => {
+const determineItemsThatShouldHaveAds = () => {
   let itemsThatShouldHaveAds = []
 
   // page before
-  if (state.galleryItems[state.currentPage - 2]) {
-    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 2])
+  if (store.get().galleryItems[store.get().currentPage - 2]) {
+    itemsThatShouldHaveAds.push(store.get().galleryItems[store.get().currentPage - 2])
   }
 
   // current page
-  if (state.galleryItems[state.currentPage - 1]) {
-    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage - 1])
+  if (store.get().galleryItems[store.get().currentPage - 1]) {
+    itemsThatShouldHaveAds.push(store.get().galleryItems[store.get().currentPage - 1])
   }
 
-  // next page
-  if (state.galleryItems[state.currentPage]) {
-    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage])
+  // current page + 1
+  if (store.get().galleryItems[store.get().currentPage]) {
+    itemsThatShouldHaveAds.push(store.get().galleryItems[store.get().currentPage])
   }
 
-  // page after next page
-  if (state.galleryItems[state.currentPage + 1]) {
-    itemsThatShouldHaveAds.push(state.galleryItems[state.currentPage + 1])
+  // current page + 2
+  if (store.get().galleryItems[store.get().currentPage + 1]) {
+    itemsThatShouldHaveAds.push(store.get().galleryItems[store.get().currentPage + 1])
+  }
+
+  // current page + 3 (only if adMode = 1)
+  if (store.get().settings.adMode === 1 && store.get().galleryItems[store.get().currentPage + 2]) {
+    itemsThatShouldHaveAds.push(store.get().galleryItems[store.get().currentPage + 2])
   }
 
   return itemsThatShouldHaveAds
@@ -45,8 +51,8 @@ const determineItemsThatShouldHaveAds = (state) => {
  * if not we can remove Ads from it
  * @param  {Array} itemsThatShouldHaveAds
  */
-const unAssignAds = (state, itemsThatShouldHaveAds) => {
-  state.galleryItems.forEach((elm, index) => {
+const unAssignAds = (itemsThatShouldHaveAds) => {
+  store.get().galleryItems.forEach((elm, index) => {
     if (!itemsThatShouldHaveAds.includes(elm)) {
       const adContainer = elm.querySelector('[data-slotname]')
 
@@ -63,7 +69,7 @@ const unAssignAds = (state, itemsThatShouldHaveAds) => {
  * if not we can load it
  * @param  {Array} itemsThatShouldHaveAds
  */
-const assignAds = (state, itemsThatShouldHaveAds) => {
+const assignAds = (itemsThatShouldHaveAds) => {
   itemsThatShouldHaveAds.forEach((elm, i) => {
     const adContainer = elm.querySelector('[data-slotname]')
 

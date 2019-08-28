@@ -1,4 +1,5 @@
 import { renderStage, renderContent } from '../../../src/js/desktop/render.js'
+import store from '../../../src/js/store/store.js'
 
 test('Gallery markup is rendered as expected', () => {
   const state = {
@@ -25,10 +26,11 @@ test('Gallery markup is rendered as expected', () => {
     },
     currentPage: 1,
   }
+  store.set(state)
 
-  const stage = renderStage(state)
+  const stage = renderStage()
   expect(stage).toMatchSnapshot()
 
-  const content = renderContent(state)
+  const content = renderContent()
   expect(content).toMatchSnapshot()
 })
