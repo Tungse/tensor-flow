@@ -19,6 +19,12 @@ $nav-link-horizontal-padding: 25px;
     }
   }
 
+  .smb-gallery-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .smb-gallery-nav-right {
     right: 0;
     padding-left: $nav-link-horizontal-padding;
