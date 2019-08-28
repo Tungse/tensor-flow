@@ -11,14 +11,10 @@ test('getData reads data from document json-ld', () => {
       },
     },
     {
-      innerHTML: `<script type="application/ld+json" id="some-data">
-          {
-            "@context": "http://schema.org",
-          }
-        </script>`,
+      innerHTML: `<script type="application/ld+json" id="data"></script>`,
       expected: () => {
         expect(() => {
-          getData('#data')
+          getData('#not-exist')
         }).toThrow('data element not found')
       },
     },
