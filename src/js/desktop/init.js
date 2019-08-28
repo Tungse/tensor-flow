@@ -15,7 +15,9 @@ const init = (options, smbContext) => {
   renderPage()
 
   if (typeof store.get().mounted === 'function') {
-    store.get().mounted(store.get())
+    try {
+      store.get().mounted(store.get())
+    } catch (e) {}
   }
 }
 
@@ -27,7 +29,10 @@ const renderPage = () => {
   document.querySelector(store.get().settings.stageSelector).innerHTML = renderStage()
   document.querySelector(store.get().settings.contentSelector).innerHTML = renderContent()
   bindEvents()
-  embedoInst.domify()
+
+  try {
+    embedoInst.domify()
+  } catch (e) {}
 }
 
 /**
@@ -127,12 +132,14 @@ const go = () => {
   window.scrollTo(0, 0)
 
   if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
-    window.iom.c(window.iam_data, store.get().settings.iamMode)
+    try {
+      window.iom.c(window.iam_data, store.get().settings.iamMode)
+    } catch (e) {}
   }
 
   if (typeof window.adLoader !== 'undefined') {
+    resetBodyStyles()
     try {
-      resetBodyStyles()
       window.adLoader('_reloadAds')
     } catch (e) {}
   }
@@ -140,7 +147,9 @@ const go = () => {
   track.pageview()
 
   if (typeof store.get().settings.changed === 'function') {
-    store.get().settings.changed(store.get())
+    try {
+      store.get().settings.changed(store.get())
+    } catch (e) {}
   }
 }
 
@@ -152,7 +161,9 @@ const resetBodyStyles = () => {
   document.body.style = ''
 
   if (window.bb) {
-    window.bb.unload()
+    try {
+      window.bb.unload()
+    } catch (e) {}
   }
 }
 

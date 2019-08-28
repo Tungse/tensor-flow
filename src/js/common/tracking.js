@@ -10,11 +10,13 @@ export const pageview = () => {
     return
   }
 
-  window.smbt.emit('itemstream-pageview', {
-    currentPage: store.get().currentPage,
-    itemsCount: store.get().galleryLength,
-    locationPath: store.get().data.itemListElement[store.get().currentPage - 1].item.url,
-  })
+  try {
+    window.smbt.emit('itemstream-pageview', {
+      currentPage: store.get().currentPage,
+      itemsCount: store.get().galleryLength,
+      locationPath: store.get().data.itemListElement[store.get().currentPage - 1].item.url,
+    })
+  } catch (e) {}
 }
 
 export const listenToBackButtonClick = () => {
@@ -28,7 +30,9 @@ export const listenToBackButtonClick = () => {
   }
 
   referrerButton.addEventListener('click', function () {
-    window.smbt.emit('itemstream-back-btn-clicked', { currentPage: store.get().currentPage })
+    try {
+      window.smbt.emit('itemstream-back-btn-clicked', { currentPage: store.get().currentPage })
+    } catch (e) {}
   })
 }
 
@@ -37,7 +41,9 @@ export const endcardEmbed = () => {
     return
   }
 
-  window.smbt.emit('itemstream-endcard-embed', { oid: window.smbContext.content.id })
+  try {
+    window.smbt.emit('itemstream-endcard-embed', { oid: window.smbContext.content.id })
+  } catch (e) {}
   trackedEmbed = true
 }
 
@@ -52,7 +58,9 @@ export const listenToEndcardVisible = () => {
   }
 
   Observer.once(endcardContainer, () => {
-    window.smbt.emit('itemstream-endcard-visible', { oid: window.smbContext.content.id })
+    try {
+      window.smbt.emit('itemstream-endcard-visible', { oid: window.smbContext.content.id })
+    } catch (e) {}
   })
   addedVisibleEventListerner = true
 }
@@ -69,12 +77,14 @@ export const listenToEndcardClick = () => {
 
   endcardTeasers.forEach((endcardTeaser, index) => {
     endcardTeaser.addEventListener('click', function () {
-      window.smbt.emit('itemstream-endcard-clicked', {
-        id: endcardTeaser.getAttribute('data-post-id'),
-        teaserType: 'auto',
-        oid: window.smbContext.content.id,
-        teaserCount: index,
-      })
+      try {
+        window.smbt.emit('itemstream-endcard-clicked', {
+          id: endcardTeaser.getAttribute('data-post-id'),
+          teaserType: 'auto',
+          oid: window.smbContext.content.id,
+          teaserCount: index,
+        })
+      } catch (e) {}
     })
   })
   addedClickEventListerner = true

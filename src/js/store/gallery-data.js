@@ -1,7 +1,16 @@
 const getData = (dataSelector) => {
-  const htmlString = document.querySelector(dataSelector).innerHTML
+  const dataElement = document.querySelector(dataSelector)
 
-  return JSON.parse(htmlString)
+  if (dataElement === null) {
+    throw new Error('data element not found')
+  }
+
+  const data = dataElement.innerHTML
+  if (data.trim().length === 0) {
+    throw new Error('data is empty')
+  }
+
+  return JSON.parse(data)
 }
 
 export default getData

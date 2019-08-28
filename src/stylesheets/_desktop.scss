@@ -1,6 +1,4 @@
 $nav-link-horizontal-padding: 25px;
-$nav-link-button-bg: rgba(0, 0, 0, .15);
-$nav-link-button-bg-hover: rgba(0, 0, 0, .3);
 
 .smb-gallery-desktop {
   .smb-gallery-header {
@@ -18,22 +16,13 @@ $nav-link-button-bg-hover: rgba(0, 0, 0, .3);
 
     &:hover {
       text-decoration: none;
-
-      .smb-gallery-button {
-        background-color: $nav-link-button-bg-hover;
-      }
     }
   }
 
   .smb-gallery-button {
-    height: 120px;
-    width: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $nav-link-button-bg;
-    font-size: 4rem;
-    color: #fff;
   }
 
   .smb-gallery-nav-right {

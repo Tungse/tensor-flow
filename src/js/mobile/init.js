@@ -28,7 +28,9 @@ const renderGallery = () => {
   bindEvents()
 
   if (typeof store.get().settings.mounted === 'function') {
-    store.get().settings.mounted(store.get())
+    try {
+      store.get().settings.mounted(store.get())
+    } catch (e) {}
   }
 }
 
@@ -82,13 +84,17 @@ const bindEvents = () => {
         }
 
         if (typeof window.iom !== 'undefined' && typeof window.iom.c === 'function' && typeof window.iam_data !== 'undefined') {
-          window.iom.c(window.iam_data, store.get().settings.iamMode)
+          try {
+            window.iom.c(window.iam_data, store.get().settings.iamMode)
+          } catch (e) {}
         }
 
         circulateAds()
 
         if (typeof store.get().settings.changed === 'function') {
-          store.get().settings.changed(store.get())
+          try {
+            store.get().settings.changed(store.get())
+          } catch (e) {}
         }
       })
     }
@@ -98,7 +104,9 @@ const bindEvents = () => {
       const postUrl = post.getAttribute('data-url')
 
       Observer.once(elm, () => {
-        embedoInst.load(post, postUrl, { centerize: true })
+        try {
+          embedoInst.load(post, postUrl, {centerize: true})
+        } catch (e) {}
       }, 200)
     }
   })
