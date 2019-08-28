@@ -42,6 +42,7 @@ module.exports = (env) => {
     },
     devServer: {
       contentBase: path.join(__dirname, 'dist'),
+      port: env.port,
     },
     plugins: [
       new CleanWebpackPlugin(),

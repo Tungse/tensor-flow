@@ -9,6 +9,7 @@
   },
   "main": "src/index.js",
   "scripts": {
+    "dev": "webpack-dev-server --open --env.device=desktop --env.port=3000 & webpack-dev-server --open --env.device=mobile --env.port=7000",
     "dev-mobile": "webpack-dev-server --open --env.device=mobile",
     "dev-desktop": "webpack-dev-server --open --env.device=desktop",
     "build": "webpack --config webpack.config.prod.js",
