@@ -1,3 +1,1 @@
-# SMB PHONE PLAN
-
----
+# smb-phone-plan
