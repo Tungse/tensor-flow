@@ -41,12 +41,12 @@ module.exports = [
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: 'smb-gallery.css',
+        filename: 'smb-phone-plan.css',
       }),
     ],
     output: {
-      library: 'smbGallery',
-      filename: 'smb-gallery.js',
+      library: 'smbPhonePlan',
+      filename: 'smb-phone-plan.js',
       libraryTarget: 'umd',
       libraryExport: 'default',
       path: path.resolve(__dirname, 'dist/'),

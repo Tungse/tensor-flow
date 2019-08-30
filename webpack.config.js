@@ -42,22 +42,18 @@ module.exports = (env) => {
     },
     devServer: {
       contentBase: path.join(__dirname, 'dist'),
-      port: env.port,
     },
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        title: 'smb-gallery development',
+        title: 'smb-phone-plan development',
         template: 'index.html',
         inject: 'head',
-        env: {
-          device: env.device,
-        },
       }),
     ],
     output: {
-      library: 'smbGallery',
-      filename: 'smb-gallery.bundle.js',
+      library: 'smbPhonePlan',
+      filename: 'smb-phone-plan.bundle.js',
       libraryTarget: 'var',
       libraryExport: 'default',
       path: path.resolve(__dirname, 'dist/'),

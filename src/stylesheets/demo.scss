@@ -1,35 +1,10 @@
-$nav-link-button-bg: rgba(0, 0, 0, .15);
-$nav-link-button-bg-hover: rgba(0, 0, 0, .3);
-
-.smb-gallery-desktop {
-  .smb-gallery-button {
-    height: 120px;
-    width: 60px;
-    background-color: $nav-link-button-bg;
-    font-size: 4rem;
-    color: #fff;
-  }
-
-  .smb-gallery-nav {
-    &:hover {
-      .smb-gallery-button {
-        background-color: $nav-link-button-bg-hover;
-      }
-    }
-  }
+body {
+  background: #f2f2f2;
 }
 
-.smb-gallery-header {
-  width: 940px;
-}
-
-// Image lazyload
-// ---------------------------
-.lazyload {
-  opacity: 0;
-  transition: opacity .3s;
-
-  &.loaded {
-    opacity: 1;
-  }
+.smb-phone-plan-container {
+  padding: 25px;
+  background: #fff;
+  max-width: 675px;
+  margin: 50px auto;
 }

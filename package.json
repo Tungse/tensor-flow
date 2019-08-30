@@ -1,17 +1,15 @@
 {
-  "name": "@smb/gallery",
+  "name": "@smb/phone-plan",
   "description": "",
-  "version": "0.4.5",
-  "homepage": "https://github.com/smb-ag/smb-gallery",
+  "version": "0.0.0",
+  "homepage": "https://github.com/smb-ag/smb-phone-plan",
   "repository": {
     "type": "git",
-    "url": "https://github.com/smb-ag/smb-gallery.git"
+    "url": "https://github.com/smb-ag/smb-phone-plan.git"
   },
   "main": "src/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --env.device=desktop --env.port=3000 & webpack-dev-server --open --env.device=mobile --env.port=7000",
-    "dev-mobile": "webpack-dev-server --open --env.device=mobile",
-    "dev-desktop": "webpack-dev-server --open --env.device=desktop",
+    "dev": "webpack-dev-server --open",
     "build": "webpack --config webpack.config.prod.js",
     "test": "jest",
     "test-coverage": "jest --coverage",
@@ -46,11 +44,7 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
   },
-  "dependencies": {
-    "embedo": "^1.12.0",
-    "filer-js-sdk": "^1.0.5",
-    "smb-element-observer": "^1.1.0"
-  },
+  "dependencies": {},
   "jest": {
     "testURL": "https://www.example.com/",
     "collectCoverageFrom": [

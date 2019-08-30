@@ -1,0 +1,27 @@
+.smb-phone-plan-deals {
+  margin-top: 25px;
+
+  .list-group {
+    margin: 0;
+  }
+
+  .listing-text {
+    height: 40px;
+    display: inline-block;
+  }
+
+  .listing-price {
+    width: 20%;
+    float: right;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .better-options {
+    margin-top: 10px;
+
+    span {
+      margin-right: 10px;
+    }
+  }
+}
