@@ -44,7 +44,9 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "xml2js": "^0.4.19"
+  },
   "jest": {
     "testURL": "https://www.example.com/",
     "collectCoverageFrom": [

@@ -1,8 +1,8 @@
 let store = {}
-let history = []
 
 const defaultOptions = {
   container: '#smb-phone-plan',
+  endpoint: 'http://tools.communicationads.net/webservice.php?wf=10506&format=xml&calc=handytarif&country=DE',
 }
 
 const init = (options) => {
@@ -25,23 +25,6 @@ const init = (options) => {
           '++ Netzabdeckung',
         ],
       },
-      {
-        title: 'Bester Preis im gleichen Netz',
-        id: 'Super Tarif',
-        price: '6.99€',
-        options: [
-          '+++ Datenvolumen',
-          '++ Telefon Flatrate',
-        ],
-      },
-      {
-        title: 'Bessere Konditionen zum gleichen Preis',
-        id: 'O2 Free Unlimited',
-        price: '2.99€',
-        options: [
-          '+++ Datenvolumen',
-        ],
-      },
     ],
     checked: false,
     resultCategory: 0, // 0 = bad, 1 = ok, 2 = good
@@ -49,6 +32,7 @@ const init = (options) => {
     balance: '0', // how much more € user is paying
     emailSended: false,
     container: container,
+    endpoint: settings.endpoint,
   })
 }
 
@@ -58,7 +42,6 @@ const get = () => {
 
 const set = (action) => {
   store = Object.assign({}, store, action)
-  history.push(store)
 }
 
 const setResult = (formularData) => {

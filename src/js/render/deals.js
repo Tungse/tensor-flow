@@ -2,6 +2,7 @@ import store from '../store/store.js'
 
 const renderDeals = () => {
   const deals = document.querySelector('[data-role="smb-phone-plan-deals"]')
+
   deals.innerHTML = `
     <ul class="list-group">
       ${store.get().deals.map((deal, index) => `
