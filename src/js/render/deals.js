@@ -9,16 +9,16 @@ const renderDeals = () => {
         <li class="list-group-item">
           <div class="listing-text">
             <h4>${deal.title}</h4>
-            <p>${deal.id}</p>
+            <p>${deal.id} von <b>${deal.company}</b></p>
           </div>
-          <div class="listing-price">${deal.price}</div>
+          <div class="listing-price">${deal.price}€</div>
           <div class="clearfix">
             <div class="better-options pull-left">
               ${deal.options.map((option, index) => `
                 <span>${option}</span>
               `.trim()).join('')}
             </div>
-            <button class="btn btn-primary pull-right">Zum Angebot</button>
+            <a class="btn btn-primary pull-right" href="${deal.link}" target="_blank">Zum Angebot</a>
           </div>
         </li>
       `.trim()).join('')}

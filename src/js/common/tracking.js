@@ -1,25 +1,45 @@
 import store from '../store/store.js'
 import Observer from 'smb-element-observer'
 
-let trackedEmbed = false
-let addedVisibleEventListerner = false
-let addedClickEventListerner = false
-
-export const pageview = () => {
-  if (typeof window.smbt === 'undefined') {
+export const embed = () => {
+  if (typeof window.smbt === 'undefined' || !window.smbContext) {
     return
   }
 
   try {
-    window.smbt.emit('itemstream-pageview', {
-      currentPage: store.get().currentPage,
-      itemsCount: store.get().galleryLength,
-      locationPath: store.get().data.itemListElement[store.get().currentPage - 1].item.url,
+    window.smbt.emit('custom-event', {
+      hitType: 'event',
+      eventCategory: '',
+      eventAction: 'embed',
+      eventLabel: '',
+      dimension39: '',
+      metric75: 1,
+      nonInteraction: true,
     })
   } catch (e) {}
 }
 
-export const listenToBackButtonClick = () => {
+export const listenToVisibleEvent = () => {
+  if (typeof window.smbt === 'undefined' || !window.smbContext) {
+    return
+  }
+
+  Observer.once(store.get().container, () => {
+    try {
+      window.smbt.emit('custom-event', {
+        hitType: 'event',
+        eventCategory: '',
+        eventAction: 'visible',
+        eventLabel: '',
+        dimension39: '',
+        metric75: 1,
+        nonInteraction: true,
+      })
+    } catch (e) {}
+  })
+}
+
+export const listenToClickEvents = () => {
   if (typeof window.smbt === 'undefined' || store.get().referrer === null) {
     return
   }
@@ -34,58 +54,4 @@ export const listenToBackButtonClick = () => {
       window.smbt.emit('itemstream-back-btn-clicked', { currentPage: store.get().currentPage })
     } catch (e) {}
   })
-}
-
-export const endcardEmbed = () => {
-  if (typeof window.smbt === 'undefined' || trackedEmbed || !window.smbContext) {
-    return
-  }
-
-  try {
-    window.smbt.emit('itemstream-endcard-embed', { oid: window.smbContext.content.id })
-  } catch (e) {}
-  trackedEmbed = true
-}
-
-export const listenToEndcardVisible = () => {
-  if (typeof window.smbt === 'undefined' || addedVisibleEventListerner || !window.smbContext) {
-    return
-  }
-
-  const endcardContainer = document.querySelector('[role="smb-gallery-endcard"]')
-  if (endcardContainer === null) {
-    return
-  }
-
-  Observer.once(endcardContainer, () => {
-    try {
-      window.smbt.emit('itemstream-endcard-visible', { oid: window.smbContext.content.id })
-    } catch (e) {}
-  })
-  addedVisibleEventListerner = true
-}
-
-export const listenToEndcardClick = () => {
-  if (typeof window.smbt === 'undefined' || addedClickEventListerner || !window.smbContext) {
-    return
-  }
-
-  const endcardTeasers = document.querySelectorAll('[role="smb-gallery-endcard-teaser"]')
-  if (endcardTeasers.length === 0) {
-    return
-  }
-
-  endcardTeasers.forEach((endcardTeaser, index) => {
-    endcardTeaser.addEventListener('click', function () {
-      try {
-        window.smbt.emit('itemstream-endcard-clicked', {
-          id: endcardTeaser.getAttribute('data-post-id'),
-          teaserType: 'auto',
-          oid: window.smbContext.content.id,
-          teaserCount: index,
-        })
-      } catch (e) {}
-    })
-  })
-  addedClickEventListerner = true
 }

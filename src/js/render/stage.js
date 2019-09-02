@@ -5,31 +5,31 @@ const renderStage = () => {
     <div class="smb-phone-plan-container">
       <div class="smb-phone-plan-header">
         <h3 class="smb-phone-plan-title">Teste deinen Tarif!</h3>
-        <img class="smb-phone-plan-logo" src="https://www.giga.de/static-local/dist/assets/images/logos/giga.svg" alt="">
+        <img class="smb-phone-plan-logo" src="${store.get().logo}" alt="">
       </div>
       <div class="smb-phone-plan-formular" data-role="smb-phone-plan-formular">
        <div class="form-group">
-          <select class="form-control" data-role="smb-phone-plan-providers" required>
+          <select class="form-control" data-role="smb-phone-plan-companies" required>
             <option value="">Netz</option>
-            <option>O2</option>
-            <option>Vodafone</option>
-            <option>Telekom</option>
+            <option value="o2">O2</option>
+            <option value="vodafone">Vodafone</option>
+            <option value="telekom">Telekom</option>
           </select>
         </div>
         <div class="form-group">
           <select class="form-control" data-role="smb-phone-plan-volume" required>
             <option value="">Datenvolumen</option>
-            <option>unter 1GB</option>
-            <option>1GB</option>
-            <option>2GB</option>
-            <option>3GB</option>
-            <option>4GB</option>
-            <option>5GB</option>
-            <option>10GB</option>
+            <option value="0.5">unter 1GB</option>
+            <option value="1">1GB</option>
+            <option value="2">2GB</option>
+            <option value="3">3GB</option>
+            <option value="4">4GB</option>
+            <option value="5">5GB</option>
+            <option value="10">10GB</option>
           </select>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Preis pro Monat" value="" data-role="smb-phone-plan-price" required>
+          <input type="number" class="form-control" placeholder="Preis pro Monat" value="" data-role="smb-phone-plan-price" required>
         </div>
         <div class="form-group clearfix">
           <div class="col-md-6">
