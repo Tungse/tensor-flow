@@ -1,4 +1,5 @@
 import store from '../store/store.js'
+import * as track from '../common/tracking.js'
 
 const renderDeals = () => {
   const deals = document.querySelector('[data-role="smb-phone-plan-deals"]')
@@ -10,6 +11,9 @@ const renderDeals = () => {
           <div class="listing-text">
             <h4>${deal.title}</h4>
             <p>${deal.id} von <b>${deal.company}</b></p>
+            ${deal.productInfoUrl ? `
+              <p><a href="${deal.productInfoUrl}" target="_blank">Mehr Information zum Tarif</a></p>
+            ` : ``}
           </div>
           <div class="listing-price">${deal.price}€</div>
           <div class="clearfix">
@@ -18,12 +22,14 @@ const renderDeals = () => {
                 <span>${option}</span>
               `.trim()).join('')}
             </div>
-            <a class="btn btn-primary pull-right" href="${deal.link}" target="_blank">Zum Angebot</a>
+            <a class="btn btn-primary pull-right" data-role="smb-phone-plan-affiliate-link" href="${deal.link}" target="_blank">Zum Angebot</a>
           </div>
         </li>
       `.trim()).join('')}
     </ul>
   `
+
+  track.listenToAffiliateLinkClick()
 }
 
 export default renderDeals

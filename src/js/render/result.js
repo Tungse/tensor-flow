@@ -1,4 +1,5 @@
 import store from '../store/store.js'
+import * as track from '../common/tracking.js'
 
 const renderResult = () => {
   const content = getContentByResult()
@@ -12,7 +13,7 @@ const renderResult = () => {
         <div class="smb-phone-plan-progress-bar ${content.progressClass}" data-role="smb-phone-plan-progress-bar"></div>
       </div>
       ${store.get().resultCategory < 2 ? `
-        <strong class="smb-phone-plan-result-message">Dein Tarif ist ${content.categoryText}. Du zahlst ${store.get().balance}€ zu viel im Monat. Hier gibt es bessere Alternativen:</strong>
+        <strong class="smb-phone-plan-result-message">Dein Tarif ist ${content.categoryText}. Du zahlst ${store.get().priceDiffence}€ zu viel im Monat. Hier gibt es bessere Alternativen:</strong>
       ` : `
         <strong class="smb-phone-plan-result-message">Herzlichen Glückwünsch. Du hast einen tollen Tarif.</strong>
         ${store.get().emailSended === false ? `
@@ -32,7 +33,7 @@ const renderResult = () => {
       `}
     `
 
-    setProgressBarTransition(store.get().resultProcent)
+    setProgressBarTransition(store.get().resultPercent)
     listenToSendEmailClick()
   }
 }
@@ -76,6 +77,7 @@ const listenToSendEmailClick = () => {
 
     emailForm.innerHTML = `<p>Vielen Dank.</p>`
     store.set({ emailSended: true })
+    track.sendEmail()
   })
 }
 

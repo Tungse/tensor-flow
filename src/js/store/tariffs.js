@@ -44,6 +44,7 @@ const cleanData = (data) => {
       volume: product.mobileweb_volume.toString().replace('GB', '').trim(),
       company: product.company.toString().toLowerCase(),
       link: product.link.toString(),
+      productInfoUrl: product.url_moreinfo.toString(),
       lte: product.mobileweb_lte.toString(),
       phone: product.services_phone.toString(),
       sms: product.services_sms.toString(),

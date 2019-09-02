@@ -3,7 +3,7 @@ import * as track from './common/tracking.js'
 import store from './store/store.js'
 import getTariffs from './store/tariffs.js'
 import renderStage from './render/stage.js'
-import {renderProcessing, removeProcessing} from './render/processing.js'
+import { renderProcessing, removeProcessing } from './render/processing.js'
 import renderResult from './render/result.js'
 import renderDeals from './render/deals.js'
 
@@ -12,39 +12,21 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const init = (options) => {
-  store.init(options)
-  renderStage()
-  listenToCheckClick()
-  listenToEnterClick()
-  track.embed()
-  track.listenToVisibleEvent()
-  track.listenToClickEvents()
   try {
+    store.init(options)
+    renderStage()
+    listenToCheckClick()
+    listenToEnterClick()
+    track.embed()
+    track.listenToVisibleEvent()
   } catch (e) {
     console.error('smb-phone-plan: index.init()', e)
-  }
-}
-
-const listenToCheckClick = () => {
-  const checkButton = document.querySelector('[data-role="smb-phone-plan-check"]')
-
-  checkButton.addEventListener('click', () => {
-    calculate()
-  })
-}
-
-const listenToEnterClick = () => {
-  document.onkeydown = (e) => {
-    if (e.keyCode === 13) {
-      calculate()
-    }
   }
 }
 
 const calculate = () => {
   // TODO add some validation
 
-  store.set({ deals: [] })
   if (store.get().checked === false) {
     renderProcessing()
   }
@@ -56,6 +38,28 @@ const calculate = () => {
     renderResult()
     renderDeals()
   })
+}
+
+const listenToCheckClick = () => {
+  const checkButton = document.querySelector('[data-role="smb-phone-plan-check"]')
+
+  if (checkButton === null) {
+    return
+  }
+
+  checkButton.addEventListener('click', () => {
+    calculate()
+    track.checkButtonClick()
+  })
+}
+
+const listenToEnterClick = () => {
+  document.onkeydown = (e) => {
+    if (e.keyCode === 13) {
+      calculate()
+      track.checkButtonClick()
+    }
+  }
 }
 
 const getFormularData = () => {
