@@ -20,6 +20,7 @@ export const embed = () => {
       eventAction: 'embed',
       eventLabel: eventLabel,
       nonInteraction: true,
+      metric82: 1,
     })
   } catch (e) {}
 }
@@ -40,6 +41,7 @@ export const listenToVisibleEvent = () => {
         eventAction: 'visible',
         eventLabel: eventLabel,
         nonInteraction: true,
+        metric83: 1,
       })
     } catch (e) {}
   })
@@ -59,39 +61,32 @@ export const checkButtonClick = () => {
       eventCategory: eventCategory,
       eventAction: 'Check button clicked',
       eventLabel: eventLabel,
+      metric85: 1,
     })
   } catch (e) {}
 }
 
 /**
- * add event listerner to track formular interaction. Only one tracking event is fired at all.
+ * add event listerner to track formular value changed
  */
-export const listenToFormularInteraction = () => {
-  if (typeof window.smbt === 'undefined' || formularInteractionTracked) {
+export const listenToFormularInputChanged = (formularItem) => {
+  if (typeof window.smbt === 'undefined') {
     return
   }
 
-  const formularItems = document.querySelectorAll('[data-role="smb-phone-plan-formular-item"]')
-
-  for (let i = 0; i < formularItems.length; i++) {
-    const formularItem = formularItems[i]
-
-    formularItem.addEventListener('change', () => {
-      onChangeCallback(formularItem)
-    })
-  }
+  formularItem.addEventListener('change', () => {
+    removeFormularInteractionListerner(formularItem)
+    trackFormularInputChanged()
+  })
 }
 
 /**
  * track formular interaction only once
- * @param formularItem
  */
-const onChangeCallback = (formularItem) => {
-  removeFormularInteractionListerner(formularItem)
+const trackFormularInputChanged = () => {
   if (formularInteractionTracked) {
     return
   }
-  formularInteractionTracked = true
 
   try {
     window.smbt.emit('custom-event', {
@@ -99,8 +94,11 @@ const onChangeCallback = (formularItem) => {
       eventCategory: eventCategory,
       eventAction: 'clicked',
       eventLabel: eventLabel,
+      metric84: 1,
     })
   } catch (e) {}
+
+  formularInteractionTracked = true
 }
 
 /**
@@ -109,29 +107,33 @@ const onChangeCallback = (formularItem) => {
  */
 const removeFormularInteractionListerner = (formularItem) => {
   formularItem.removeEventListener('change', () => {
-    onChangeCallback(formularItem)
+    removeFormularInteractionListerner(formularItem)
+    trackFormularInputChanged()
   })
 }
 
-// TODO maybe not here but with  Affiliate-CTR-Tracking
+/**
+ * add event listerner to track click event on affiliate links
+ */
 export const listenToAffiliateLinkClick = () => {
   if (typeof window.smbt === 'undefined') {
     return
   }
 
-  const links = document.querySelectorAll('[role="smb-phone-plan-affiliate-link"]')
+  const links = document.querySelectorAll('[data-role="smb-phone-plan-affiliate-link"]')
   if (links.length === 0) {
     return
   }
 
-  links.forEach((link) => {
+  links.forEach((link, index) => {
     link.addEventListener('click', function () {
       try {
         window.smbt.emit('custom-event', {
           hitType: 'event',
           eventCategory: eventCategory,
-          eventAction: 'clicked',
+          eventAction: `Offer button ${index + 1} clicked`,
           eventLabel: eventLabel,
+          metric86: 1,
         })
       } catch (e) {}
     })

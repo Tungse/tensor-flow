@@ -28,7 +28,7 @@ const setTimerToResolvePromise = (resolve) => {
     }
 
     resolve()
-  }, 3000)
+  }, 300)
 }
 
 /**

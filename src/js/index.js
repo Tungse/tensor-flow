@@ -1,12 +1,12 @@
 import '../stylesheets/imports.scss'
-import * as track from './common/tracking.js'
-import validateFormularData from './common/validation.js'
 import store from './store/store.js'
 import getTariffs from './store/tariffs.js'
-import renderStage from './render/stage.js'
-import { renderProcessing, removeProcessing } from './render/processing.js'
-import renderResult from './render/result.js'
 import renderDeals from './render/deals.js'
+import renderResult from './render/result.js'
+import * as track from './common/tracking.js'
+import { validateFormularData } from './common/validation.js'
+import { renderProcessing, removeProcessing } from './render/processing.js'
+import { renderStage, blurFormular, unBlurFormular } from './render/stage.js'
 
 if (process.env.NODE_ENV === 'development') {
   import('../stylesheets/demo.scss')
@@ -22,12 +22,12 @@ const init = (options) => {
     renderStage()
     listenToCheckClick()
     listenToEnterClick()
-    track.embed()
-    track.listenToVisibleEvent()
-    track.listenToFormularInteraction()
+    listenToFormularInteraction()
   } catch (e) {
     console.error('smb-phone-plan: index.init()', e)
   }
+  track.embed()
+  track.listenToVisibleEvent()
 }
 
 /**
@@ -42,6 +42,7 @@ const calculate = () => {
   if (store.get().calculated === false) {
     renderProcessing()
   }
+  blurFormular()
   getTariffs().then(() => {
     store.setResult(formularData)
   }).then(() => {
@@ -77,6 +78,32 @@ const listenToEnterClick = () => {
       track.checkButtonClick()
     }
   }
+}
+
+/**
+ * add event listerner to track formular interaction.
+ */
+export const listenToFormularInteraction = () => {
+  const formularItems = document.querySelectorAll('[data-role="smb-phone-plan-formular-item"]')
+
+  for (let i = 0; i < formularItems.length; i++) {
+    const formularItem = formularItems[i]
+
+    listenToFormularFocussed(formularItem)
+    track.listenToFormularInputChanged(formularItem)
+  }
+}
+
+/**
+ * unblur formular if one of the inputs are focussed and formular is already blur
+ * @param formularItem
+ */
+const listenToFormularFocussed = (formularItem) => {
+  formularItem.addEventListener('focus', () => {
+    if (store.get().calculated) {
+      unBlurFormular()
+    }
+  })
 }
 
 export default init

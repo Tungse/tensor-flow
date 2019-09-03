@@ -1,26 +1,18 @@
 .smb-phone-plan-deals {
+  .smb-phone-plan-deal-title {
+    margin: 0 0 15px;
+  }
+
   .smb-phone-plan-deals-list {
-    margin: 25px 0 0;
+    margin: 20px 0 0;
   }
 
-  // TODO use prefixes or bootstrap classes
-  .listing-text {
-    height: 40px;
-    display: inline-block;
+  .smb-phone-plan-deal-item {
+    padding: 15px 0;
   }
 
-  .listing-price {
-    width: 20%;
-    float: right;
+  .smb-phone-plan-deal-price {
     font-size: 30px;
-    text-align: center;
-  }
-
-  .better-options {
-    margin-top: 10px;
-
-    span {
-      margin-right: 10px;
-    }
+    margin-bottom: 6.5px;
   }
 }

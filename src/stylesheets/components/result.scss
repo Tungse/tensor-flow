@@ -1,17 +1,12 @@
 .smb-phone-plan-progress {
   width: 100%;
   height: 40px;
-  background: #eee;
-  margin-bottom: 25px;
+  background: #fff;
+  margin-bottom: 20px;
 }
 
 .smb-phone-plan-progress-bar {
   width: 0;
   height: 100%;
   transition: width 1s linear;
-}
-
-.smb-phone-plan-result-message {
-  display: block;
-  margin-bottom: 12.5px;
 }

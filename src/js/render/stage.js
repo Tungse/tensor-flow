@@ -3,23 +3,25 @@ import store from '../store/store.js'
 /**
  * render phone plan stage, initially with formular and placeholder for next steps
  */
-const renderStage = () => {
+export const renderStage = () => {
   store.get().container.innerHTML = `
-    <div class="panel panel-default smb-phone-plan-container">
-      <div class="panel-heading smb-phone-plan-header">
+    <div class="smb-phone-plan-container">
+      <div class="smb-phone-plan-header">
         <h3 class="smb-phone-plan-title">Teste deinen Tarif!</h3>
         <img class="smb-phone-plan-logo" src="${store.get().logo}" alt="">
       </div>
-      <div class="panel-body">
-        <div class="smb-phone-plan-formular">
+      <div class="smb-phone-plan-body">
+        <div class="smb-phone-plan-formular" data-role="smb-phone-plan-formular">
           <div class="form-group">
             <input type="number" class="form-control" placeholder="Preis pro Monat" value="" data-role="smb-phone-plan-formular-item" data-name="price" data-required="1">
           </div>
           <div class="row">
             <div class="form-group col-sm-6">
               <select class="form-control" data-role="smb-phone-plan-formular-item" data-name="companies" data-required="1">
-                <option value="">Netz</option>
+                <option value="">Anbieter</option>
                 <option value="o2">O2</option>
+                <option value="1und1">1 & 1</option>
+                <option value="blau">Blau</option>
                 <option value="vodafone">Vodafone</option>
                 <option value="telekom">Telekom</option>
               </select>
@@ -33,6 +35,8 @@ const renderStage = () => {
                 <option value="3">3GB</option>
                 <option value="4">4GB</option>
                 <option value="5">5GB</option>
+                <option value="6">6GB</option>
+                <option value="8">8GB</option>
                 <option value="10">10GB</option>
               </select>
             </div>
@@ -57,4 +61,28 @@ const renderStage = () => {
   `
 }
 
-export default renderStage
+/**
+ * remove blur class of formular
+ */
+export const unBlurFormular = () => {
+  const formular = document.querySelector('[data-role="smb-phone-plan-formular"]')
+
+  if (formular === null) {
+    return
+  }
+
+  formular.classList.remove('blur')
+}
+
+/**
+ * add blur class to formular
+ */
+export const blurFormular = () => {
+  const formular = document.querySelector('[data-role="smb-phone-plan-formular"]')
+
+  if (formular === null) {
+    return
+  }
+
+  formular.classList.add('blur')
+}

@@ -2,7 +2,7 @@
  * validate formular and return input values
  * @returns {{}}
  */
-const validateFormularData = () => {
+export const validateFormularData = () => {
   let error = false
   let formularData = {}
   const formularItems = document.querySelectorAll('[data-role="smb-phone-plan-formular-item"]')
@@ -33,4 +33,12 @@ const validateFormularData = () => {
   return formularData
 }
 
-export default validateFormularData
+/**
+ * validate email input
+ * @param email
+ * @returns {boolean}
+ */
+export const validateEmail = (email) => {
+  const regex = /\S+@\S+\.\S+/
+  return regex.test(email)
+}

@@ -26,18 +26,18 @@ export const getDeals = (tariffs, formularData) => {
     const tarifVolume = parseFloat(tarif.volume)
 
     if (tarifPrice < initialPrice) {
-      setDeal('Günstigste Alternative', tarif)
+      setDeal(0, tarif)
       initialPrice = tarifPrice
       setPriceDiffence(userPrice, tarifPrice)
       continue
     }
     if (tarif.company === formularData.company && tarifPrice < userPrice) {
-      setDeal('Bester Preis im gleichen Netz', tarif)
+      setDeal(1, tarif)
       continue
     }
     // TODO calculation is not perfect
     if (tarifVolume > initialVolume && tarifPrice < userPrice) {
-      setDeal('Bessere Konditionen', tarif)
+      setDeal(2, tarif)
       initialVolume = tarifVolume
     }
   }
@@ -47,19 +47,21 @@ export const getDeals = (tariffs, formularData) => {
 
 /**
  * add/update matching deals
- * @param title
+ * @param category
  * @param tarif
  */
-const setDeal = (title, tarif) => {
-  const index = getDealIndexByTitle(title)
+const setDeal = (category, tarif) => {
+  const texts = getTextsByDealCategory(category, tarif)
+  const index = getDealIndexByCategory(category)
   const deal = {
     id: tarif.id,
-    title: title,
     link: tarif.link,
+    category: category,
+    title: texts.title,
     company: tarif.company,
+    description: texts.description,
     productInfoUrl: tarif.productInfoUrl,
     price: parseFloat(tarif.price).toFixed(2),
-    options: [],
   }
 
   if (index > -1) {
@@ -67,6 +69,31 @@ const setDeal = (title, tarif) => {
   } else {
     deals.push(deal)
   }
+}
+
+/**
+ * return title and description of the deal
+ * @param category
+ * @param tarif
+ * @returns {{description: string, title: string}}
+ */
+const getTextsByDealCategory = (category, tarif) => {
+  let texts = {
+    title: 'Günstigste Alternative',
+    description: `Hier kann Beschreibungstext für die günstigste Alternative stehen, mit link zum Datenblatt für den Tarif ${tarif.id}`,
+  }
+
+  if (category === 1) {
+    texts.title = 'Bester Preis im gleichen Netz'
+    texts.description = `Hier kann Beschreibungstext für den bester Preis im gleichen Netz stehen, mit link zum Datenblatt für den Tarif ${tarif.id}`
+  }
+
+  if (category === 2) {
+    texts.title = 'Bessere Konditionen'
+    texts.description = `Hier kann Beschreibungstext für die bessere Konditionen stehen, mit link zum Datenblatt für den Tarif ${tarif.id}`
+  }
+
+  return texts
 }
 
 /**
@@ -78,12 +105,12 @@ export const resetDeals = () => {
 
 /**
  * check if deal is already in deals
- * @param title
+ * @param category
  * @returns {string|number}
  */
-const getDealIndexByTitle = (title) => {
+const getDealIndexByCategory = (category) => {
   for (let index in deals) {
-    if (deals[index].title === title) {
+    if (deals[index].category === category) {
       return index
     }
   }
