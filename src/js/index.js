@@ -17,15 +17,16 @@ if (process.env.NODE_ENV === 'development') {
  * @param options
  */
 const init = (options) => {
-  try {
-    store.init(options)
-    renderStage()
-    listenToCheckClick()
-    listenToEnterClick()
-    listenToFormularInteraction()
-  } catch (e) {
-    console.error('smb-phone-plan: index.init()', e)
+  store.init(options)
+
+  if (store.get().container === null) {
+    return
   }
+
+  renderStage()
+  listenToCheckClick()
+  listenToEnterClick()
+  listenToFormularInteraction()
   track.embed()
   track.listenToVisibleEvent()
 }

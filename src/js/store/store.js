@@ -14,23 +14,18 @@ const defaultOptions = {
  */
 const init = (options) => {
   const settings = Object.assign({}, defaultOptions, options)
-  const container = document.querySelector(settings.container)
-
-  if (container === null) {
-    throw new Error('container does not exist')
-  }
 
   set({
     deals: [],
     tariffs: [],
     calculated: false,
     emailSended: false,
-    resultCategory: 0, // 0 = bad, 1 = ok, 2 = good
+    resultCategory: 0, // 0 = bad, 1 = bad, 2 = good
     resultPercent: 0, // width of progress-bar
     priceDiffence: '0', // how much more € user is paying
-    container: container,
     logo: settings.logo,
     endpoint: settings.endpoint,
+    container: document.querySelector(settings.container),
   })
 }
 

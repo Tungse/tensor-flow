@@ -57,7 +57,7 @@ const getContentByResult = () => {
   }
 
   if (store.get().resultCategory === 1) {
-    content.categoryText = 'ok'
+    content.categoryText = 'schlecht'
     content.progressClass = 'bg-warning'
   }
 

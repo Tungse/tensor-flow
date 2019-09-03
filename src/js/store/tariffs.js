@@ -28,7 +28,7 @@ const setTimerToResolvePromise = (resolve) => {
     }
 
     resolve()
-  }, 300)
+  }, 3000)
 }
 
 /**
@@ -73,16 +73,12 @@ const cleanData = (data) => {
 
   data.handytarif.product.forEach((product) => {
     items.push({
+      link: product.link.toString(),
       id: product.product.toString(),
+      productInfoUrl: product.url_moreinfo.toString(),
+      company: product.company.toString().toLowerCase(),
       price: product.cost_pm.toString().replace(',', '.'),
       volume: product.mobileweb_volume.toString().replace('GB', '').trim(),
-      company: product.company.toString().toLowerCase(),
-      link: product.link.toString(),
-      productInfoUrl: product.url_moreinfo.toString(),
-      lte: product.mobileweb_lte.toString(),
-      phone: product.services_phone.toString(),
-      sms: product.services_sms.toString(),
-      period: product.contract_period.toString(),
     })
   })
 

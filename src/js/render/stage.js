@@ -12,8 +12,9 @@ export const renderStage = () => {
       </div>
       <div class="smb-phone-plan-body">
         <div class="smb-phone-plan-formular" data-role="smb-phone-plan-formular">
-          <div class="form-group">
-            <input type="number" class="form-control" placeholder="Preis pro Monat" value="" data-role="smb-phone-plan-formular-item" data-name="price" data-required="1">
+          <div class="form-group input-group">
+            <input type="number" class="form-control" placeholder="Wieviel zahlst du pro Monat" value="" data-role="smb-phone-plan-formular-item" data-name="price" data-required="1">
+            <div class="input-group-addon">€</div>
           </div>
           <div class="row">
             <div class="form-group col-sm-6">
@@ -43,12 +44,16 @@ export const renderStage = () => {
           </div>
           <div class="row form-group clearfix">
             <div class="col-sm-6">
-              <input type="checkbox" class="custom-control-input" data-role="smb-phone-plan-formular-item" data-name="lte">
-              <label class="custom-control-label">&nbsp;LTE</label>
+              <label class="custom-control-label">
+                <input type="checkbox" class="custom-control-input" data-role="smb-phone-plan-formular-item" data-name="lte">
+                &nbsp;LTE
+              </label>
             </div>
             <div class="col-sm-6">
-              <input type="checkbox" class="custom-control-input" data-role="smb-phone-plan-formular-item" data-name="flatrate">
-              <label class="custom-control-label">&nbsp;Telefon Flatrate</label>
+              <label class="custom-control-label">
+                <input type="checkbox" class="custom-control-input" data-role="smb-phone-plan-formular-item" data-name="flatrate">
+                &nbsp;Telefon Flatrate
+              </label>
             </div>
           </div>
           <button class="btn btn-primary btn-block" data-role="smb-phone-plan-check">Jetzt prüfen!</button>
