@@ -1,3 +1,7 @@
+/**
+ * return random facts
+ * @returns {string}
+ */
 const getRandomFacts = () => {
   const facts = [
     'Gewusst? 81% aller Deutschen benutzen ein Smartphone.',
@@ -9,6 +13,9 @@ const getRandomFacts = () => {
   return facts[Math.floor(Math.random() * facts.length)]
 }
 
+/**
+ * render processing with a random fact
+ */
 export const renderProcessing = () => {
   const processing = document.querySelector('[data-role="smb-phone-plan-processing"]')
 
@@ -27,6 +34,9 @@ export const renderProcessing = () => {
   }
 }
 
+/**
+ * remove processing
+ */
 export const removeProcessing = () => {
   const processing = document.querySelector('[data-role="smb-phone-plan-processing"]')
 

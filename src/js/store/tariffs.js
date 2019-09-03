@@ -2,38 +2,72 @@ import store from './store.js'
 import xml2js from 'xml2js'
 import fallbackData from '../data/communicationads.json'
 
+/**
+ * request XML data from API and set tariffs in store
+ * @returns {Promise}
+ */
 const getTariffs = () => {
   return new Promise(function (resolve, reject) {
-    if (store.get().tariffs.length > 0) {
+    if (store.get().calculated) {
       resolve()
+      return
     }
-    const request = new XMLHttpRequest()
-    request.open('GET', store.get().endpoint, true)
-    request.onreadystatechange = () => {
-      if (request.readyState === request.DONE && request.status === 200) {
-        convertXMLToJSON(resolve, request.response)
-      }
-    }
-    request.send(null)
+    requestXML()
+    setTimerToResolvePromise(resolve)
   })
 }
 
-const convertXMLToJSON = (resolve, xmlData) => {
-  try {
-    const parser = new xml2js.Parser()
+/**
+ * use fallback data if needed and resolve promise after 3s
+ * @param resolve
+ */
+const setTimerToResolvePromise = (resolve) => {
+  setTimeout(() => {
+    if (store.get().tariffs.length === 0) {
+      store.set({ tariffs: cleanData(fallbackData) })
+    }
 
-    parser.parseString(xmlData, (error, data) => {
-      if (error || !data || !data.handytarif || typeof data.handytarif.product !== 'object') {
-        data = fallbackData
-      }
-      store.set({ tariffs: cleanData(data) })
-      resolve()
-    })
-  } catch (e) {
     resolve()
-  }
+  }, 3000)
 }
 
+/**
+ * request XML data and convert it to JSON
+ */
+const requestXML = () => {
+  try {
+    const request = new XMLHttpRequest()
+
+    request.open('GET', store.get().endpoint, true)
+    request.timeout = 2500
+    request.onreadystatechange = () => {
+      if (request.readyState === request.DONE && request.status === 200) {
+        convertXMLToJSON(request.response)
+      }
+    }
+    request.send()
+  } catch (e) {}
+}
+
+/**
+ * convert XML data to JSON and store it into tariffs
+ * @param xmlData
+ */
+const convertXMLToJSON = (xmlData) => {
+  const parser = new xml2js.Parser()
+
+  parser.parseString(xmlData, (error, data) => {
+    if (!error && data && data.handytarif && typeof data.handytarif.product !== 'object') {
+      store.set({ tariffs: cleanData(data) })
+    }
+  })
+}
+
+/**
+ * filter only needed keys from XML data
+ * @param data
+ * @returns {[]}
+ */
 const cleanData = (data) => {
   let items = []
 

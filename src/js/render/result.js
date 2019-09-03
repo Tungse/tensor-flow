@@ -1,6 +1,9 @@
 import store from '../store/store.js'
 import * as track from '../common/tracking.js'
 
+/**
+ * render user result
+ */
 const renderResult = () => {
   const content = getContentByResult()
   const result = document.querySelector('[data-role="smb-phone-plan-result"]')
@@ -17,16 +20,19 @@ const renderResult = () => {
       ` : `
         <strong class="smb-phone-plan-result-message">Herzlichen Glückwünsch. Du hast einen tollen Tarif.</strong>
         ${store.get().emailSended === false ? `
+          <hr />
           <div data-role="smb-phone-plan-email">
             <p>Schick mir eine E-Mail wenn es ein besseres Angebot gibt.</p>
-            <form class="form-inline">
-              <div class="form-group">
+            <form class="row">
+              <div class="form-group col-sm-6">
                 <div class="input-group">
                   <div class="input-group-addon">@</div>
-                  <input type="email" class="form-control" id="exampleInputAmount" placeholder="E-Mail">
+                  <input type="email" class="form-control" placeholder="E-Mail">
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary" data-role="smb-phone-plan-send-email">Absenden</button>
+              <div class="form-group col-sm-6">
+                <button type="submit" class="btn btn-primary btn-block" data-role="smb-phone-plan-send-email">Absenden</button>
+            </div>
             </form>
           </div>
         ` : ``}
@@ -35,9 +41,14 @@ const renderResult = () => {
 
     setProgressBarTransition(store.get().resultPercent)
     listenToSendEmailClick()
+    track.result(content.categoryText)
   }
 }
 
+/**
+ * return result content by user's result category
+ * @returns {{progressClass: string, categoryText: string}}
+ */
 const getContentByResult = () => {
   let content = {
     categoryText: 'schlecht',
@@ -57,6 +68,10 @@ const getContentByResult = () => {
   return content
 }
 
+/**
+ * workaround to animate progress bar
+ * @param progressWidth
+ */
 const setProgressBarTransition = (progressWidth) => {
   const progressBar = document.querySelector('[data-role="smb-phone-plan-progress-bar"]')
 
@@ -65,6 +80,9 @@ const setProgressBarTransition = (progressWidth) => {
   }, 100)
 }
 
+/**
+ * event listerner for send email button
+ */
 const listenToSendEmailClick = () => {
   const sendButton = document.querySelector('[data-role="smb-phone-plan-send-email"]')
 

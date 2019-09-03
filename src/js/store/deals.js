@@ -1,15 +1,24 @@
+let deals
 let priceDiffence
 
+/**
+ * return the difference of user input price and the lowest price from XML data
+ * @returns {*}
+ */
 export const getPriceDiffence = () => {
   return priceDiffence
 }
 
+/**
+ * return matching deals by calculating user inputs
+ * @param tariffs
+ * @param formularData
+ * @returns {*}
+ */
 export const getDeals = (tariffs, formularData) => {
-  let deals = []
   const userPrice = parseFloat(formularData.price)
-  let userVolume = parseFloat(formularData.volume) || 0
+  let initialVolume = parseFloat(formularData.volume)
   let initialPrice = userPrice
-  let initialVolume = userVolume
 
   for (let i = 0; i < tariffs.length; i++) {
     const tarif = tariffs[i]
@@ -17,17 +26,18 @@ export const getDeals = (tariffs, formularData) => {
     const tarifVolume = parseFloat(tarif.volume)
 
     if (tarifPrice < initialPrice) {
-      setDeal('Günstigste Alternative', tarif, deals)
+      setDeal('Günstigste Alternative', tarif)
       initialPrice = tarifPrice
       setPriceDiffence(userPrice, tarifPrice)
       continue
     }
     if (tarif.company === formularData.company && tarifPrice < userPrice) {
-      setDeal('Bester Preis im gleichen Netz', tarif, deals)
+      setDeal('Bester Preis im gleichen Netz', tarif)
       continue
     }
+    // TODO calculation is not perfect
     if (tarifVolume > initialVolume && tarifPrice < userPrice) {
-      setDeal('Bessere Konditionen', tarif, deals)
+      setDeal('Bessere Konditionen', tarif)
       initialVolume = tarifVolume
     }
   }
@@ -35,8 +45,13 @@ export const getDeals = (tariffs, formularData) => {
   return deals
 }
 
-const setDeal = (title, tarif, deals) => {
-  const index = getDealIndexByTitle(deals, title)
+/**
+ * add/update matching deals
+ * @param title
+ * @param tarif
+ */
+const setDeal = (title, tarif) => {
+  const index = getDealIndexByTitle(title)
   const deal = {
     id: tarif.id,
     title: title,
@@ -52,11 +67,21 @@ const setDeal = (title, tarif, deals) => {
   } else {
     deals.push(deal)
   }
-
-  return deals
 }
 
-const getDealIndexByTitle = (deals, title) => {
+/**
+ * reset deals before each result calculation
+ */
+export const resetDeals = () => {
+  deals = []
+}
+
+/**
+ * check if deal is already in deals
+ * @param title
+ * @returns {string|number}
+ */
+const getDealIndexByTitle = (title) => {
   for (let index in deals) {
     if (deals[index].title === title) {
       return index
@@ -66,6 +91,11 @@ const getDealIndexByTitle = (deals, title) => {
   return -1
 }
 
+/**
+ * calculate difference of user input price and price from XML data
+ * @param userPrice
+ * @param tarifPrice
+ */
 const setPriceDiffence = (userPrice, tarifPrice) => {
   priceDiffence = parseFloat(userPrice - tarifPrice).toFixed(2)
 }

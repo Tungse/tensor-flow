@@ -1,5 +1,6 @@
 import '../stylesheets/imports.scss'
 import * as track from './common/tracking.js'
+import validateFormularData from './common/validation.js'
 import store from './store/store.js'
 import getTariffs from './store/tariffs.js'
 import renderStage from './render/stage.js'
@@ -11,6 +12,10 @@ if (process.env.NODE_ENV === 'development') {
   import('../stylesheets/demo.scss')
 }
 
+/**
+ * init function to init store, render stage, add event listerners and tracking
+ * @param options
+ */
 const init = (options) => {
   try {
     store.init(options)
@@ -19,20 +24,26 @@ const init = (options) => {
     listenToEnterClick()
     track.embed()
     track.listenToVisibleEvent()
+    track.listenToFormularInteraction()
   } catch (e) {
     console.error('smb-phone-plan: index.init()', e)
   }
 }
 
+/**
+ * calculate user input and render result
+ */
 const calculate = () => {
-  // TODO add some validation
+  const formularData = validateFormularData()
 
-  if (store.get().checked === false) {
+  if (Object.keys(formularData).length === 0) {
+    return
+  }
+  if (store.get().calculated === false) {
     renderProcessing()
   }
   getTariffs().then(() => {
-    store.setResult(getFormularData())
-    store.set({ checked: true })
+    store.setResult(formularData)
   }).then(() => {
     removeProcessing()
     renderResult()
@@ -40,6 +51,9 @@ const calculate = () => {
   })
 }
 
+/**
+ * event listerner for check button
+ */
 const listenToCheckClick = () => {
   const checkButton = document.querySelector('[data-role="smb-phone-plan-check"]')
 
@@ -53,28 +67,15 @@ const listenToCheckClick = () => {
   })
 }
 
+/**
+ * event listerner for enter button
+ */
 const listenToEnterClick = () => {
   document.onkeydown = (e) => {
     if (e.keyCode === 13) {
       calculate()
       track.checkButtonClick()
     }
-  }
-}
-
-const getFormularData = () => {
-  const companies = document.querySelector('[data-role="smb-phone-plan-companies"]')
-  const volume = document.querySelector('[data-role="smb-phone-plan-volume"]')
-  const lte = document.querySelector('[data-role="smb-phone-plan-lte"]')
-  const price = document.querySelector('[data-role="smb-phone-plan-price"]')
-  const flatrate = document.querySelector('[data-role="smb-phone-plan-flatrate"]')
-
-  return {
-    company: companies.options[companies.selectedIndex].value,
-    volume: volume.options[volume.selectedIndex].value,
-    lte: lte.checked,
-    price: price.value,
-    flatrate: flatrate.checked,
   }
 }
 
