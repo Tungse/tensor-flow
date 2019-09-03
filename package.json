@@ -1,6 +1,6 @@
 {
   "name": "@smb/phone-plan",
-  "description": "",
+  "description": "smb-phone-plan",
   "version": "0.0.0",
   "homepage": "https://github.com/smb-ag/smb-phone-plan",
   "repository": {
@@ -15,7 +15,7 @@
     "test-coverage": "jest --coverage",
     "test-update": "jest --updateSnapshot"
   },
-  "author": "",
+  "author": "Tung Pham Thanh",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.3.4",
