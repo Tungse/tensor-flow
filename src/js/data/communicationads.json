@@ -2,2243 +2,325 @@
   "handytarif": {
     "product": [
       {
-        "$": {
-          "id": "3886"
-        },
         "link": [
           "http://www.communicationads.net/tc.php?t=10506C11907004D&product=3886"
-        ],
-        "logo": [
-          "//bilder.communicationads.net/200070/1020.png"
-        ],
-        "testsiegel": [
-          ""
-        ],
-        "companyid": [
-          "1020"
-        ],
-        "productid": [
-          "3886"
-        ],
-        "anmerkungen": [
-          ""
-        ],
-        "company": [
-          "PremiumSIM"
-        ],
-        "companyname": [
-          "PremiumSIM"
         ],
         "product": [
           "LTE S"
         ],
-        "rating": [
-          ""
-        ],
-        "incentive": [
-          ""
-        ],
-        "incentive_description": [
-          ""
-        ],
-        "incentive_amount": [
-          "0,00"
-        ],
-        "incentive_bullet": [
-          ""
-        ],
-        "incentive_bullet2": [
-          ""
-        ],
-        "incentive_numberporting_amount": [
-          "0,00"
-        ],
-        "incentive_startingcredit_amount": [
-          "0,00"
-        ],
-        "incentive_phonesms": [
-          ""
-        ],
-        "provider": [
-          "Telefónica"
-        ],
-        "provider_netz": [
-          "//bilder.communicationads.net/In den Netzen von Telefónica"
-        ],
-        "provider_icon": [
-          "provider/tef.png"
-        ],
-        "provider_icon_xl": [
-          "provider/tef_xl.png"
-        ],
-        "provider_icon_xxl": [
-          "provider/tef_xxl.png"
-        ],
-        "cost_setup": [
-          "0,00"
-        ],
-        "cost_setup_eff": [
-          "0,00"
-        ],
-        "cost_setup_eff2": [
-          "0,00"
-        ],
-        "cost_pm": [
-          "6,99"
-        ],
-        "cost_pm_average": [
-          "6,99"
-        ],
-        "cost_pm_phone": [
-          "0,00"
-        ],
-        "cost_sms": [
-          "0,00"
-        ],
-        "phone_included_pm": [
-          "0"
-        ],
-        "phone_paid_pm": [
-          "100"
-        ],
-        "mobileweb_volume": [
-          "2 GB"
-        ],
-        "mobileweb_speed": [
-          "50,0 MBit/s"
-        ],
-        "contract_type": [
-          "Vertrag"
-        ],
-        "contract_period": [
-          "24 Monate"
-        ],
-        "services_phone": [
-          "Flat"
-        ],
-        "services_sms": [
-          "Flat"
-        ],
-        "services_web": [
-          "2 GB"
-        ],
-        "dataautomatic": [
-          "Datenautomatik (abw&auml;hlbar)"
-        ],
-        "dataautomatic_short": [
-          "abw&auml;hlbar"
-        ],
-        "dataautomatic_text": [
-          "Nach Verbrauch des monatlichen Inklusiv-Volumens wird automatisch bis zu drei Mal pro Monat 200 MB zusätzliches Datenvolumen für jeweils nur 2 € bereitgestellt."
-        ],
-        "incentive_total_amount": [
-          "0,00"
-        ],
-        "cost_setup_shipping": [
-          "0,00"
-        ],
-        "cost_pm_25": [
-          "7,99"
-        ],
-        "cost_phone": [
-          "0,00"
-        ],
-        "sms_included_pm": [
-          "0"
-        ],
-        "incentive_description_long": [
-          ""
-        ],
-        "incentive2_description_long": [
-          "EU-Roaming inkl."
-        ],
-        "mobileweb_speed_up": [
-          "32,0"
-        ],
-        "mobileweb_speed_reduced": [
-          "16,0"
-        ],
-        "mobileweb_lte": [
-          "Ja"
-        ],
-        "contract_period_termination": [
-          "3 Monate"
-        ],
-        "contract_period_prolongation": [
-          "12 Monate"
-        ],
-        "youngpeople": [
-          ""
-        ],
-        "youngpeople_description": [
-          ""
-        ],
-        "youngpeople_maxage": [
-          "0"
-        ],
-        "youngpeople_maxage_stud": [
-          "0"
-        ],
-        "business": [
-          ""
-        ],
-        "business_description": [
-          ""
-        ],
-        "provider_companyid": [
-          "1020"
-        ],
-        "provider_companyname": [
-          "PremiumSIM"
-        ],
-        "additional_conditions_phone": [
-          ""
-        ],
-        "additional_conditions_mobileweb": [
-          ""
-        ],
-        "parameter_1": [
-          "0,00"
-        ],
         "url_moreinfo": [
           "https://www.premiumsim.de/pdf/5762/produktinformationsblatt"
         ],
-        "ownincentive": [
-          "0,00"
-        ],
-        "ownincentive_enddate": [
-          ""
-        ],
-        "period_divergence": [
-          ""
-        ],
-        "payment_period_title": [
-          "monatlich"
-        ],
-        "basic_fee_title": [
-          "monatl. Grundgeb&uuml;hr"
-        ],
-        "cost_pm_orig": [
-          "6,99"
-        ],
-        "cost_pm_average_cbincl": [
-          "6,99"
-        ]
-      },
-      {
-        "$": {
-          "id": "4062"
-        },
-        "link": [
-          "http://www.communicationads.net/tc.php?t=10506C12007004D&product=4062"
-        ],
-        "logo": [
-          "//bilder.communicationads.net/200070/1015.png"
-        ],
-        "testsiegel": [
-          ""
-        ],
-        "companyid": [
-          "1015"
-        ],
-        "productid": [
-          "4062"
-        ],
-        "anmerkungen": [
-          ""
-        ],
         "company": [
-          "winSIM"
-        ],
-        "companyname": [
-          "winSIM"
-        ],
-        "product": [
-          "LTE All 1 + 1 GB"
-        ],
-        "rating": [
-          ""
-        ],
-        "incentive": [
-          ""
-        ],
-        "incentive_description": [
-          ""
-        ],
-        "incentive_amount": [
-          "0,00"
-        ],
-        "incentive_bullet": [
-          "EU-Roaming inkl."
-        ],
-        "incentive_bullet2": [
-          ""
-        ],
-        "incentive_numberporting_amount": [
-          "0,00"
-        ],
-        "incentive_startingcredit_amount": [
-          "0,00"
-        ],
-        "incentive_phonesms": [
-          ""
+          "PremiumSIM"
         ],
         "provider": [
           "Telefónica"
         ],
-        "provider_netz": [
-          "//bilder.communicationads.net/In den Netzen von Telefónica"
-        ],
-        "provider_icon": [
-          "provider/tef.png"
-        ],
-        "provider_icon_xl": [
-          "provider/tef_xl.png"
-        ],
-        "provider_icon_xxl": [
-          "provider/tef_xxl.png"
-        ],
-        "cost_setup": [
-          "0,00"
-        ],
-        "cost_setup_eff": [
-          "0,00"
-        ],
-        "cost_setup_eff2": [
-          "0,00"
-        ],
         "cost_pm": [
           "6,99"
         ],
-        "cost_pm_average": [
-          "6,99"
-        ],
-        "cost_pm_phone": [
-          "0,00"
-        ],
-        "cost_sms": [
-          "0,00"
-        ],
-        "phone_included_pm": [
-          "0"
-        ],
-        "phone_paid_pm": [
-          "100"
-        ],
         "mobileweb_volume": [
           "2 GB"
-        ],
-        "mobileweb_speed": [
-          "50,0 MBit/s"
-        ],
-        "contract_type": [
-          "Vertrag"
-        ],
-        "contract_period": [
-          "24 Monate"
-        ],
-        "services_phone": [
-          "Flat"
-        ],
-        "services_sms": [
-          "Flat"
-        ],
-        "services_web": [
-          "2 GB"
-        ],
-        "dataautomatic": [
-          "Datenautomatik (abw&auml;hlbar)"
-        ],
-        "dataautomatic_short": [
-          "abw&auml;hlbar"
-        ],
-        "dataautomatic_text": [
-          "Nach Verbrauch des Inklusivvolumens werden automatisch bis zu 3 x p.M. 200 MB für je 2 € aufgebucht."
-        ],
-        "incentive_total_amount": [
-          "0,00"
-        ],
-        "cost_setup_shipping": [
-          "0,00"
-        ],
-        "cost_pm_25": [
-          "6,99"
-        ],
-        "cost_phone": [
-          "0,00"
-        ],
-        "sms_included_pm": [
-          "0"
-        ],
-        "incentive_description_long": [
-          ""
-        ],
-        "incentive2_description_long": [
-          ""
-        ],
-        "mobileweb_speed_up": [
-          "32,0"
-        ],
-        "mobileweb_speed_reduced": [
-          "16,0"
-        ],
-        "mobileweb_lte": [
-          "Ja"
-        ],
-        "contract_period_termination": [
-          "3 Monate"
-        ],
-        "contract_period_prolongation": [
-          "12 Monate"
-        ],
-        "youngpeople": [
-          ""
-        ],
-        "youngpeople_description": [
-          ""
-        ],
-        "youngpeople_maxage": [
-          "0"
-        ],
-        "youngpeople_maxage_stud": [
-          "0"
-        ],
-        "business": [
-          ""
-        ],
-        "business_description": [
-          ""
-        ],
-        "provider_companyid": [
-          "1015"
-        ],
-        "provider_companyname": [
-          "winSIM"
-        ],
-        "additional_conditions_phone": [
-          ""
-        ],
-        "additional_conditions_mobileweb": [
-          ""
-        ],
-        "parameter_1": [
-          "0,00"
-        ],
-        "url_moreinfo": [
-          "https://www.winsim.de/pdf/3558/produktinformationsblatt"
-        ],
-        "ownincentive": [
-          "0,00"
-        ],
-        "ownincentive_enddate": [
-          ""
-        ],
-        "period_divergence": [
-          ""
-        ],
-        "payment_period_title": [
-          "monatlich"
-        ],
-        "basic_fee_title": [
-          "monatl. Grundgeb&uuml;hr"
-        ],
-        "cost_pm_orig": [
-          "6,99"
-        ],
-        "cost_pm_average_cbincl": [
-          "6,99"
         ]
       },
       {
-        "$": {
-          "id": "3621"
-        },
         "link": [
           "http://www.communicationads.net/tc.php?t=10506C12907004D&product=3621"
-        ],
-        "logo": [
-          "//bilder.communicationads.net/200070/1058.png"
-        ],
-        "testsiegel": [
-          ""
-        ],
-        "companyid": [
-          "1058"
-        ],
-        "productid": [
-          "3621"
-        ],
-        "anmerkungen": [
-          ""
-        ],
-        "company": [
-          "sim.de"
-        ],
-        "companyname": [
-          "sim.de"
         ],
         "product": [
           "LTE All 2 GB"
         ],
-        "rating": [
-          ""
-        ],
-        "incentive": [
-          ""
-        ],
-        "incentive_description": [
-          ""
-        ],
-        "incentive_amount": [
-          "0,00"
-        ],
-        "incentive_bullet": [
-          "EU-Roaming inkl."
-        ],
-        "incentive_bullet2": [
-          ""
-        ],
-        "incentive_numberporting_amount": [
-          "0,00"
-        ],
-        "incentive_startingcredit_amount": [
-          "0,00"
-        ],
-        "incentive_phonesms": [
-          ""
-        ],
-        "provider": [
-          "Telefónica"
-        ],
-        "provider_netz": [
-          "//bilder.communicationads.net/In den Netzen von Telefónica"
-        ],
-        "provider_icon": [
-          "provider/tef.png"
-        ],
-        "provider_icon_xl": [
-          "provider/tef_xl.png"
-        ],
-        "provider_icon_xxl": [
-          "provider/tef_xxl.png"
-        ],
-        "cost_setup": [
-          "9,99"
-        ],
-        "cost_setup_eff": [
-          "9,99"
-        ],
-        "cost_setup_eff2": [
-          "9,99"
-        ],
-        "cost_pm": [
-          "6,99"
-        ],
-        "cost_pm_average": [
-          "7,41"
-        ],
-        "cost_pm_phone": [
-          "0,00"
-        ],
-        "cost_sms": [
-          "0,00"
-        ],
-        "phone_included_pm": [
-          "0"
-        ],
-        "phone_paid_pm": [
-          "100"
-        ],
-        "mobileweb_volume": [
-          "2 GB"
-        ],
-        "mobileweb_speed": [
-          "50,0 MBit/s"
-        ],
-        "contract_type": [
-          "Vertrag"
-        ],
-        "contract_period": [
-          "24 Monate"
-        ],
-        "services_phone": [
-          "Flat"
-        ],
-        "services_sms": [
-          "Flat"
-        ],
-        "services_web": [
-          "2 GB"
-        ],
-        "dataautomatic": [
-          "Datenautomatik (abw&auml;hlbar)"
-        ],
-        "dataautomatic_short": [
-          "abw&auml;hlbar"
-        ],
-        "dataautomatic_text": [
-          "Nach Verbrauch des Inklusivvolumens werden automatisch bis zu 3 x p.M. 200MB für je 2€ aufgebucht."
-        ],
-        "incentive_total_amount": [
-          "0,00"
-        ],
-        "cost_setup_shipping": [
-          "0,00"
-        ],
-        "cost_pm_25": [
-          "6,99"
-        ],
-        "cost_phone": [
-          "0,00"
-        ],
-        "sms_included_pm": [
-          "0"
-        ],
-        "incentive_description_long": [
-          ""
-        ],
-        "incentive2_description_long": [
-          ""
-        ],
-        "mobileweb_speed_up": [
-          "32,0"
-        ],
-        "mobileweb_speed_reduced": [
-          "16,0"
-        ],
-        "mobileweb_lte": [
-          "Ja"
-        ],
-        "contract_period_termination": [
-          "3 Monate"
-        ],
-        "contract_period_prolongation": [
-          "12 Monate"
-        ],
-        "youngpeople": [
-          ""
-        ],
-        "youngpeople_description": [
-          ""
-        ],
-        "youngpeople_maxage": [
-          "0"
-        ],
-        "youngpeople_maxage_stud": [
-          "0"
-        ],
-        "business": [
-          ""
-        ],
-        "business_description": [
-          ""
-        ],
-        "provider_companyid": [
-          "1058"
-        ],
-        "provider_companyname": [
-          "sim.de"
-        ],
-        "additional_conditions_phone": [
-          ""
-        ],
-        "additional_conditions_mobileweb": [
-          ""
-        ],
-        "parameter_1": [
-          "0,00"
-        ],
         "url_moreinfo": [
           "https://www.sim.de/pdf/339/produktinformationsblatt"
         ],
-        "ownincentive": [
-          "0,00"
-        ],
-        "ownincentive_enddate": [
-          ""
-        ],
-        "period_divergence": [
-          ""
-        ],
-        "payment_period_title": [
-          "monatlich"
-        ],
-        "basic_fee_title": [
-          "monatl. Grundgeb&uuml;hr"
-        ],
-        "cost_pm_orig": [
-          "6,99"
-        ],
-        "cost_pm_average_cbincl": [
-          "7,41"
-        ]
-      },
-      {
-        "$": {
-          "id": "4063"
-        },
-        "link": [
-          "http://www.communicationads.net/tc.php?t=10506C12007004D&product=4063"
-        ],
-        "logo": [
-          "//bilder.communicationads.net/200070/1015.png"
-        ],
-        "testsiegel": [
-          ""
-        ],
-        "companyid": [
-          "1015"
-        ],
-        "productid": [
-          "4063"
-        ],
-        "anmerkungen": [
-          ""
-        ],
         "company": [
-          "winSIM"
-        ],
-        "companyname": [
-          "winSIM"
-        ],
-        "product": [
-          "LTE All 1 + 1 GB (1 Mon.)"
-        ],
-        "rating": [
-          ""
-        ],
-        "incentive": [
-          ""
-        ],
-        "incentive_description": [
-          ""
-        ],
-        "incentive_amount": [
-          "0,00"
-        ],
-        "incentive_bullet": [
-          "EU-Roaming inkl."
-        ],
-        "incentive_bullet2": [
-          ""
-        ],
-        "incentive_numberporting_amount": [
-          "0,00"
-        ],
-        "incentive_startingcredit_amount": [
-          "0,00"
-        ],
-        "incentive_phonesms": [
-          ""
+          "sim.de"
         ],
         "provider": [
           "Telefónica"
         ],
-        "provider_netz": [
-          "//bilder.communicationads.net/In den Netzen von Telefónica"
-        ],
-        "provider_icon": [
-          "provider/tef.png"
-        ],
-        "provider_icon_xl": [
-          "provider/tef_xl.png"
-        ],
-        "provider_icon_xxl": [
-          "provider/tef_xxl.png"
-        ],
-        "cost_setup": [
-          "9,99"
-        ],
-        "cost_setup_eff": [
-          "9,99"
-        ],
-        "cost_setup_eff2": [
-          "9,99"
-        ],
         "cost_pm": [
           "6,99"
         ],
-        "cost_pm_average": [
-          "7,41"
-        ],
-        "cost_pm_phone": [
-          "0,00"
-        ],
-        "cost_sms": [
-          "0,00"
-        ],
-        "phone_included_pm": [
-          "0"
-        ],
-        "phone_paid_pm": [
-          "100"
-        ],
         "mobileweb_volume": [
           "2 GB"
-        ],
-        "mobileweb_speed": [
-          "50,0 MBit/s"
-        ],
-        "contract_type": [
-          "Vertrag"
-        ],
-        "contract_period": [
-          "1 Monat"
-        ],
-        "services_phone": [
-          "Flat"
-        ],
-        "services_sms": [
-          "Flat"
-        ],
-        "services_web": [
-          "2 GB"
-        ],
-        "dataautomatic": [
-          "Datenautomatik (abw&auml;hlbar)"
-        ],
-        "dataautomatic_short": [
-          "abw&auml;hlbar"
-        ],
-        "dataautomatic_text": [
-          "Nach Verbrauch des Inklusivvolumens werden automatisch bis zu 3 x p.M. 200 MB für je 2 € aufgebucht."
-        ],
-        "incentive_total_amount": [
-          "0,00"
-        ],
-        "cost_setup_shipping": [
-          "0,00"
-        ],
-        "cost_pm_25": [
-          "6,99"
-        ],
-        "cost_phone": [
-          "0,00"
-        ],
-        "sms_included_pm": [
-          "0"
-        ],
-        "incentive_description_long": [
-          ""
-        ],
-        "incentive2_description_long": [
-          ""
-        ],
-        "mobileweb_speed_up": [
-          "32,0"
-        ],
-        "mobileweb_speed_reduced": [
-          "16,0"
-        ],
-        "mobileweb_lte": [
-          "Ja"
-        ],
-        "contract_period_termination": [
-          "1 Monat"
-        ],
-        "contract_period_prolongation": [
-          "1 Monat"
-        ],
-        "youngpeople": [
-          ""
-        ],
-        "youngpeople_description": [
-          ""
-        ],
-        "youngpeople_maxage": [
-          "0"
-        ],
-        "youngpeople_maxage_stud": [
-          "0"
-        ],
-        "business": [
-          ""
-        ],
-        "business_description": [
-          ""
-        ],
-        "provider_companyid": [
-          "1015"
-        ],
-        "provider_companyname": [
-          "winSIM"
-        ],
-        "additional_conditions_phone": [
-          ""
-        ],
-        "additional_conditions_mobileweb": [
-          ""
-        ],
-        "parameter_1": [
-          "0,00"
-        ],
-        "url_moreinfo": [
-          "https://www.winsim.de/pdf/3557/produktinformationsblatt"
-        ],
-        "ownincentive": [
-          "0,00"
-        ],
-        "ownincentive_enddate": [
-          ""
-        ],
-        "period_divergence": [
-          ""
-        ],
-        "payment_period_title": [
-          "monatlich"
-        ],
-        "basic_fee_title": [
-          "monatl. Grundgeb&uuml;hr"
-        ],
-        "cost_pm_orig": [
-          "6,99"
-        ],
-        "cost_pm_average_cbincl": [
-          "7,41"
         ]
       },
       {
-        "$": {
-          "id": "3906"
-        },
         "link": [
           "http://www.communicationads.net/tc.php?t=10506C11907004D&product=3906"
-        ],
-        "logo": [
-          "//bilder.communicationads.net/200070/1020.png"
-        ],
-        "testsiegel": [
-          ""
-        ],
-        "companyid": [
-          "1020"
-        ],
-        "productid": [
-          "3906"
-        ],
-        "anmerkungen": [
-          ""
-        ],
-        "company": [
-          "PremiumSIM"
-        ],
-        "companyname": [
-          "PremiumSIM"
         ],
         "product": [
           "LTE S (1 Mon.)"
         ],
-        "rating": [
-          ""
+        "url_moreinfo": [
+          "https://www.premiumsim.de/pdf/6517/produktinformationsblatt"
         ],
-        "incentive": [
-          ""
-        ],
-        "incentive_description": [
-          ""
-        ],
-        "incentive_amount": [
-          "0,00"
-        ],
-        "incentive_bullet": [
-          "EU-Roaming inkl."
-        ],
-        "incentive_bullet2": [
-          ""
-        ],
-        "incentive_numberporting_amount": [
-          "0,00"
-        ],
-        "incentive_startingcredit_amount": [
-          "0,00"
-        ],
-        "incentive_phonesms": [
-          ""
+        "company": [
+          "PremiumSIM"
         ],
         "provider": [
           "Telefónica"
         ],
-        "provider_netz": [
-          "//bilder.communicationads.net/In den Netzen von Telefónica"
-        ],
-        "provider_icon": [
-          "provider/tef.png"
-        ],
-        "provider_icon_xl": [
-          "provider/tef_xl.png"
-        ],
-        "provider_icon_xxl": [
-          "provider/tef_xxl.png"
-        ],
-        "cost_setup": [
-          "19,99"
-        ],
-        "cost_setup_eff": [
-          "19,99"
-        ],
-        "cost_setup_eff2": [
-          "19,99"
-        ],
         "cost_pm": [
           "6,99"
         ],
-        "cost_pm_average": [
-          "7,82"
-        ],
-        "cost_pm_phone": [
-          "0,00"
-        ],
-        "cost_sms": [
-          "0,00"
-        ],
-        "phone_included_pm": [
-          "0"
-        ],
-        "phone_paid_pm": [
-          "100"
-        ],
         "mobileweb_volume": [
           "2 GB"
-        ],
-        "mobileweb_speed": [
-          "50,0 MBit/s"
-        ],
-        "contract_type": [
-          "Vertrag"
-        ],
-        "contract_period": [
-          "1 Monat"
-        ],
-        "services_phone": [
-          "Flat"
-        ],
-        "services_sms": [
-          "Flat"
-        ],
-        "services_web": [
-          "2 GB"
-        ],
-        "dataautomatic": [
-          "Datenautomatik (abw&auml;hlbar)"
-        ],
-        "dataautomatic_short": [
-          "abw&auml;hlbar"
-        ],
-        "dataautomatic_text": [
-          "Nach Verbrauch des monatlichen Inklusiv-Volumens wird automatisch bis zu drei Mal pro Monat 200 MB zusätzliches Datenvolumen für jeweils nur 2 € bereitgestellt."
-        ],
-        "incentive_total_amount": [
-          "0,00"
-        ],
-        "cost_setup_shipping": [
-          "0,00"
-        ],
-        "cost_pm_25": [
-          "6,99"
-        ],
-        "cost_phone": [
-          "0,00"
-        ],
-        "sms_included_pm": [
-          "0"
-        ],
-        "incentive_description_long": [
-          ""
-        ],
-        "incentive2_description_long": [
-          ""
-        ],
-        "mobileweb_speed_up": [
-          "32,0"
-        ],
-        "mobileweb_speed_reduced": [
-          "16,0"
-        ],
-        "mobileweb_lte": [
-          "Ja"
-        ],
-        "contract_period_termination": [
-          "1 Monat"
-        ],
-        "contract_period_prolongation": [
-          "1 Monat"
-        ],
-        "youngpeople": [
-          ""
-        ],
-        "youngpeople_description": [
-          ""
-        ],
-        "youngpeople_maxage": [
-          "0"
-        ],
-        "youngpeople_maxage_stud": [
-          "0"
-        ],
-        "business": [
-          ""
-        ],
-        "business_description": [
-          ""
-        ],
-        "provider_companyid": [
-          "1020"
-        ],
-        "provider_companyname": [
-          "PremiumSIM"
-        ],
-        "additional_conditions_phone": [
-          ""
-        ],
-        "additional_conditions_mobileweb": [
-          ""
-        ],
-        "parameter_1": [
-          "0,00"
-        ],
-        "url_moreinfo": [
-          "https://www.premiumsim.de/pdf/6517/produktinformationsblatt"
-        ],
-        "ownincentive": [
-          "0,00"
-        ],
-        "ownincentive_enddate": [
-          ""
-        ],
-        "period_divergence": [
-          ""
-        ],
-        "payment_period_title": [
-          "monatlich"
-        ],
-        "basic_fee_title": [
-          "monatl. Grundgeb&uuml;hr"
-        ],
-        "cost_pm_orig": [
-          "6,99"
-        ],
-        "cost_pm_average_cbincl": [
-          "7,82"
         ]
       },
       {
-        "$": {
-          "id": "2067"
-        },
         "link": [
           "http://www.communicationads.net/tc.php?t=10506C12907004D&product=2067"
-        ],
-        "logo": [
-          "//bilder.communicationads.net/200070/1058.png"
-        ],
-        "testsiegel": [
-          ""
-        ],
-        "companyid": [
-          "1058"
-        ],
-        "productid": [
-          "2067"
-        ],
-        "anmerkungen": [
-          ""
-        ],
-        "company": [
-          "sim.de"
-        ],
-        "companyname": [
-          "sim.de"
         ],
         "product": [
           "LTE All 2 GB (1 Mon.)"
         ],
-        "rating": [
-          ""
-        ],
-        "incentive": [
-          ""
-        ],
-        "incentive_description": [
-          ""
-        ],
-        "incentive_amount": [
-          "0,00"
-        ],
-        "incentive_bullet": [
-          "EU-Roaming inkl."
-        ],
-        "incentive_bullet2": [
-          ""
-        ],
-        "incentive_numberporting_amount": [
-          "0,00"
-        ],
-        "incentive_startingcredit_amount": [
-          "0,00"
-        ],
-        "incentive_phonesms": [
-          ""
-        ],
-        "provider": [
-          "Telefónica"
-        ],
-        "provider_netz": [
-          "//bilder.communicationads.net/In den Netzen von Telefónica"
-        ],
-        "provider_icon": [
-          "provider/tef.png"
-        ],
-        "provider_icon_xl": [
-          "provider/tef_xl.png"
-        ],
-        "provider_icon_xxl": [
-          "provider/tef_xxl.png"
-        ],
-        "cost_setup": [
-          "19,99"
-        ],
-        "cost_setup_eff": [
-          "19,99"
-        ],
-        "cost_setup_eff2": [
-          "19,99"
-        ],
-        "cost_pm": [
-          "6,99"
-        ],
-        "cost_pm_average": [
-          "7,82"
-        ],
-        "cost_pm_phone": [
-          "0,00"
-        ],
-        "cost_sms": [
-          "0,00"
-        ],
-        "phone_included_pm": [
-          "0"
-        ],
-        "phone_paid_pm": [
-          "100"
-        ],
-        "mobileweb_volume": [
-          "2 GB"
-        ],
-        "mobileweb_speed": [
-          "50,0 MBit/s"
-        ],
-        "contract_type": [
-          "Vertrag"
-        ],
-        "contract_period": [
-          "24 Monate"
-        ],
-        "services_phone": [
-          "Flat"
-        ],
-        "services_sms": [
-          "Flat"
-        ],
-        "services_web": [
-          "2 GB"
-        ],
-        "dataautomatic": [
-          "Datenautomatik (abw&auml;hlbar)"
-        ],
-        "dataautomatic_short": [
-          "abw&auml;hlbar"
-        ],
-        "dataautomatic_text": [
-          "Nach Verbrauch des Inklusivvolumens werden automatisch bis zu 3 x p.M. 200MB für je 2€ aufgebucht."
-        ],
-        "incentive_total_amount": [
-          "0,00"
-        ],
-        "cost_setup_shipping": [
-          "0,00"
-        ],
-        "cost_pm_25": [
-          "6,99"
-        ],
-        "cost_phone": [
-          "0,00"
-        ],
-        "sms_included_pm": [
-          "0"
-        ],
-        "incentive_description_long": [
-          ""
-        ],
-        "incentive2_description_long": [
-          ""
-        ],
-        "mobileweb_speed_up": [
-          "32,0"
-        ],
-        "mobileweb_speed_reduced": [
-          "16,0"
-        ],
-        "mobileweb_lte": [
-          "Ja"
-        ],
-        "contract_period_termination": [
-          "3 Monate"
-        ],
-        "contract_period_prolongation": [
-          "12 Monate"
-        ],
-        "youngpeople": [
-          ""
-        ],
-        "youngpeople_description": [
-          ""
-        ],
-        "youngpeople_maxage": [
-          "0"
-        ],
-        "youngpeople_maxage_stud": [
-          "0"
-        ],
-        "business": [
-          ""
-        ],
-        "business_description": [
-          ""
-        ],
-        "provider_companyid": [
-          "1058"
-        ],
-        "provider_companyname": [
-          "sim.de"
-        ],
-        "additional_conditions_phone": [
-          ""
-        ],
-        "additional_conditions_mobileweb": [
-          ""
-        ],
-        "parameter_1": [
-          "0,00"
-        ],
         "url_moreinfo": [
           "https://www.sim.de/pdf/338/produktinformationsblatt"
         ],
-        "ownincentive": [
-          "0,00"
+        "company": [
+          "sim.de"
         ],
-        "ownincentive_enddate": [
-          ""
+        "provider": [
+          "Telefónica"
         ],
-        "period_divergence": [
-          ""
-        ],
-        "payment_period_title": [
-          "monatlich"
-        ],
-        "basic_fee_title": [
-          "monatl. Grundgeb&uuml;hr"
-        ],
-        "cost_pm_orig": [
+        "cost_pm": [
           "6,99"
         ],
-        "cost_pm_average_cbincl": [
-          "7,82"
-        ]
-      },
-      {
-        "$": {
-          "id": "2088"
-        },
-        "link": [
-          "http://www.communicationads.net/tc.php?t=10506C12007004D&product=2088"
-        ],
-        "logo": [
-          "//bilder.communicationads.net/200070/1015.png"
-        ],
-        "testsiegel": [
-          ""
-        ],
-        "companyid": [
-          "1015"
-        ],
-        "productid": [
-          "2088"
-        ],
-        "anmerkungen": [
-          ""
-        ],
-        "company": [
-          "winSIM"
-        ],
-        "companyname": [
-          "winSIM"
-        ],
-        "product": [
-          "LTE All 3 GB"
-        ],
-        "rating": [
-          ""
-        ],
-        "incentive": [
-          ""
-        ],
-        "incentive_description": [
-          ""
-        ],
-        "incentive_amount": [
-          "0,00"
-        ],
-        "incentive_bullet": [
-          "EU-Roaming inkl."
-        ],
-        "incentive_bullet2": [
-          ""
-        ],
-        "incentive_numberporting_amount": [
-          "0,00"
-        ],
-        "incentive_startingcredit_amount": [
-          "0,00"
-        ],
-        "incentive_phonesms": [
-          ""
-        ],
-        "provider": [
-          "Telefónica"
-        ],
-        "provider_netz": [
-          "//bilder.communicationads.net/In den Netzen von Telefónica"
-        ],
-        "provider_icon": [
-          "provider/tef.png"
-        ],
-        "provider_icon_xl": [
-          "provider/tef_xl.png"
-        ],
-        "provider_icon_xxl": [
-          "provider/tef_xxl.png"
-        ],
-        "cost_setup": [
-          "0,00"
-        ],
-        "cost_setup_eff": [
-          "0,00"
-        ],
-        "cost_setup_eff2": [
-          "0,00"
-        ],
-        "cost_pm": [
-          "7,99"
-        ],
-        "cost_pm_average": [
-          "7,99"
-        ],
-        "cost_pm_phone": [
-          "0,00"
-        ],
-        "cost_sms": [
-          "0,00"
-        ],
-        "phone_included_pm": [
-          "0"
-        ],
-        "phone_paid_pm": [
-          "100"
-        ],
         "mobileweb_volume": [
-          "3 GB"
-        ],
-        "mobileweb_speed": [
-          "50,0 MBit/s"
-        ],
-        "contract_type": [
-          "Vertrag"
-        ],
-        "contract_period": [
-          "24 Monate"
-        ],
-        "services_phone": [
-          "Flat"
-        ],
-        "services_sms": [
-          "Flat"
-        ],
-        "services_web": [
-          "3 GB"
-        ],
-        "dataautomatic": [
-          "Datenautomatik (abw&auml;hlbar)"
-        ],
-        "dataautomatic_short": [
-          "abw&auml;hlbar"
-        ],
-        "dataautomatic_text": [
-          "Nach Verbrauch des Inklusivvolumens werden automatisch bis zu 3 mal pro Monat 200 MB für je 2 € aufgebucht."
-        ],
-        "incentive_total_amount": [
-          "0,00"
-        ],
-        "cost_setup_shipping": [
-          "0,00"
-        ],
-        "cost_pm_25": [
-          "7,99"
-        ],
-        "cost_phone": [
-          "0,00"
-        ],
-        "sms_included_pm": [
-          "0"
-        ],
-        "incentive_description_long": [
-          ""
-        ],
-        "incentive2_description_long": [
-          ""
-        ],
-        "mobileweb_speed_up": [
-          "32,0"
-        ],
-        "mobileweb_speed_reduced": [
-          "16,0"
-        ],
-        "mobileweb_lte": [
-          "Ja"
-        ],
-        "contract_period_termination": [
-          "3 Monate"
-        ],
-        "contract_period_prolongation": [
-          "12 Monate"
-        ],
-        "youngpeople": [
-          ""
-        ],
-        "youngpeople_description": [
-          ""
-        ],
-        "youngpeople_maxage": [
-          "0"
-        ],
-        "youngpeople_maxage_stud": [
-          "0"
-        ],
-        "business": [
-          ""
-        ],
-        "business_description": [
-          ""
-        ],
-        "provider_companyid": [
-          "1015"
-        ],
-        "provider_companyname": [
-          "winSIM"
-        ],
-        "additional_conditions_phone": [
-          ""
-        ],
-        "additional_conditions_mobileweb": [
-          ""
-        ],
-        "parameter_1": [
-          "0,00"
-        ],
-        "url_moreinfo": [
-          "https://www.winsim.de/pdf/2126/produktinformationsblatt"
-        ],
-        "ownincentive": [
-          "0,00"
-        ],
-        "ownincentive_enddate": [
-          ""
-        ],
-        "period_divergence": [
-          ""
-        ],
-        "payment_period_title": [
-          "monatlich"
-        ],
-        "basic_fee_title": [
-          "monatl. Grundgeb&uuml;hr"
-        ],
-        "cost_pm_orig": [
-          "7,99"
-        ],
-        "cost_pm_average_cbincl": [
-          "7,99"
+          "2 GB"
         ]
       },
       {
-        "$": {
-          "id": "3688"
-        },
-        "link": [
-          "http://www.communicationads.net/tc.php?t=10506C10807004D&product=3688"
-        ],
-        "logo": [
-          "//bilder.communicationads.net/200070/1014.png"
-        ],
-        "testsiegel": [
-          ""
-        ],
-        "companyid": [
-          "1014"
-        ],
-        "productid": [
-          "3688"
-        ],
-        "anmerkungen": [
-          ""
-        ],
-        "company": [
-          "simply"
-        ],
-        "companyname": [
-          "simply"
-        ],
-        "product": [
-          "LTE 3000"
-        ],
-        "rating": [
-          ""
-        ],
-        "incentive": [
-          ""
-        ],
-        "incentive_description": [
-          ""
-        ],
-        "incentive_amount": [
-          "0,00"
-        ],
-        "incentive_bullet": [
-          "EU-Roaming inkl."
-        ],
-        "incentive_bullet2": [
-          ""
-        ],
-        "incentive_numberporting_amount": [
-          "0,00"
-        ],
-        "incentive_startingcredit_amount": [
-          "0,00"
-        ],
-        "incentive_phonesms": [
-          ""
-        ],
-        "provider": [
-          "Telefónica"
-        ],
-        "provider_netz": [
-          "//bilder.communicationads.net/In den Netzen von Telefónica"
-        ],
-        "provider_icon": [
-          "provider/tef.png"
-        ],
-        "provider_icon_xl": [
-          "provider/tef_xl.png"
-        ],
-        "provider_icon_xxl": [
-          "provider/tef_xxl.png"
-        ],
-        "cost_setup": [
-          "0,00"
-        ],
-        "cost_setup_eff": [
-          "0,00"
-        ],
-        "cost_setup_eff2": [
-          "0,00"
-        ],
-        "cost_pm": [
-          "7,99"
-        ],
-        "cost_pm_average": [
-          "7,99"
-        ],
-        "cost_pm_phone": [
-          "0,00"
-        ],
-        "cost_sms": [
-          "0,00"
-        ],
-        "phone_included_pm": [
-          "0"
-        ],
-        "phone_paid_pm": [
-          "100"
-        ],
-        "mobileweb_volume": [
-          "3 GB"
-        ],
-        "mobileweb_speed": [
-          "50,0 MBit/s"
-        ],
-        "contract_type": [
-          "Vertrag"
-        ],
-        "contract_period": [
-          "24 Monate"
-        ],
-        "services_phone": [
-          "Flat"
-        ],
-        "services_sms": [
-          "Flat"
-        ],
-        "services_web": [
-          "3 GB"
-        ],
-        "dataautomatic": [
-          "Datenautomatik (abw&auml;hlbar)"
-        ],
-        "dataautomatic_short": [
-          "abw&auml;hlbar"
-        ],
-        "dataautomatic_text": [
-          "Nach Verbrauch des monatlichen Inklusiv-Volumens wird automatisch bis zu 3 x pro Monat 200 MB zusätzliches Datenvolumen für jeweils nur 2 € aufgebucht. Deaktivierung nach Freischaltung des Tarifs schriftlich, telefonisch (06181 7074 010) oder in der persönlichen Servicewelt möglich."
-        ],
-        "incentive_total_amount": [
-          "0,00"
-        ],
-        "cost_setup_shipping": [
-          "0,00"
-        ],
-        "cost_pm_25": [
-          "7,99"
-        ],
-        "cost_phone": [
-          "0,00"
-        ],
-        "sms_included_pm": [
-          "0"
-        ],
-        "incentive_description_long": [
-          ""
-        ],
-        "incentive2_description_long": [
-          ""
-        ],
-        "mobileweb_speed_up": [
-          "32,0"
-        ],
-        "mobileweb_speed_reduced": [
-          "16,0"
-        ],
-        "mobileweb_lte": [
-          "Ja"
-        ],
-        "contract_period_termination": [
-          "3 Monate"
-        ],
-        "contract_period_prolongation": [
-          "12 Monate"
-        ],
-        "youngpeople": [
-          ""
-        ],
-        "youngpeople_description": [
-          ""
-        ],
-        "youngpeople_maxage": [
-          "0"
-        ],
-        "youngpeople_maxage_stud": [
-          "0"
-        ],
-        "business": [
-          ""
-        ],
-        "business_description": [
-          ""
-        ],
-        "provider_companyid": [
-          "1014"
-        ],
-        "provider_companyname": [
-          "simply"
-        ],
-        "additional_conditions_phone": [
-          ""
-        ],
-        "additional_conditions_mobileweb": [
-          ""
-        ],
-        "parameter_1": [
-          "0,00"
-        ],
-        "url_moreinfo": [
-          "https://www.simplytel.de/pdf/1447/produktinformationsblatt"
-        ],
-        "ownincentive": [
-          "0,00"
-        ],
-        "ownincentive_enddate": [
-          ""
-        ],
-        "period_divergence": [
-          ""
-        ],
-        "payment_period_title": [
-          "monatlich"
-        ],
-        "basic_fee_title": [
-          "monatl. Grundgeb&uuml;hr"
-        ],
-        "cost_pm_orig": [
-          "7,99"
-        ],
-        "cost_pm_average_cbincl": [
-          "7,99"
-        ]
-      },
-      {
-        "$": {
-          "id": "1709"
-        },
         "link": [
           "http://www.communicationads.net/tc.php?t=10506C15207004D&product=1709"
-        ],
-        "logo": [
-          "//bilder.communicationads.net/200070/1035.png"
-        ],
-        "testsiegel": [
-          ""
-        ],
-        "companyid": [
-          "1035"
-        ],
-        "productid": [
-          "1709"
-        ],
-        "anmerkungen": [
-          ""
-        ],
-        "company": [
-          "blau Mobilfunk"
-        ],
-        "companyname": [
-          "blau Mobilfunk"
         ],
         "product": [
           "M (24 Mon.)"
         ],
-        "rating": [
-          ""
+        "url_moreinfo": [
+          "https://static2-blau.o9.de/blob/13311846/v=2/Binary/2_po_blau-m_20180612_1-0.pdf"
         ],
-        "incentive": [
-          ""
-        ],
-        "incentive_description": [
-          ""
-        ],
-        "incentive_amount": [
-          "0,00"
-        ],
-        "incentive_bullet": [
-          "EU-Roaming inkl."
-        ],
-        "incentive_bullet2": [
-          ""
-        ],
-        "incentive_numberporting_amount": [
-          "0,00"
-        ],
-        "incentive_startingcredit_amount": [
-          "0,00"
-        ],
-        "incentive_phonesms": [
-          "300 Min. inklusive pro Monat"
+        "company": [
+          "blau Mobilfunk"
         ],
         "provider": [
           "o2"
         ],
-        "provider_netz": [
-          "//bilder.communicationads.net/o2-Netz"
-        ],
-        "provider_icon": [
-          "provider/o2.png"
-        ],
-        "provider_icon_xl": [
-          "provider/o2_xl.png"
-        ],
-        "provider_icon_xxl": [
-          "provider/o2_xxl.png"
-        ],
-        "cost_setup": [
-          "0,00"
-        ],
-        "cost_setup_eff": [
-          "0,00"
-        ],
-        "cost_setup_eff2": [
-          "0,00"
-        ],
         "cost_pm": [
           "7,99"
         ],
-        "cost_pm_average": [
-          "7,99"
-        ],
-        "cost_pm_phone": [
-          "0,00"
-        ],
-        "cost_sms": [
-          "0,09"
-        ],
-        "phone_included_pm": [
-          "300"
-        ],
-        "phone_paid_pm": [
-          "0"
-        ],
         "mobileweb_volume": [
           "2 GB"
-        ],
-        "mobileweb_speed": [
-          "21,6 MBit/s"
-        ],
-        "contract_type": [
-          "Vertrag"
-        ],
-        "contract_period": [
-          "24 Monate"
-        ],
-        "services_phone": [
-          "9 Cent/Min."
-        ],
-        "services_sms": [
-          "9 Cent"
-        ],
-        "services_web": [
-          "2 GB"
-        ],
-        "dataautomatic": [
-          ""
-        ],
-        "dataautomatic_short": [
-          "nein"
-        ],
-        "dataautomatic_text": [
-          ""
-        ],
-        "incentive_total_amount": [
-          "0,00"
-        ],
-        "cost_setup_shipping": [
-          "0,00"
-        ],
-        "cost_pm_25": [
-          "7,99"
-        ],
-        "cost_phone": [
-          "0,09"
-        ],
-        "sms_included_pm": [
-          "0"
-        ],
-        "incentive_description_long": [
-          ""
-        ],
-        "incentive2_description_long": [
-          ""
-        ],
-        "mobileweb_speed_up": [
-          "11,2"
-        ],
-        "mobileweb_speed_reduced": [
-          "64,0"
-        ],
-        "mobileweb_lte": [
-          "Ja"
-        ],
-        "contract_period_termination": [
-          "3 Monate"
-        ],
-        "contract_period_prolongation": [
-          "12 Monate"
-        ],
-        "youngpeople": [
-          ""
-        ],
-        "youngpeople_description": [
-          ""
-        ],
-        "youngpeople_maxage": [
-          "0"
-        ],
-        "youngpeople_maxage_stud": [
-          "0"
-        ],
-        "business": [
-          ""
-        ],
-        "business_description": [
-          ""
-        ],
-        "provider_companyid": [
-          "1035"
-        ],
-        "provider_companyname": [
-          "blau Mobilfunk"
-        ],
-        "additional_conditions_phone": [
-          ""
-        ],
-        "additional_conditions_mobileweb": [
-          ""
-        ],
-        "parameter_1": [
-          "0,00"
-        ],
-        "url_moreinfo": [
-          "https://static2-blau.o9.de/blob/13311846/v=2/Binary/2_po_blau-m_20180612_1-0.pdf"
-        ],
-        "ownincentive": [
-          "0,00"
-        ],
-        "ownincentive_enddate": [
-          ""
-        ],
-        "period_divergence": [
-          ""
-        ],
-        "payment_period_title": [
-          "monatlich"
-        ],
-        "basic_fee_title": [
-          "monatl. Grundgeb&uuml;hr"
-        ],
-        "cost_pm_orig": [
-          "7,99"
-        ],
-        "cost_pm_average_cbincl": [
-          "7,99"
         ]
       },
       {
-        "$": {
-          "id": "3990"
-        },
         "link": [
-          "http://www.communicationads.net/tc.php?t=10506C10207004D&product=3990"
-        ],
-        "logo": [
-          "//bilder.communicationads.net/200070/1009.png"
-        ],
-        "testsiegel": [
-          ""
-        ],
-        "companyid": [
-          "1009"
-        ],
-        "productid": [
-          "3990"
-        ],
-        "anmerkungen": [
-          ""
-        ],
-        "company": [
-          "maXXim"
-        ],
-        "companyname": [
-          "maXXim"
+          "http://www.communicationads.net/tc.php?t=10506C12007004D&product=2088"
         ],
         "product": [
-          "LTE 2000"
+          "LTE All 3 + 1 GB"
         ],
-        "rating": [
-          ""
+        "url_moreinfo": [
+          "https://www.winsim.de/pdf/3174/produktinformationsblatt"
         ],
-        "incentive": [
-          ""
-        ],
-        "incentive_description": [
-          "Reduzierung Grundgeb&uuml;hr 12 Monate um 2.00 Euro"
-        ],
-        "incentive_amount": [
-          "24,00"
-        ],
-        "incentive_bullet": [
-          ""
-        ],
-        "incentive_bullet2": [
-          "EU-Roaming inkl."
-        ],
-        "incentive_numberporting_amount": [
-          "0,00"
-        ],
-        "incentive_startingcredit_amount": [
-          "0,00"
-        ],
-        "incentive_phonesms": [
-          ""
+        "company": [
+          "winSIM"
         ],
         "provider": [
           "Telefónica"
         ],
-        "provider_netz": [
-          "//bilder.communicationads.net/In den Netzen von Telefónica"
-        ],
-        "provider_icon": [
-          "provider/tef.png"
-        ],
-        "provider_icon_xl": [
-          "provider/tef_xl.png"
-        ],
-        "provider_icon_xxl": [
-          "provider/tef_xxl.png"
-        ],
-        "cost_setup": [
-          "0,00"
-        ],
-        "cost_setup_eff": [
-          "0,00"
-        ],
-        "cost_setup_eff2": [
-          "0,00"
-        ],
         "cost_pm": [
-          "8,99"
-        ],
-        "cost_pm_average": [
           "7,99"
         ],
-        "cost_pm_phone": [
-          "0,00"
+        "mobileweb_volume": [
+          "4 GB"
+        ]
+      },
+      {
+        "link": [
+          "http://www.communicationads.net/tc.php?t=10506C10807004D&product=3688"
         ],
-        "cost_sms": [
-          "0,00"
+        "product": [
+          "LTE 3000"
         ],
-        "phone_included_pm": [
-          "0"
+        "url_moreinfo": [
+          "https://www.simplytel.de/pdf/1447/produktinformationsblatt"
         ],
-        "phone_paid_pm": [
-          "100"
+        "company": [
+          "simply"
+        ],
+        "provider": [
+          "Telefónica"
+        ],
+        "cost_pm": [
+          "7,99"
         ],
         "mobileweb_volume": [
-          "2 GB"
+          "3 GB"
+        ]
+      },
+      {
+        "link": [
+          "http://www.communicationads.net/tc.php?t=10506C10207004D&product=3990"
         ],
-        "mobileweb_speed": [
-          "50,0 MBit/s"
-        ],
-        "contract_type": [
-          "Vertrag"
-        ],
-        "contract_period": [
-          "24 Monate"
-        ],
-        "services_phone": [
-          "Flat"
-        ],
-        "services_sms": [
-          "Flat"
-        ],
-        "services_web": [
-          "2 GB"
-        ],
-        "dataautomatic": [
-          "Datenautomatik (abw&auml;hlbar)"
-        ],
-        "dataautomatic_short": [
-          "abw&auml;hlbar"
-        ],
-        "dataautomatic_text": [
-          "Automatisch wird bis zu 3 x pro Monat 200 MB zusätzliches Datenvolumen für jeweils nur 2 € aufgebucht."
-        ],
-        "incentive_total_amount": [
-          "24,00"
-        ],
-        "cost_setup_shipping": [
-          "0,00"
-        ],
-        "cost_pm_25": [
-          "8,99"
-        ],
-        "cost_phone": [
-          "0,00"
-        ],
-        "sms_included_pm": [
-          "0"
-        ],
-        "incentive_description_long": [
-          ""
-        ],
-        "incentive2_description_long": [
-          ""
-        ],
-        "mobileweb_speed_up": [
-          "32,0"
-        ],
-        "mobileweb_speed_reduced": [
-          "16,0"
-        ],
-        "mobileweb_lte": [
-          "Ja"
-        ],
-        "contract_period_termination": [
-          "3 Monate"
-        ],
-        "contract_period_prolongation": [
-          "12 Monate"
-        ],
-        "youngpeople": [
-          ""
-        ],
-        "youngpeople_description": [
-          ""
-        ],
-        "youngpeople_maxage": [
-          "0"
-        ],
-        "youngpeople_maxage_stud": [
-          "0"
-        ],
-        "business": [
-          ""
-        ],
-        "business_description": [
-          ""
-        ],
-        "provider_companyid": [
-          "1009"
-        ],
-        "provider_companyname": [
-          "maXXim"
-        ],
-        "additional_conditions_phone": [
-          ""
-        ],
-        "additional_conditions_mobileweb": [
-          ""
-        ],
-        "parameter_1": [
-          "0,00"
+        "product": [
+          "LTE 2000"
         ],
         "url_moreinfo": [
           "https://www.maxxim.de/pdf/1230/produktinformationsblatt"
         ],
-        "ownincentive": [
-          "0,00"
+        "company": [
+          "maXXim"
         ],
-        "ownincentive_enddate": [
-          ""
+        "provider": [
+          "Telefónica"
         ],
-        "period_divergence": [
-          ""
-        ],
-        "payment_period_title": [
-          "monatlich"
-        ],
-        "basic_fee_title": [
-          "monatl. Grundgeb&uuml;hr"
-        ],
-        "cost_pm_orig": [
+        "cost_pm": [
           "8,99"
         ],
-        "cost_pm_average_cbincl": [
+        "mobileweb_volume": [
+          "2 GB"
+        ]
+      },
+      {
+        "link": [
+          "http://www.communicationads.net/tc.php?t=10506C12507004D&product=3965"
+        ],
+        "product": [
+          "LTE 2 GB"
+        ],
+        "url_moreinfo": [
+          "https://www.smartmobil.de/pdf/1817/produktinformationsblatt"
+        ],
+        "company": [
+          "smartmobil.de"
+        ],
+        "provider": [
+          "Telefónica"
+        ],
+        "cost_pm": [
           "7,99"
+        ],
+        "mobileweb_volume": [
+          "2 GB"
+        ]
+      },
+      {
+        "link": [
+          "http://www.communicationads.net/tc.php?t=10506C12507004D&product=3966"
+        ],
+        "product": [
+          "LTE 2 GB (1 Mon.)"
+        ],
+        "url_moreinfo": [
+          "https://www.smartmobil.de/pdf/1884/produktinformationsblatt"
+        ],
+        "company": [
+          "smartmobil.de"
+        ],
+        "provider": [
+          "Telefónica"
+        ],
+        "cost_pm": [
+          "7,99"
+        ],
+        "mobileweb_volume": [
+          "2 GB"
+        ]
+      },
+      {
+        "link": [
+          "http://www.communicationads.net/tc.php?t=10506C18007004D&product=1701"
+        ],
+        "product": [
+          "freeSMART 2000 (24 Mon.)"
+        ],
+        "url_moreinfo": [
+          "https://www.freenetmobile.de/pdf/smartphone-flat/freenetmobile_freesmart24_2_2000_42-2_1499_799_999_pib.pdf"
+        ],
+        "company": [
+          "freenet mobile"
+        ],
+        "provider": [
+          "D2"
+        ],
+        "cost_pm": [
+          "7,99"
+        ],
+        "mobileweb_volume": [
+          "2 GB"
+        ]
+      },
+      {
+        "link": [
+          "http://www.communicationads.net/tc.php?t=10506C12007004D&product=2091"
+        ],
+        "product": [
+          "LTE All 3 + 1 GB (1 Mon.)"
+        ],
+        "url_moreinfo": [
+          "https://www.winsim.de/pdf/3173/produktinformationsblatt"
+        ],
+        "company": [
+          "winSIM"
+        ],
+        "provider": [
+          "Telefónica"
+        ],
+        "cost_pm": [
+          "7,99"
+        ],
+        "mobileweb_volume": [
+          "4 GB"
+        ]
+      },
+      {
+        "link": [
+          "http://www.communicationads.net/tc.php?t=10506C11407004D&product=2014"
+        ],
+        "product": [
+          "Flat S"
+        ],
+        "url_moreinfo": [
+          "https://www.discotel.de/pdf/672/produktinformationsblatt"
+        ],
+        "company": [
+          "discoTEL"
+        ],
+        "provider": [
+          "Telefónica"
+        ],
+        "cost_pm": [
+          "8,61"
+        ],
+        "mobileweb_volume": [
+          "2 GB"
+        ]
+      },
+      {
+        "link": [
+          "http://www.communicationads.net/tc.php?t=10506C12507004D&product=4151"
+        ],
+        "product": [
+          "Flat S"
+        ],
+        "url_moreinfo": [
+          "https://www.smartmobil.de/pdf/2338/produktinformationsblatt"
+        ],
+        "company": [
+          "smartmobil.de"
+        ],
+        "provider": [
+          "Telefónica"
+        ],
+        "cost_pm": [
+          "8,61"
+        ],
+        "mobileweb_volume": [
+          "2 GB"
         ]
       }
     ]

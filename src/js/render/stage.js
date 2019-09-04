@@ -18,13 +18,12 @@ export const renderStage = () => {
           </div>
           <div class="row">
             <div class="form-group col-sm-6">
-              <select class="form-control" data-role="smb-phone-plan-formular-item" data-name="companies" data-required="1">
-                <option value="">Anbieter</option>
+              <select class="form-control" data-role="smb-phone-plan-formular-item" data-name="provider" data-required="1">
+                <option value="">Netz</option>
+                <option value="d1">D1</option>
+                <option value="d2">D2</option>
                 <option value="o2">O2</option>
-                <option value="1und1">1 & 1</option>
-                <option value="blau">Blau</option>
-                <option value="vodafone">Vodafone</option>
-                <option value="telekom">Telekom</option>
+                <option value="telefónica">Telefónica</option>
               </select>
             </div>
             <div class="form-group col-sm-6">

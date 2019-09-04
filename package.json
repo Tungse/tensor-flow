@@ -45,8 +45,8 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "smb-element-observer": "^2.0.0",
-    "xml2js": "^0.4.19"
+    "fast-xml-parser": "^3.12.20",
+    "smb-element-observer": "^2.0.0"
   },
   "jest": {
     "testURL": "https://www.example.com/",

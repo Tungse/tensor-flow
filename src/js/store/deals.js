@@ -18,26 +18,29 @@ export const getPriceDiffence = () => {
 export const getDeals = (tariffs, formularData) => {
   const userPrice = parseFloat(formularData.price)
   let initialVolume = parseFloat(formularData.volume)
-  let initialPrice = userPrice
+  let lowestPrice = userPrice
+  let lowestPriceByProvider = userPrice
+  let lowestPriceByVolume = userPrice
 
   for (let i = 0; i < tariffs.length; i++) {
     const tarif = tariffs[i]
     const tarifPrice = parseFloat(tarif.price)
     const tarifVolume = parseFloat(tarif.volume)
 
-    if (tarifPrice < initialPrice) {
+    if (tarifPrice < lowestPrice) {
       setDeal(0, tarif)
-      initialPrice = tarifPrice
+      lowestPrice = tarifPrice
       setPriceDiffence(userPrice, tarifPrice)
       continue
     }
-    if (tarif.company === formularData.company && tarifPrice < userPrice) {
+    if (tarif.provider === formularData.provider && tarifPrice < lowestPriceByProvider) {
       setDeal(1, tarif)
+      lowestPriceByProvider = tarifPrice
       continue
     }
-    // TODO calculation is not perfect
-    if (tarifVolume > initialVolume && tarifPrice < userPrice) {
+    if (tarifVolume > initialVolume && tarifPrice < lowestPriceByVolume) {
       setDeal(2, tarif)
+      lowestPriceByVolume = tarifPrice
       initialVolume = tarifVolume
     }
   }
@@ -59,6 +62,7 @@ const setDeal = (category, tarif) => {
     category: category,
     title: texts.title,
     company: tarif.company,
+    provider: tarif.provider,
     description: texts.description,
     productInfoUrl: tarif.productInfoUrl,
     price: parseFloat(tarif.price).toFixed(2),
