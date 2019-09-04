@@ -4,10 +4,9 @@
  */
 const getRandomFacts = () => {
   const facts = [
-    'Gewusst? 81% aller Deutschen benutzen ein Smartphone.',
-    'Gewusst? 21% aller Deutschen benutzen ein Smartphone.',
-    'Gewusst? 41% aller Deutschen benutzen ein Smartphone.',
-    'Gewusst? 61% aller Deutschen benutzen ein Smartphone.',
+    '57 Millionen Deutsche besitzen ein Smartphone. (Quelle: statista)',
+    '43% der 20 bis 29-Jährigen in Deutschland nutzen ihr Smartphone mehr als 120 Minuten täglich. (Quelle: statista)',
+    'Die Netzabdeckung mit 4G liegt in Deutschland bei 65%, in Norwegen bei 92%. (Quelle: statista)',
   ]
 
   return facts[Math.floor(Math.random() * facts.length)]

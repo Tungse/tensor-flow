@@ -5,7 +5,7 @@ let store = {}
 const defaultOptions = {
   container: '#smb-phone-plan',
   logo: 'https://www.giga.de/static-local/dist/assets/images/logos/giga.svg',
-  endpoint: 'http://tools.communicationads.net/webservice.php?wf=10506&format=xml&calc=handytarif&country=DE',
+  endpoint: 'https://tools.communicationads.net/webservice.php?wf=10506&format=xml&calc=handytarif&country=DE',
 }
 
 /**

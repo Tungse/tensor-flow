@@ -1,23 +1,26 @@
-hr {
-  border-color: #ccc; }
-
 .smb-phone-plan-container {
-  max-width: 625px;
+  margin-bottom: 25px;
   background-color: #f2f2f2;
   border-bottom: 2px solid #ccc; }
+  .smb-phone-plan-container hr {
+    border-color: #ccc; }
+  .smb-phone-plan-container label,
+  .smb-phone-plan-container select,
+  .smb-phone-plan-container label input {
+    cursor: pointer; }
 
 .smb-phone-plan-header {
-  color: #fff;
   display: flex;
   background: #333;
   padding: 10px 20px;
   align-items: center; }
 
 .smb-phone-plan-title {
-  margin: 0; }
+  margin: 0;
+  color: #fff; }
 
 .smb-phone-plan-logo {
-  width: 90px;
+  width: 80px;
   margin-left: auto; }
 
 .smb-phone-plan-body {
@@ -63,15 +66,24 @@ hr {
   width: 0;
   height: 100%;
   transition: width 1s linear; }
+  .smb-phone-plan-progress-bar.smb-phone-plan-danger {
+    background-color: #d9534f; }
+  .smb-phone-plan-progress-bar.smb-phone-plan-warning {
+    background-color: #f0ad4e; }
+  .smb-phone-plan-progress-bar.smb-phone-plan-success {
+    background-color: #5cb85c; }
 
 .smb-phone-plan-deals .smb-phone-plan-deal-title {
   margin: 0 0 15px; }
 
 .smb-phone-plan-deals .smb-phone-plan-deals-list {
+  padding: 0;
   margin: 20px 0 0; }
 
 .smb-phone-plan-deals .smb-phone-plan-deal-item {
   padding: 15px 0; }
+  .smb-phone-plan-deals .smb-phone-plan-deal-item a {
+    border: 0; }
 
 .smb-phone-plan-deals .smb-phone-plan-deal-price {
   font-size: 30px;

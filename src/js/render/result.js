@@ -53,17 +53,17 @@ const renderResult = () => {
 const getContentByResult = () => {
   let content = {
     categoryText: 'schlecht',
-    progressClass: 'bg-danger',
+    progressClass: 'smb-phone-plan-danger',
   }
 
   if (store.get().resultCategory === 1) {
     content.categoryText = 'schlecht'
-    content.progressClass = 'bg-warning'
+    content.progressClass = 'smb-phone-plan-warning'
   }
 
   if (store.get().resultCategory === 2) {
     content.categoryText = 'gut'
-    content.progressClass = 'bg-success'
+    content.progressClass = 'smb-phone-plan-success'
   }
 
   return content

@@ -7,13 +7,13 @@ export const renderStage = () => {
   store.get().container.innerHTML = `
     <div class="smb-phone-plan-container">
       <div class="smb-phone-plan-header">
-        <h3 class="smb-phone-plan-title">Teste deinen Tarif!</h3>
+        <h2 class="smb-phone-plan-title">Teste deinen Handyvertrag!</h2>
         <img class="smb-phone-plan-logo" src="${store.get().logo}" alt="">
       </div>
       <div class="smb-phone-plan-body">
         <div class="smb-phone-plan-formular" data-role="smb-phone-plan-formular">
           <div class="form-group input-group">
-            <input type="number" class="form-control" placeholder="Wieviel zahlst du pro Monat" value="" data-role="smb-phone-plan-formular-item" data-name="price" data-required="1">
+            <input type="number" class="form-control" placeholder="Wieviel zahlst du pro Monat?" value="" data-role="smb-phone-plan-formular-item" data-name="price" data-required="1">
             <div class="input-group-addon">€</div>
           </div>
           <div class="row">

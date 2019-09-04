@@ -9,4 +9,16 @@
   width: 0;
   height: 100%;
   transition: width 1s linear;
+
+  &.smb-phone-plan-danger {
+    background-color: #d9534f;
+  }
+
+  &.smb-phone-plan-warning {
+    background-color: #f0ad4e;
+  }
+
+  &.smb-phone-plan-success {
+    background-color: #5cb85c;
+  }
 }
