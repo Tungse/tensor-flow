@@ -15,8 +15,9 @@ const renderResult = () => {
       <h3 class="">Dein Ergebnis</h3>
       <div class="smb-phone-plan-progress">
         <div class="smb-phone-plan-progress-bar ${content.progressClass}" data-role="smb-phone-plan-progress-bar"></div>
+        <i class="smb-phone-plan-thumb-icon ${content.thumbIconClass}" data-role="smb-phone-plan-thumb-icon"></i>
       </div>
-      ${store.get().resultCategory < 2 ? `
+      ${store.get().resultCategory === 0 ? `
         <strong>Dein Tarif ist ${content.categoryText}. Du zahlst ${store.get().priceDiffence}€ zu viel im Monat. Hier gibt es bessere Alternativen:</strong>
       ` : `
         <strong>Herzlichen Glückwünsch. Du hast einen tollen Tarif.</strong>
@@ -41,6 +42,7 @@ const renderResult = () => {
     `
 
     setProgressBarTransition(store.get().resultPercent)
+    setThumbIconShake()
     listenToSendEmailClick()
     track.result(content.categoryText)
   }
@@ -53,16 +55,13 @@ const renderResult = () => {
 const getContentByResult = () => {
   let content = {
     categoryText: 'schlecht',
+    thumbIconClass: 'icon-thumbs-down',
     progressClass: 'smb-phone-plan-danger',
   }
 
   if (store.get().resultCategory === 1) {
-    content.categoryText = 'schlecht'
-    content.progressClass = 'smb-phone-plan-warning'
-  }
-
-  if (store.get().resultCategory === 2) {
     content.categoryText = 'gut'
+    content.thumbIconClass = 'icon-thumbs-up'
     content.progressClass = 'smb-phone-plan-success'
   }
 
@@ -76,9 +75,28 @@ const getContentByResult = () => {
 const setProgressBarTransition = (progressWidth) => {
   const progressBar = document.querySelector('[data-role="smb-phone-plan-progress-bar"]')
 
+  if (progressBar === null) {
+    return
+  }
+
   setTimeout(() => {
     progressBar.style.width = `${progressWidth}%`
   }, 100)
+}
+
+/**
+ * add shake class to thumb icon
+ */
+const setThumbIconShake = () => {
+  const thumbIcon = document.querySelector('[data-role="smb-phone-plan-thumb-icon"]')
+
+  if (thumbIcon === null) {
+    return
+  }
+
+  setTimeout(() => {
+    thumbIcon.classList.add('shake')
+  }, 1000)
 }
 
 /**

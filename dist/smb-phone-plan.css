@@ -1,5 +1,4 @@
 .smb-phone-plan-container {
-  margin-bottom: 25px;
   background-color: #f2f2f2;
   border-bottom: 2px solid #ccc; }
   .smb-phone-plan-container hr {
@@ -11,8 +10,8 @@
 
 .smb-phone-plan-header {
   display: flex;
+  padding: 12.5px;
   background: #333;
-  padding: 10px 20px;
   align-items: center; }
 
 .smb-phone-plan-title {
@@ -24,7 +23,7 @@
   margin-left: auto; }
 
 .smb-phone-plan-body {
-  padding: 20px; }
+  padding: 12.5px; }
 
 .smb-phone-plan-formular {
   transition: opacity .5s linear; }
@@ -56,10 +55,26 @@
   .smb-phone-plan-loading-dot-container .smb-phone-plan-loading-dot:nth-of-type(3) {
     animation-delay: .4s; }
 
+@keyframes shake {
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: rotate(15deg); }
+  0%,
+  20%,
+  40%,
+  60% {
+    transform: rotate(-15deg); }
+  90% {
+    transform: rotate(5deg); }
+  80% {
+    transform: rotate(-5deg); } }
+
 .smb-phone-plan-progress {
-  width: 100%;
   height: 40px;
   background: #fff;
+  position: relative;
   margin-bottom: 20px; }
 
 .smb-phone-plan-progress-bar {
@@ -68,10 +83,18 @@
   transition: width 1s linear; }
   .smb-phone-plan-progress-bar.smb-phone-plan-danger {
     background-color: #d9534f; }
-  .smb-phone-plan-progress-bar.smb-phone-plan-warning {
-    background-color: #f0ad4e; }
   .smb-phone-plan-progress-bar.smb-phone-plan-success {
     background-color: #5cb85c; }
+
+.smb-phone-plan-thumb-icon {
+  top: 0;
+  right: 0;
+  display: none;
+  font-size: 30px;
+  position: absolute; }
+  .smb-phone-plan-thumb-icon.shake {
+    display: block;
+    animation: shake .5s; }
 
 .smb-phone-plan-deals .smb-phone-plan-deal-title {
   margin: 0 0 15px; }
@@ -81,7 +104,7 @@
   margin: 20px 0 0; }
 
 .smb-phone-plan-deals .smb-phone-plan-deal-item {
-  padding: 15px 0; }
+  padding: 12.5px 0; }
   .smb-phone-plan-deals .smb-phone-plan-deal-item a {
     border: 0; }
 

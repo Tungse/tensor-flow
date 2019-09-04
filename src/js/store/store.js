@@ -20,7 +20,7 @@ const init = (options) => {
     tariffs: [],
     calculated: false,
     emailSended: false,
-    resultCategory: 0, // 0 = bad, 1 = bad, 2 = good
+    resultCategory: 0, // 0 = bad, 1 = good
     resultPercent: 0, // width of progress-bar
     priceDiffence: '0', // how much more € user is paying
     logo: settings.logo,
@@ -68,14 +68,11 @@ const setResult = (formularData) => {
  * @returns {number}
  */
 const getResultCategory = (deals) => {
-  if (deals.length > 1) {
+  if (deals.length > 0) {
     return 0
   }
-  if (deals.length === 1) {
-    return 1
-  }
 
-  return 2
+  return 1
 }
 
 /**
@@ -84,14 +81,17 @@ const getResultCategory = (deals) => {
  * @returns {number}
  */
 const getResultPercent = (deals) => {
-  if (deals.length > 1) {
-    return 60
+  if (deals.length === 0) {
+    return 90
   }
   if (deals.length === 1) {
     return 80
   }
+  if (deals.length === 2) {
+    return 60
+  }
 
-  return 90
+  return 40
 }
 
 export default {

@@ -1,5 +1,4 @@
 .smb-phone-plan-container {
-  margin-bottom: 25px;
   background-color: #f2f2f2;
   border-bottom: 2px solid #ccc;
 
@@ -16,8 +15,8 @@
 
 .smb-phone-plan-header {
   display: flex;
+  padding: 12.5px;
   background: #333;
-  padding: 10px 20px;
   align-items: center;
 }
 
@@ -32,7 +31,7 @@
 }
 
 .smb-phone-plan-body {
-  padding: 20px;
+  padding: 12.5px;
 }
 
 .smb-phone-plan-formular {
