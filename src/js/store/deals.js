@@ -28,22 +28,23 @@ export const getDeals = (tariffs, formularData) => {
     const tarifVolume = parseFloat(tarif.volume)
 
     if (tarifPrice < lowestPrice) {
-      setDeal(0, tarif)
+      setDeal('price', tarif)
       lowestPrice = tarifPrice
-      setPriceDiffence(userPrice, tarifPrice)
       continue
     }
     if (tarif.provider === formularData.provider && tarifPrice < lowestPriceByProvider) {
-      setDeal(1, tarif)
+      setDeal('provider', tarif)
       lowestPriceByProvider = tarifPrice
       continue
     }
     if (tarifVolume > initialVolume && tarifPrice < lowestPriceByVolume) {
-      setDeal(2, tarif)
+      setDeal('condition', tarif)
       lowestPriceByVolume = tarifPrice
       initialVolume = tarifVolume
     }
   }
+
+  setPriceDiffence(userPrice, lowestPrice)
 
   return deals
 }
@@ -87,12 +88,12 @@ const getTextsByDealCategory = (category, tarif) => {
     description: `Hier kann Beschreibungstext für die günstigste Alternative stehen, mit link zum Datenblatt für den Tarif ${tarif.product}`,
   }
 
-  if (category === 1) {
+  if (category === 'provider') {
     texts.title = 'Bester Preis im gleichen Netz'
     texts.description = `Hier kann Beschreibungstext für den bester Preis im gleichen Netz stehen, mit link zum Datenblatt für den Tarif ${tarif.product}`
   }
 
-  if (category === 2) {
+  if (category === 'condition') {
     texts.title = 'Bessere Konditionen'
     texts.description = `Hier kann Beschreibungstext für die bessere Konditionen stehen, mit link zum Datenblatt für den Tarif ${tarif.product}`
   }
