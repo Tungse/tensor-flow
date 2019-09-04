@@ -62,7 +62,7 @@ const cleanData = (data) => {
     data.handytarif.product.forEach((product) => {
       items.push({
         link: product.link.toString(),
-        id: product.product.toString(),
+        product: product.product.toString(),
         productInfoUrl: product.url_moreinfo.toString(),
         company: product.company.toString().toLowerCase(),
         provider: product.provider.toString().toLowerCase(),

@@ -57,10 +57,10 @@ const setDeal = (category, tarif) => {
   const texts = getTextsByDealCategory(category, tarif)
   const index = getDealIndexByCategory(category)
   const deal = {
-    id: tarif.id,
     link: tarif.link,
     category: category,
     title: texts.title,
+    product: tarif.product,
     company: tarif.company,
     provider: tarif.provider,
     description: texts.description,
@@ -84,17 +84,17 @@ const setDeal = (category, tarif) => {
 const getTextsByDealCategory = (category, tarif) => {
   let texts = {
     title: 'Günstigste Alternative',
-    description: `Hier kann Beschreibungstext für die günstigste Alternative stehen, mit link zum Datenblatt für den Tarif ${tarif.id}`,
+    description: `Hier kann Beschreibungstext für die günstigste Alternative stehen, mit link zum Datenblatt für den Tarif ${tarif.product}`,
   }
 
   if (category === 1) {
     texts.title = 'Bester Preis im gleichen Netz'
-    texts.description = `Hier kann Beschreibungstext für den bester Preis im gleichen Netz stehen, mit link zum Datenblatt für den Tarif ${tarif.id}`
+    texts.description = `Hier kann Beschreibungstext für den bester Preis im gleichen Netz stehen, mit link zum Datenblatt für den Tarif ${tarif.product}`
   }
 
   if (category === 2) {
     texts.title = 'Bessere Konditionen'
-    texts.description = `Hier kann Beschreibungstext für die bessere Konditionen stehen, mit link zum Datenblatt für den Tarif ${tarif.id}`
+    texts.description = `Hier kann Beschreibungstext für die bessere Konditionen stehen, mit link zum Datenblatt für den Tarif ${tarif.product}`
   }
 
   return texts

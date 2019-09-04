@@ -21,7 +21,7 @@ const renderDeals = () => {
             <div class="col-sm-8">
               <h4 class="smb-phone-plan-deal-title">${deal.title} ${deal.company ? ` mit ${deal.company}` : ``}</h4>
               ${deal.productInfoUrl ? `
-                  <p>${deal.description.replace(deal.id, `<a href="${deal.productInfoUrl}" target="_blank">${deal.id}</a>`)}</p>
+                  <p>${deal.description.replace(deal.product, `<a href="${deal.productInfoUrl}" target="_blank">${deal.product}</a>`)}</p>
                 ` : `
                   <p>${deal.description}</p>
                 `}
