@@ -17,7 +17,8 @@ export const getPriceDiffence = () => {
  */
 export const getDeals = (tariffs, formularData) => {
   const userPrice = parseFloat(formularData.price)
-  let initialVolume = parseFloat(formularData.volume)
+  let userVolume = parseFloat(formularData.volume)
+  let initialVolume = userVolume
   let lowestPrice = userPrice
   let lowestPriceByProvider = userPrice
   let lowestPriceByVolume = userPrice
@@ -27,17 +28,22 @@ export const getDeals = (tariffs, formularData) => {
     const tarifPrice = parseFloat(tarif.price)
     const tarifVolume = parseFloat(tarif.volume)
 
-    if (tarifPrice < lowestPrice) {
+    const lowestPriceDeal = tarifPrice < lowestPrice && isTarifVolumeNotToLow(tarifVolume, userVolume)
+    if (lowestPriceDeal) {
       setDeal('price', tarif)
       lowestPrice = tarifPrice
       continue
     }
-    if (tarif.provider === formularData.provider && tarifPrice < lowestPriceByProvider) {
+
+    const sameProviderLowestPriceDeal = tarif.provider === formularData.provider && tarifPrice < lowestPriceByProvider && isTarifVolumeNotToLow(tarifVolume, userVolume)
+    if (sameProviderLowestPriceDeal) {
       setDeal('provider', tarif)
       lowestPriceByProvider = tarifPrice
       continue
     }
-    if (tarifVolume > initialVolume && tarifPrice < lowestPriceByVolume) {
+
+    const highestVolumeDeal = tarifVolume > initialVolume && tarifPrice <= lowestPriceByVolume
+    if (highestVolumeDeal) {
       setDeal('condition', tarif)
       lowestPriceByVolume = tarifPrice
       initialVolume = tarifVolume
@@ -130,4 +136,14 @@ const getDealIndexByCategory = (category) => {
  */
 const setPriceDiffence = (userPrice, tarifPrice) => {
   priceDiffence = parseFloat(userPrice - tarifPrice).toFixed(2)
+}
+
+/**
+ * return true if tarifVolume is not excessively lower then userVolume
+ * @param tarifVolume
+ * @param userVolume
+ * @returns {boolean}
+ */
+const isTarifVolumeNotToLow = (tarifVolume, userVolume) => {
+  return tarifVolume + 1 >= userVolume || tarifVolume + 2 >= userVolume
 }
