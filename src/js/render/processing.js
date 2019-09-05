@@ -1,3 +1,5 @@
+import store from '../store/store.js'
+
 /**
  * return random facts
  * @returns {string}
@@ -16,7 +18,7 @@ const getRandomFacts = () => {
  * render processing with a random fact
  */
 export const renderProcessing = () => {
-  const processing = document.querySelector('[data-role="smb-phone-plan-processing"]')
+  const processing = store.get().container.querySelector('[data-role="smb-phone-plan-processing"]')
 
   if (processing) {
     processing.innerHTML = `
@@ -37,7 +39,7 @@ export const renderProcessing = () => {
  * remove processing
  */
 export const removeProcessing = () => {
-  const processing = document.querySelector('[data-role="smb-phone-plan-processing"]')
+  const processing = store.get().container.querySelector('[data-role="smb-phone-plan-processing"]')
 
   if (processing) {
     processing.remove()

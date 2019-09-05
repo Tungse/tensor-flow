@@ -1,3 +1,5 @@
+import store from '../store/store.js'
+
 /**
  * validate formular and return input values
  * @returns {{}}
@@ -5,7 +7,7 @@
 export const validateFormularData = () => {
   let error = false
   let formularData = {}
-  const formularItems = document.querySelectorAll('[data-role="smb-phone-plan-formular-item"]')
+  const formularItems = store.get().container.querySelectorAll('[data-role="smb-phone-plan-formular-item"]')
 
   for (let i = 0; i < formularItems.length; i++) {
     const formularItem = formularItems[i]

@@ -120,7 +120,7 @@ export const listenToAffiliateLinkClick = () => {
     return
   }
 
-  const links = document.querySelectorAll('[data-role="smb-phone-plan-affiliate-link"]')
+  const links = store.get().container.querySelectorAll('[data-role="smb-phone-plan-affiliate-link"]')
   if (links.length === 0) {
     return
   }

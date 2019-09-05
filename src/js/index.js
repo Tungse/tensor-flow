@@ -57,7 +57,7 @@ const calculate = () => {
  * event listerner for check button
  */
 const listenToCheckClick = () => {
-  const checkButton = document.querySelector('[data-role="smb-phone-plan-check"]')
+  const checkButton = store.get().container.querySelector('[data-role="smb-phone-plan-check"]')
 
   if (checkButton === null) {
     return
@@ -85,7 +85,7 @@ const listenToEnterClick = () => {
  * add event listerner to track formular interaction.
  */
 export const listenToFormularInteraction = () => {
-  const formularItems = document.querySelectorAll('[data-role="smb-phone-plan-formular-item"]')
+  const formularItems = store.get().container.querySelectorAll('[data-role="smb-phone-plan-formular-item"]')
 
   for (let i = 0; i < formularItems.length; i++) {
     const formularItem = formularItems[i]

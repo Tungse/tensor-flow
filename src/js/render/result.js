@@ -7,7 +7,7 @@ import { validateEmail } from '../common/validation.js'
  */
 const renderResult = () => {
   const content = getContentByResult()
-  const result = document.querySelector('[data-role="smb-phone-plan-result"]')
+  const result = store.get().container.querySelector('[data-role="smb-phone-plan-result"]')
 
   if (result) {
     result.innerHTML = `
@@ -73,7 +73,7 @@ const getContentByResult = () => {
  * @param progressWidth
  */
 const setProgressBarTransition = (progressWidth) => {
-  const progressBar = document.querySelector('[data-role="smb-phone-plan-progress-bar"]')
+  const progressBar = store.get().container.querySelector('[data-role="smb-phone-plan-progress-bar"]')
 
   if (progressBar === null) {
     return
@@ -88,7 +88,7 @@ const setProgressBarTransition = (progressWidth) => {
  * add shake class to thumb icon
  */
 const setThumbIconShake = () => {
-  const thumbIcon = document.querySelector('[data-role="smb-phone-plan-thumb-icon"]')
+  const thumbIcon = store.get().container.querySelector('[data-role="smb-phone-plan-thumb-icon"]')
 
   if (thumbIcon === null) {
     return
@@ -103,15 +103,15 @@ const setThumbIconShake = () => {
  * event listerner for send email button
  */
 const listenToSendEmailClick = () => {
-  const sendButton = document.querySelector('[data-role="smb-phone-plan-send-email"]')
+  const sendButton = store.get().container.querySelector('[data-role="smb-phone-plan-send-email"]')
 
   if (sendButton === null) {
     return
   }
 
   sendButton.addEventListener('click', () => {
-    const emailForm = document.querySelector('[data-role="smb-phone-plan-email"]')
-    const email = document.querySelector('[data-role="smb-phone-plan-email-input"]')
+    const emailForm = store.get().container.querySelector('[data-role="smb-phone-plan-email"]')
+    const email = store.get().container.querySelector('[data-role="smb-phone-plan-email-input"]')
 
     if (emailForm === null || email === null) {
       return

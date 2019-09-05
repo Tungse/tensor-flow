@@ -8,7 +8,9 @@ export const renderStage = () => {
     <div class="smb-phone-plan-container">
       <div class="smb-phone-plan-header">
         <h2 class="smb-phone-plan-title">Teste deinen Handyvertrag!</h2>
-        <img class="smb-phone-plan-logo" src="${store.get().logo}" alt="">
+        ${store.get().logo ? `
+          <img class="smb-phone-plan-logo" src="${store.get().logo}" alt="">
+        ` : ``}
       </div>
       <div class="smb-phone-plan-body">
         <div class="smb-phone-plan-formular" data-role="smb-phone-plan-formular">
@@ -69,7 +71,7 @@ export const renderStage = () => {
  * remove blur class of formular
  */
 export const unBlurFormular = () => {
-  const formular = document.querySelector('[data-role="smb-phone-plan-formular"]')
+  const formular = store.get().container.querySelector('[data-role="smb-phone-plan-formular"]')
 
   if (formular === null) {
     return
@@ -82,7 +84,7 @@ export const unBlurFormular = () => {
  * add blur class to formular
  */
 export const blurFormular = () => {
-  const formular = document.querySelector('[data-role="smb-phone-plan-formular"]')
+  const formular = store.get().container.querySelector('[data-role="smb-phone-plan-formular"]')
 
   if (formular === null) {
     return

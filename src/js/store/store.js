@@ -4,8 +4,7 @@ let store = {}
 
 const defaultOptions = {
   container: '#smb-phone-plan',
-  logo: 'https://www.giga.de/static-local/dist/assets/images/logos/giga.svg',
-  endpoint: 'https://tools.communicationads.net/webservice.php?wf=10506&format=xml&calc=handytarif&country=DE&c=999',
+  endpoint: 'https://tools.communicationads.net/webservice.php?wf=10506&format=xml&calc=handytarif&country=DE&c=100',
 }
 
 /**
@@ -63,7 +62,7 @@ const setResult = (formularData) => {
 }
 
 /**
- * calculate user result category by the among of matching deals
+ * calculate user result category by the amount of matching deals
  * @param deals
  * @returns {number}
  */
@@ -76,7 +75,7 @@ const getResultCategory = (deals) => {
 }
 
 /**
- * calculate user progress bar percent by the among of matching deals
+ * calculate user progress bar percent by the amount of matching deals
  * @param deals
  * @returns {number}
  */

@@ -5,7 +5,7 @@ import * as track from '../common/tracking.js'
  * render list of deals
  */
 const renderDeals = () => {
-  const deals = document.querySelector('[data-role="smb-phone-plan-deals"]')
+  const deals = store.get().container.querySelector('[data-role="smb-phone-plan-deals"]')
 
   if (deals === null) {
     return
