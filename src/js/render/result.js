@@ -7,10 +7,10 @@ import { validateEmail } from '../common/validation.js'
  */
 const renderResult = () => {
   const content = getContentByResult()
-  const result = store.get().container.querySelector('[data-role="smb-phone-plan-result"]')
+  const container = store.get().container.querySelector('[data-role="smb-phone-plan-result"]')
 
-  if (result) {
-    result.innerHTML = `
+  if (container) {
+    container.innerHTML = `
       <hr />
       <h3 class="">Dein Ergebnis</h3>
       <div class="smb-phone-plan-progress">
@@ -18,19 +18,17 @@ const renderResult = () => {
         <i class="smb-phone-plan-thumb-icon ${content.thumbIconClass}" data-role="smb-phone-plan-thumb-icon"></i>
       </div>
       ${store.get().resultCategory === 0 ? `
-        <strong>Dein Tarif ist ${content.categoryText}. Du zahlst ${store.get().priceDiffence}€ zu viel im Monat. Hier gibt es bessere Alternativen:</strong>
+        <p><strong>Dein Tarif ist ${content.categoryText}. Du zahlst ${store.get().priceDiffence}€ zu viel im Monat.</strong></p>
+        <p><strong>Hier gibt es bessere Alternativen:</strong></p>
       ` : `
-        <strong>Herzlichen Glückwünsch. Du hast einen tollen Tarif.</strong>
+        <strong>Herzlichen Glückwünsch, du hast einen tollen Tarif!</strong>
         ${store.get().emailSended === false ? `
           <hr />
           <div data-role="smb-phone-plan-email">
-            <p>Schick mir eine E-Mail wenn es ein besseres Angebot gibt.</p>
+            <p>Informiere mich per E-Mail, wenn es ein besseres Angebot gibt!</p>
             <div class="row">
               <div class="form-group col-sm-6">
-                <div class="input-group">
-                  <div class="input-group-addon">@</div>
-                  <input type="email" class="form-control" data-role="smb-phone-plan-email-input" placeholder="E-Mail">
-                </div>
+                <input type="email" class="form-control" data-role="smb-phone-plan-email-input" placeholder="E-Mail-Adresse">
               </div>
               <div class="form-group col-sm-6">
                 <button class="btn btn-primary btn-block" data-role="smb-phone-plan-send-email">Absenden</button>
@@ -122,7 +120,7 @@ const listenToSendEmailClick = () => {
       return
     }
 
-    emailForm.innerHTML = `<p>Vielen Dank.</p>`
+    emailForm.innerHTML = `<p>Vielen Dank! Du erhältst von uns eine E-Mail, sobald wir ein Angebot mit den gleichen Konditionen zu einem besseren Preis finden. Bis dahin kannst du entspannt deinen Tarif weiternutzen.</p>`
     store.set({ emailSended: true })
     track.sendEmail()
   })

@@ -18,10 +18,10 @@ const getRandomFacts = () => {
  * render processing with a random fact
  */
 export const renderProcessing = () => {
-  const processing = store.get().container.querySelector('[data-role="smb-phone-plan-processing"]')
+  const container = store.get().container.querySelector('[data-role="smb-phone-plan-processing"]')
 
-  if (processing) {
-    processing.innerHTML = `
+  if (container) {
+    container.innerHTML = `
       <hr />
       <div class="smb-phone-plan-loading-dot-container text-center">
         <p>

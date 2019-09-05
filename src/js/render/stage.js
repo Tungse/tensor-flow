@@ -7,7 +7,7 @@ export const renderStage = () => {
   store.get().container.innerHTML = `
     <div class="smb-phone-plan-container">
       <div class="smb-phone-plan-header">
-        <h2 class="smb-phone-plan-title">Teste deinen Handyvertrag!</h2>
+        <h2 class="smb-phone-plan-title">Wie gut ist dein Handyvertrag?</h2>
         ${store.get().logo ? `
           <img class="smb-phone-plan-logo" src="${store.get().logo}" alt="">
         ` : ``}
@@ -22,10 +22,9 @@ export const renderStage = () => {
             <div class="form-group col-sm-6">
               <select class="form-control" data-role="smb-phone-plan-formular-item" data-name="provider" data-required="1">
                 <option value="">Netz</option>
-                <option value="d1">D1</option>
-                <option value="d2">D2</option>
-                <option value="o2">O2</option>
-                <option value="telefónica">Telefónica</option>
+                <option value="d1">Telekom (D1)</option>
+                <option value="d2">Vodafon (D2)</option>
+                <option value="telefónica">Telefónica (O2)</option>
               </select>
             </div>
             <div class="form-group col-sm-6">
@@ -53,7 +52,7 @@ export const renderStage = () => {
             <div class="col-sm-6">
               <label class="custom-control-label">
                 <input type="checkbox" class="custom-control-input" data-role="smb-phone-plan-formular-item" data-name="flatrate">
-                &nbsp;Telefon Flatrate
+                &nbsp;Telefon-Flatrate
               </label>
             </div>
           </div>

@@ -5,25 +5,25 @@ import * as track from '../common/tracking.js'
  * render list of deals
  */
 const renderDeals = () => {
-  const deals = store.get().container.querySelector('[data-role="smb-phone-plan-deals"]')
+  const container = store.get().container.querySelector('[data-role="smb-phone-plan-deals"]')
 
-  if (deals === null) {
+  if (container === null) {
     return
   }
 
   if (store.get().deals.length === 0) {
-    deals.innerHTML = ``
+    container.innerHTML = ``
   } else {
-    deals.innerHTML = `
+    container.innerHTML = `
       <ul class="list-group smb-phone-plan-deals-list">
         ${store.get().deals.map((deal, index) => `
           <li class="list-group-item smb-phone-plan-deal-item clearfix">
             <div class="col-sm-8">
-              <h4 class="smb-phone-plan-deal-title">${deal.title} ${deal.company ? ` mit ${deal.company}` : ``}</h4>
+              <h4 class="smb-phone-plan-deal-title">${deal.title}</h4>
               ${deal.productInfoUrl ? `
-                  <p>${deal.description.replace(deal.product, `<a href="${deal.productInfoUrl}" target="_blank">${deal.product}</a>`)}</p>
+                  <p><a href="${deal.productInfoUrl}" target="_blank">${deal.product}</a></p>
                 ` : `
-                  <p>${deal.description}</p>
+                  <p>${deal.product}</p>
                 `}
             </div>
             <div class="col-sm-4">
