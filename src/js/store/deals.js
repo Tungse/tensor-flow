@@ -90,13 +90,13 @@ export const getDeals = (tariffs, formularData) => {
 const setDeal = (category, tarif) => {
   const index = getDealIndexByCategory(category)
   const deal = {
-    link: tarif.link,
     category: category,
     product: tarif.product,
     company: tarif.company,
     provider: tarif.provider,
     productInfoUrl: tarif.productInfoUrl,
     title: getTitleByDealCategory(category),
+    link: `${tarif.link}&subid=tarifchecker`,
     price: parseFloat(tarif.price).toFixed(2),
   }
 
