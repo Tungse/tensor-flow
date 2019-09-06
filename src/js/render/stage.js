@@ -72,7 +72,7 @@ export const renderStage = () => {
 export const unBlurFormular = () => {
   const formular = store.get().container.querySelector('[data-role="smb-phone-plan-formular"]')
 
-  if (formular === null) {
+  if (formular === null || formular.classList.contains('blur') === false) {
     return
   }
 
@@ -85,7 +85,7 @@ export const unBlurFormular = () => {
 export const blurFormular = () => {
   const formular = store.get().container.querySelector('[data-role="smb-phone-plan-formular"]')
 
-  if (formular === null) {
+  if (formular === null || formular.classList.contains('blur')) {
     return
   }
 

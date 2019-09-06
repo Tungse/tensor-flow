@@ -1,4 +1,4 @@
-let deals
+let deals = []
 let priceDiffence
 
 /**

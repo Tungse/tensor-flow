@@ -100,9 +100,7 @@ export const listenToFormularInteraction = () => {
  */
 const listenToFormularFocussed = (formularItem) => {
   formularItem.addEventListener('focus', () => {
-    if (store.get().calculated) {
-      unBlurFormular()
-    }
+    unBlurFormular()
   })
 }
 

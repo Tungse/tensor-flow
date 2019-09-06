@@ -1,7 +1,7 @@
 {
   "name": "@smb/phone-plan",
   "description": "smb-phone-plan",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "homepage": "https://github.com/smb-ag/smb-phone-plan",
   "repository": {
     "type": "git",
