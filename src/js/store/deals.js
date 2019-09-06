@@ -39,24 +39,24 @@ export const getDeals = (tariffs, formularData) => {
     }
     const condition = getTarifConditionCategory(userCondition, tarifCondition)
 
-    const sameProviderSameConditionBetterPrice =
+    const sameProviderBetterPrice =
       tarifProvider === formularData.provider &&
       (condition === 'same' || condition === 'better') &&
       getTarifPriceCategory(tarifPrice, bestPriceByProvider) === 'better'
 
-    if (sameProviderSameConditionBetterPrice) {
+    if (sameProviderBetterPrice) {
       setDeal('1:provider', tarif)
       bestPriceByProvider = tarifPrice
       lowestPrice = lowestPrice > tarifPrice ? tarifPrice : lowestPrice
       continue
     }
 
-    const differentProviderSameConditionBetterPrice =
+    const differentProviderBetterPrice =
       tarifProvider !== formularData.provider &&
       (condition === 'same' || condition === 'better') &&
       getTarifPriceCategory(tarifPrice, bestPrice) === 'better'
 
-    if (differentProviderSameConditionBetterPrice) {
+    if (differentProviderBetterPrice) {
       setDeal('2:price', tarif)
       bestPrice = tarifPrice
       lowestPrice = lowestPrice > tarifPrice ? tarifPrice : lowestPrice
