@@ -42,6 +42,7 @@ const listenToCheckClick = () => {
   }
 
   checkButton.addEventListener('click', () => {
+    track.checkButtonClick()
     calculateUserTarif()
   })
 }
@@ -52,6 +53,7 @@ const listenToCheckClick = () => {
 const listenToEnterClick = () => {
   document.onkeydown = (e) => {
     if (e.keyCode === 13) {
+      track.checkButtonClick()
       calculateUserTarif()
     }
   }
@@ -63,7 +65,6 @@ const listenToEnterClick = () => {
 const calculateUserTarif = () => {
   const formularData = validateFormularData()
 
-  track.checkButtonClick()
   if (Object.keys(formularData).length === 0) {
     return
   }
