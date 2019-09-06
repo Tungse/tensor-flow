@@ -6,7 +6,7 @@ let priceDiffence
  * @returns {*}
  */
 export const getPriceDiffence = () => {
-  return priceDiffence.replace('.', ',')
+  return priceDiffence
 }
 
 /**
@@ -17,13 +17,14 @@ export const getPriceDiffence = () => {
  */
 export const getDeals = (tariffs, formularData) => {
   const userPrice = parseFloat(formularData.price)
-  let initialVolume = parseFloat(formularData.volume)
+  let currentVolume = parseFloat(formularData.volume)
   let lowestPrice = userPrice
-  let lowestPriceByProvider = userPrice
+  let bestPrice = userPrice
+  let bestPriceByProvider = userPrice
   const userCondition = {
     lte: formularData.lte,
     flatrate: formularData.flatrate,
-    volume: initialVolume,
+    volume: currentVolume,
   }
 
   for (let i = 0; i < tariffs.length; i++) {
@@ -38,28 +39,45 @@ export const getDeals = (tariffs, formularData) => {
     }
     const condition = getTarifConditionCategory(userCondition, tarifCondition)
 
-    const sameProviderSameConditionLowestPrice = tarifProvider === formularData.provider && condition === 'same' && getTarifPriceCategory(tarifPrice, lowestPriceByProvider) === 'better'
-    if (sameProviderSameConditionLowestPrice) {
-      setDeal('0_provider', tarif)
-      lowestPriceByProvider = tarifPrice
+    const sameProviderSameConditionBetterPrice =
+      tarifProvider === formularData.provider &&
+      (condition === 'same' || condition === 'better') &&
+      getTarifPriceCategory(tarifPrice, bestPriceByProvider) === 'better'
+
+    if (sameProviderSameConditionBetterPrice) {
+      setDeal('1:provider', tarif)
+      bestPriceByProvider = tarifPrice
+      lowestPrice = lowestPrice > tarifPrice ? tarifPrice : lowestPrice
       continue
     }
 
-    const differentProviderSameConditionLowestPrice = tarifProvider !== formularData.provider && condition === 'same' && getTarifPriceCategory(tarifPrice, lowestPrice) === 'better'
-    if (differentProviderSameConditionLowestPrice) {
-      setDeal('1_price', tarif)
-      lowestPrice = tarifPrice
+    const differentProviderSameConditionBetterPrice =
+      tarifProvider !== formularData.provider &&
+      (condition === 'same' || condition === 'better') &&
+      getTarifPriceCategory(tarifPrice, bestPrice) === 'better'
+
+    if (differentProviderSameConditionBetterPrice) {
+      setDeal('2:price', tarif)
+      bestPrice = tarifPrice
+      lowestPrice = lowestPrice > tarifPrice ? tarifPrice : lowestPrice
       continue
     }
 
-    const betterConditionSamePrice = condition === 'better' && getTarifPriceCategory(tarifPrice, userPrice) === 'same' && tarifVolume >= initialVolume
+    const betterConditionSamePrice =
+      condition === 'better' &&
+      getTarifPriceCategory(tarifPrice, userPrice) === 'same' &&
+      tarifVolume >= currentVolume
+
     if (betterConditionSamePrice) {
-      setDeal('2_condition', tarif)
-      initialVolume = tarifVolume
+      setDeal('3:condition', tarif)
+      currentVolume = tarifVolume
+      lowestPrice = lowestPrice > tarifPrice ? tarifPrice : lowestPrice
     }
   }
 
-  setPriceDiffence(userPrice, lowestPrice)
+  if (getTarifPriceCategory(lowestPrice, userPrice) === 'better') {
+    setPriceDiffence(userPrice, lowestPrice)
+  }
 
   return sortDeals(deals)
 }
@@ -97,11 +115,11 @@ const setDeal = (category, tarif) => {
 const getTitleByDealCategory = (category) => {
   let title = 'Bester Preis im gleichen Netz'
 
-  if (category === '1_price') {
+  if (category === '2:price') {
     title = 'Günstigste Alternative'
   }
 
-  if (category === '2_condition') {
+  if (category === '3:condition') {
     title = 'Bessere Konditionen zum selben Preis'
   }
 
@@ -170,15 +188,15 @@ const sortDeals = (deals) => {
  * @returns {string}
  */
 const getTarifPriceCategory = (tarifPrice, price) => {
-  if (tarifPrice > price) {
+  if (tarifPrice > price + parseFloat('0.1')) {
     return 'worse'
   }
 
-  if (tarifPrice === price) {
-    return 'same'
+  if (tarifPrice < price - parseFloat('0.1')) {
+    return 'better'
   }
 
-  return 'better'
+  return 'same'
 }
 
 /**
@@ -188,16 +206,15 @@ const getTarifPriceCategory = (tarifPrice, price) => {
  * @returns {string}
  */
 const getTarifConditionCategory = (user, tarif) => {
-  const worseLte = user.lte === true && tarif.lte !== 'Ja'
-  const worseFlatrate = user.flatrate === true && tarif.flatrate !== 'Flat'
-  const sameLte = (user.lte === true && tarif.lte === 'Ja') || (user.lte === false && tarif.lte !== 'Ja')
-  const sameFlatrate = (user.flatrate === true && tarif.flatrate === 'Flat') || (user.flatrate === false && tarif.flatrate !== 'Flat')
+  const worseLte = user.lte && !tarif.lte
+  const worseVolume = tarif.volume < user.volume
+  const worseFlatrate = user.flatrate && !tarif.flatrate
 
-  if (tarif.volume < user.volume || worseLte || worseFlatrate) {
+  if (worseVolume || worseLte || worseFlatrate) {
     return 'worse'
   }
 
-  if (tarif.volume === user.volume && sameLte && sameFlatrate) {
+  if (JSON.stringify(user) === JSON.stringify(tarif)) {
     return 'same'
   }
 

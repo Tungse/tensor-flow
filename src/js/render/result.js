@@ -18,7 +18,7 @@ const renderResult = () => {
         <i class="smb-phone-plan-thumb-icon ${content.thumbIconClass}" data-role="smb-phone-plan-thumb-icon"></i>
       </div>
       ${store.get().resultCategory === 0 ? `
-        <p><strong>Dein Tarif ist ${content.categoryText}. Du zahlst ${store.get().priceDiffence}€ zu viel im Monat.</strong></p>
+        <p><strong>Dein Tarif ist ${content.categoryText}. ${store.get().priceDiffence ? `Du zahlst ${store.get().priceDiffence.replace('.', ',')}€ zu viel im Monat.` : ``}</strong></p>
         <p><strong>Hier gibt es bessere Alternativen:</strong></p>
       ` : `
         <strong>Herzlichen Glückwünsch, du hast einen tollen Tarif!</strong>

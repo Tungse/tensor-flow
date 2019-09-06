@@ -32,28 +32,6 @@ const init = (options) => {
 }
 
 /**
- * calculate user input and render result
- */
-const calculate = () => {
-  const formularData = validateFormularData()
-
-  if (Object.keys(formularData).length === 0) {
-    return
-  }
-  if (store.get().calculated === false) {
-    renderProcessing()
-  }
-  blurFormular()
-  getTariffs().then(() => {
-    store.setResult(formularData)
-  }).then(() => {
-    removeProcessing()
-    renderResult()
-    renderDeals()
-  })
-}
-
-/**
  * event listerner for check button
  */
 const listenToCheckClick = () => {
@@ -64,8 +42,7 @@ const listenToCheckClick = () => {
   }
 
   checkButton.addEventListener('click', () => {
-    calculate()
-    track.checkButtonClick()
+    calculateUserTarif()
   })
 }
 
@@ -75,10 +52,31 @@ const listenToCheckClick = () => {
 const listenToEnterClick = () => {
   document.onkeydown = (e) => {
     if (e.keyCode === 13) {
-      calculate()
-      track.checkButtonClick()
+      calculateUserTarif()
     }
   }
+}
+
+/**
+ * calculate user input and render result
+ */
+const calculateUserTarif = () => {
+  const formularData = validateFormularData()
+
+  track.checkButtonClick()
+  if (Object.keys(formularData).length === 0) {
+    return
+  }
+
+  renderProcessing()
+  blurFormular()
+  getTariffs().then(() => {
+    store.setResult(formularData)
+  }).then(() => {
+    removeProcessing()
+    renderResult()
+    renderDeals()
+  })
 }
 
 /**
