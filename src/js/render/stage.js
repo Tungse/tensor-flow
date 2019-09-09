@@ -23,7 +23,7 @@ export const renderStage = () => {
               <select class="form-control" data-role="smb-phone-plan-formular-item" data-name="provider" data-required="1">
                 <option value="">Netz</option>
                 <option value="d1">Telekom (D1)</option>
-                <option value="d2">Vodafon (D2)</option>
+                <option value="d2">Vodafone (D2)</option>
                 <option value="telefónica">Telefónica (O2)</option>
               </select>
             </div>
