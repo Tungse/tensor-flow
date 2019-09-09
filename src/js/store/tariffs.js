@@ -1,4 +1,5 @@
 import store from './store.js'
+import fallbackData from '../data/communicationads.json'
 
 /**
  * request XML data from API and set tariffs in store
@@ -11,10 +12,22 @@ const getTariffs = () => {
       return
     }
     requestXML()
-    setTimeout(() => {
-      resolve()
-    }, 3000)
+    setTimerToResolvePromise(resolve)
   })
+}
+
+/**
+ * use fallback data if needed and resolve promise after 3s
+ * @param resolve
+ */
+const setTimerToResolvePromise = (resolve) => {
+  setTimeout(() => {
+    if (store.get().tariffs.length === 0) {
+      store.set({ tariffs: cleanData(fallbackData) })
+    }
+
+    resolve()
+  }, 3500)
 }
 
 /**
@@ -25,7 +38,6 @@ const requestXML = () => {
     const request = new XMLHttpRequest()
 
     request.open('GET', store.get().endpoint, true)
-    request.timeout = 2500
     request.onreadystatechange = () => {
       if (request.readyState === 4 && request.status === 200 && request.response) {
         store.set({ tariffs: cleanData(JSON.parse(request.response)) })
