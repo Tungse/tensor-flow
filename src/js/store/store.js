@@ -4,7 +4,7 @@ let store = {}
 
 const defaultOptions = {
   container: '#smb-phone-plan',
-  endpoint: 'https://tools.communicationads.net/webservice.php?wf=10506&format=xml&calc=handytarif&country=DE&c=200',
+  endpoint: 'https://tools.communicationads.net/webservice.php?wf=10506&format=json&calc=handytarif&country=DE&c=200',
 }
 
 /**
