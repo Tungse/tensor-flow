@@ -3,7 +3,7 @@ import store from './store.js'
 let timerFinished = false
 
 /**
- * request XML data from API and set tariffs in store
+ * request data from API and resolve promise at the earliest after 3s
  * @returns {Promise}
  */
 const getTariffs = () => {
@@ -12,13 +12,13 @@ const getTariffs = () => {
       resolve()
       return
     }
-    requestXML(resolve)
+    requestData(resolve)
     setTimerToResolvePromise(resolve)
   })
 }
 
 /**
- * resolve promise after 3s if tariffs are requested, else set timerFinished
+ * resolve promise after 3s if data are requested, else set timerFinished
  * @param resolve
  */
 const setTimerToResolvePromise = (resolve) => {
@@ -32,9 +32,9 @@ const setTimerToResolvePromise = (resolve) => {
 }
 
 /**
- * request XML data and convert it to JSON
+ * request and save data to store, then resolve promise if timer is finished
  */
-const requestXML = (resolve) => {
+const requestData = (resolve) => {
   try {
     const request = new XMLHttpRequest()
 
@@ -53,7 +53,7 @@ const requestXML = (resolve) => {
 }
 
 /**
- * filter only needed keys from XML data
+ * filter only needed keys from requested data
  * @param products
  * @returns {[]}
  */
