@@ -42,6 +42,6 @@ export const removeProcessing = () => {
   const processing = store.get().container.querySelector('[data-role="smb-phone-plan-processing"]')
 
   if (processing) {
-    processing.remove()
+    processing.parentNode.removeChild(processing)
   }
 }
