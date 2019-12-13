@@ -8,10 +8,6 @@ import { validateFormularData } from './common/validation.js'
 import { renderProcessing, removeProcessing } from './render/processing.js'
 import { renderStage, blurFormular, unBlurFormular } from './render/stage.js'
 
-if (process.env.NODE_ENV === 'development') {
-  import('../stylesheets/demo.scss')
-}
-
 /**
  * init function to init store, render stage, add event listerners and tracking
  * @param options
