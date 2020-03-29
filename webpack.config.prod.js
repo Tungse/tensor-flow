@@ -10,7 +10,7 @@ module.exports = [
       rules: [
         {
           test: /\.js$/,
-          exclude: /node_modules\/(?!(smb-element-observer)\/).*/,
+          exclude: /node_modules\/.*/,
           use: {
             loader: 'babel-loader',
           },
@@ -33,12 +33,12 @@ module.exports = [
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: 'smb-phone-plan.css',
+        filename: 'tensor-flow.css',
       }),
     ],
     output: {
-      library: 'smbPhonePlan',
-      filename: 'smb-phone-plan.js',
+      library: 'tensorFlow',
+      filename: 'tensor-flow.js',
       libraryTarget: 'umd',
       libraryExport: 'default',
       path: path.resolve(__dirname, 'dist/'),

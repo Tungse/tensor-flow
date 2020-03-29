@@ -3,7 +3,10 @@ import store from '../store/store.js'
 /**
  * render phone plan stage, initially with formular and placeholder for next steps
  */
-export const renderStage = () => {
+export const stage = () => {
+  if (!store.get().container) {
+    return
+  }
   store.get().container.innerHTML = `
     <div class="smb-phone-plan-container">
       <div class="smb-phone-plan-header">
@@ -64,30 +67,4 @@ export const renderStage = () => {
       </div>
     </div>
   `
-}
-
-/**
- * remove blur class of formular
- */
-export const unBlurFormular = () => {
-  const formular = store.get().container.querySelector('[data-role="smb-phone-plan-formular"]')
-
-  if (formular === null || formular.classList.contains('blur') === false) {
-    return
-  }
-
-  formular.classList.remove('blur')
-}
-
-/**
- * add blur class to formular
- */
-export const blurFormular = () => {
-  const formular = store.get().container.querySelector('[data-role="smb-phone-plan-formular"]')
-
-  if (formular === null || formular.classList.contains('blur')) {
-    return
-  }
-
-  formular.classList.add('blur')
 }

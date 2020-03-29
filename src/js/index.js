@@ -1,102 +1,30 @@
-import '../stylesheets/imports.scss'
+import '../scss/main.scss'
 import store from './store/store.js'
-import getTariffs from './store/tariffs.js'
-import renderDeals from './render/deals.js'
-import renderResult from './render/result.js'
-import * as track from './common/tracking.js'
-import { validateFormularData } from './common/validation.js'
-import { renderProcessing, removeProcessing } from './render/processing.js'
-import { renderStage, blurFormular, unBlurFormular } from './render/stage.js'
+import * as render from './render/stage.js'
+import * as tensorflow from '@tensorflow/tfjs'
 
 /**
- * init function to init store, render stage, add event listerners and tracking
+ * init function to init store
  * @param options
  */
 const init = (options) => {
   store.init(options)
+  render.stage()
 
-  if (store.get().container === null) {
-    return
-  }
+  const model = tensorflow.sequential()
+  model.add(tensorflow.layers.dense({units: 1, inputShape: [1]}))
 
-  renderStage()
-  listenToCheckClick()
-  listenToEnterClick()
-  listenToFormularInteraction()
-  track.embed()
-  track.listenToVisibleEvent()
-}
+  model.compile({loss: 'meanSquaredError', optimizer: 'sgd'})
 
-/**
- * event listerner for check button
- */
-const listenToCheckClick = () => {
-  const checkButton = store.get().container.querySelector('[data-role="smb-phone-plan-check"]')
+// Generate some synthetic data for training.
+  const xs = tensorflow.tensor2d([1, 2, 3, 4], [4, 1])
+  const ys = tensorflow.tensor2d([1, 3, 5, 7], [4, 1])
 
-  if (checkButton === null) {
-    return
-  }
-
-  checkButton.addEventListener('click', () => {
-    track.checkButtonClick()
-    calculateUserTarif()
-  })
-}
-
-/**
- * event listerner for enter button
- */
-const listenToEnterClick = () => {
-  document.onkeydown = (e) => {
-    if (e.keyCode === 13) {
-      track.checkButtonClick()
-      calculateUserTarif()
-    }
-  }
-}
-
-/**
- * calculate user input and render result
- */
-const calculateUserTarif = () => {
-  const formularData = validateFormularData()
-
-  if (Object.keys(formularData).length === 0) {
-    return
-  }
-
-  renderProcessing()
-  blurFormular()
-  getTariffs().then(() => {
-    store.setResult(formularData)
-  }).then(() => {
-    removeProcessing()
-    renderResult()
-    renderDeals()
-  })
-}
-
-/**
- * add event listerner to track formular interaction.
- */
-export const listenToFormularInteraction = () => {
-  const formularItems = store.get().container.querySelectorAll('[data-role="smb-phone-plan-formular-item"]')
-
-  for (let i = 0; i < formularItems.length; i++) {
-    const formularItem = formularItems[i]
-
-    listenToFormularFocussed(formularItem)
-    track.listenToFormularInputChanged(formularItem)
-  }
-}
-
-/**
- * unblur formular if one of the inputs are focussed and formular is already blur
- * @param formularItem
- */
-const listenToFormularFocussed = (formularItem) => {
-  formularItem.addEventListener('focus', () => {
-    unBlurFormular()
+// Train the model using the data.
+  model.fit(xs, ys, {epochs: 10}).then(() => {
+    // Use the model to do inference on a data point the model hasn't seen before:
+    model.predict(tensorflow.tensor2d([5], [1, 1])).print()
+    // Open the browser devtools to see the output
   })
 }
 

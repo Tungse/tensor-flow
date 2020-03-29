@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = (env) => {
   return {
@@ -11,7 +11,7 @@ module.exports = (env) => {
       rules: [
         {
           test: /\.js$/,
-          exclude: /node_modules\/(?!(smb-element-observer)\/).*/,
+          exclude: /node_modules\/.*/,
           use: {
             loader: 'babel-loader',
           },
@@ -38,14 +38,14 @@ module.exports = (env) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        title: 'smb-phone-plan development',
+        title: 'tensor-flow development',
         template: 'index.html',
         inject: 'head',
       }),
     ],
     output: {
-      library: 'smbPhonePlan',
-      filename: 'smb-phone-plan.bundle.js',
+      library: 'tensorFlow',
+      filename: 'tensor-flow.bundle.js',
       libraryTarget: 'var',
       libraryExport: 'default',
       path: path.resolve(__dirname, 'dist/'),
